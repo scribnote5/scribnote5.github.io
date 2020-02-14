@@ -20,31 +20,26 @@
       {% include nav_list nav=page.sidebar.nav %}
     {% endif %}
   {% endif %}
-
-
   
-      <hr>
-        {% for category in site.categories %}
-        <h3>
-          <a class="title" href="{{ '/categories/#' | append: category[0] | append: camelcase | prepend: site.url }}">
-            {{ category[0] | camelcase }}
-            <!-- {{ /categories/# | append: category[0] | append: camelcase | prepend: site.url }} -->
-             
-        </h3>
-        <!-- {% for posts in category %}
-        {% for post in posts %}
-        {% if post.url %}
-        <li>
-          <time>
-            {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
-          </time>
-          <a class="title" href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>
-        </li>
-        {% endif %}
-        {% endfor %}
-        {% endfor %} -->
-        {% endfor %}
+  <!-- sdy -->
+  <hr>
+  <h3>Categories</h3>
+    <div class="author__bio" itemprop="description">
+      {% for category in site.categories %}
+        <a href="{{ '/categories/#' | append: category[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
+          <span class="author__bio" itemprop="description">&nbsp;{{ category[0] | camelcase | downcase }}&nbsp;</span>
+        </a> 
+      {% endfor %}
+    </div>
 
-
+  <hr>
+  <h3>Tags</h3>
+    <div class="author__bio" itemprop="description">
+      {% for tag in site.tags %}
+        <a href="{{ '/tags/#' | append: tag[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
+          <span class="author__bio" itemprop="description">&nbsp;{{ tag[0] | camelcase | downcase }}&nbsp;</span> 
+        </a>
+      {% endfor %}
+    </div>
   </div>
 {% endif %}
