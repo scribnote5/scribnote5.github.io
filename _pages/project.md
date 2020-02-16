@@ -1,5 +1,5 @@
 ---
-title: "프로파일"
+title: "진행 중인 프로젝트"
 permalink: /project/
 layout: single
 ---
