@@ -1,5 +1,5 @@
 ---
-title: "Naming Rule(변수명, 함수명 정하기) - 종류"
+title: "Naming Rule(변수명, 함수명) 종류"
 excerpt: "대표적으로 알려진 유명한 Naming Rule에 대하여 소개하기"
 
 categories:
