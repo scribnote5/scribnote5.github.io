@@ -20,7 +20,7 @@ title                    : "끄적이판"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "송대영"
-description              : "노력에 비하여, 의욕이 앞서가는 사람"
+description              : "회사에서는 월급 받고 집에서는 취미로 코딩하는 개발자"
 url                      : "https://scribnote5.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
