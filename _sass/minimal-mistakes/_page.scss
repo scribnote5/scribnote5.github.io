@@ -580,3 +580,7 @@ body {
     }
   }
 }
+
+.sidebar sticky::-webkit-scrollbar {
+  display:none;  
+}
