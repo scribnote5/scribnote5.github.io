@@ -32,7 +32,7 @@
   <hr>
   <h3><a href="/categories/"><span style="font-weight: bold;">Categories</span></a></h3>
   
-  <div class="scrollbar__hide__sidebar">
+  <div class="scrollbar__hide__sidebar" style="-ms-overflow-style:none;">
     <ul class="taxonomy__index__sidebar">
       {% for i in (1..categories_max) reversed %}
         {% for category in site.categories %}
