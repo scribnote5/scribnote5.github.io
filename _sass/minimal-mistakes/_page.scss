@@ -386,11 +386,8 @@ body {
   }
 }
 
-.scrollbar__hide__sidebar {
-  ::-webkit-scrollbar { 
-    display: none; 
-  }
-}
+.scrollbar__hide__sidebar::-webkit-scrollbar {display:none;}
+
 
 .taxonomy__index__sidebar {
   display: grid;
