@@ -36,7 +36,7 @@
         {% for category in site.categories %}
           {% if category[1].size == i %}
             <a href="{{ '/categories/#' | append: category[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
-            <strong><span class="author__bio" itemprop="description">&nbsp;-&nbsp;{{ category[0] }}</span></strong>  <span class="taxonomy__count">{{ i }}</span>
+            <strong><span class="author__bio" itemprop="description">&nbsp;-&nbsp;{{ category[0] }}</span></strong>&nbsp;&nbsp;<span class="taxonomy__count">{{ i }}</span>
             </a> 
             <br>
           {% endif %} 
