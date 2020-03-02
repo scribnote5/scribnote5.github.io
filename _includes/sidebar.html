@@ -32,7 +32,7 @@
   <hr>
   <h3><a href="/categories/"><strong>Categories</strong></a></h3>
     <div class="author__bio" itemprop="description">
-      <ul class="taxonomy_index">
+      <ul class="taxonomy__index">
       {% for i in (1..categories_max) reversed %}
         {% for category in site.categories %}
           {% if category[1].size == i %}
