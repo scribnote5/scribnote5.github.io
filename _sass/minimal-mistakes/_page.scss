@@ -395,7 +395,6 @@ body {
   font-size: 0.75em;
   list-style: none;
 
-
   @include breakpoint($large) {
     grid-template-columns: repeat(1, 1fr);
   }
