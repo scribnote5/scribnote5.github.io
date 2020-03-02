@@ -22,6 +22,13 @@
   {% endif %}
   
   <!-- categories -->
+  {% assign categories_max = 0 %}
+  {% for category in site.categories %}
+    {% if category[1].size > categories_max %}
+      {% assign categories_max = category[1].size %}
+    {% endif %}
+  {% endfor %}
+
   <hr>
   <h3><a href="/categories/">Categories </a></h3>
     <div class="author__bio" itemprop="description">
