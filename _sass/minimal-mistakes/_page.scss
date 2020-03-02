@@ -387,7 +387,9 @@ body {
 }
 
 .scrollbar__hide__sidebar {
-  ::-webit-scrollbar{Display:none;}
+  ::-webkit-scrollbar { 
+    display: none; 
+  }
 }
 
 .taxonomy__index__sidebar {
