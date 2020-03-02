@@ -35,7 +35,7 @@
     {% for i in (1..categories_max) reversed %}
       {% for category in site.categories %}
         {% if category[1].size == i %}
-        <li style="font-size: 0.80em;">
+        <li>
           <a href="{{ '/categories/#' | append: category[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
             {{ category[0] }}&nbsp;&nbsp;<span class="taxonomy__count">{{ i }}
           </a> 
