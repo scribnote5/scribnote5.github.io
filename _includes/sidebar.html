@@ -26,9 +26,12 @@
   <h3><a href="/categories/">Categories </a></h3>
     <div class="author__bio" itemprop="description">
       {% for category in site.categories %}
-        <a href="{{ '/categories/#' | append: category[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
-           <span class="author__bio" itemprop="description">&nbsp;-&nbsp;{{ category[0] }}</span><br>
-        </a> 
+        {% if category[1].size == i %}
+          <a href="{{ '/categories/#' | append: category[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
+            <span class="author__bio" itemprop="description">&nbsp;-&nbsp;{{ category[0] }}</span> 
+            <span class="taxonomy__count">{{ i }}</span> <br>
+          </a> 
+        {% endif %} 
       {% endfor %}
     </div>
   <!-- tages -->
