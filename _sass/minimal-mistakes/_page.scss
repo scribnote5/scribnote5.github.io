@@ -39,7 +39,7 @@ body {
   @include breakpoint($large) {
     float: right;
     width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-right: 0px;
+    padding-right: $right-sidebar-width-narrow;
   }
 
   @include breakpoint($x-large) {
@@ -385,6 +385,8 @@ body {
     border-bottom: 1px solid $border-color;
   }
 }
+
+// .sidebar_sticky::-webkit-scrollbar {display:none;} 
 
 .taxonomy__index__sidebar {
   display: grid;
