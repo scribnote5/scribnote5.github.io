@@ -31,19 +31,20 @@
 
   <hr>
   <h3><a href="/categories/"><span style="font-weight: bold;">Categories</span></a></h3>
-  <ul class="taxonomy__index__sidebar">
+  <!-- <ul class="taxonomy__index__sidebar"> -->
     {% for i in (1..categories_max) reversed %}
       {% for category in site.categories %}
         {% if category[1].size == i %}
-        <li>
+        <!-- <li> -->
           <a href="{{ '/categories/#' | append: category[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
             {{ category[0] }}&nbsp;&nbsp;<span class="taxonomy__count">{{ i }}
           </a> 
-        </li>
+          <br>
+        <!-- </li> -->
         {% endif %} 
       {% endfor %}
     {% endfor %}
-  </ul>
+  <!-- </ul> -->
   <!-- tages -->
   <!-- 
   <hr>
