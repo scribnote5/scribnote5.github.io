@@ -31,7 +31,7 @@
 
   <hr>
   <h3><a href="/categories/"><strong>Categories</strong></a></h3>
-    <!-- <div class="author__bio" itemprop="description"> -->
+    <div class="scrollbar__hide__sidebar">
       <ul class="taxonomy__index__sidebar">
       {% for i in (1..categories_max) reversed %}
         {% for category in site.categories %}
@@ -45,7 +45,7 @@
         {% endfor %}
       {% endfor %}
       </ul>
-    <!-- </div> -->
+    </div>
   <!-- tages -->
   <!-- 
   <hr>
