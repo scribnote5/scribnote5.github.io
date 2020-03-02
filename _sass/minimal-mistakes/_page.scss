@@ -395,6 +395,10 @@ body {
   font-size: 1.5em;
   list-style: none;
 
+  -ms-overflow-style: none; // IE에서 스크롤바 감춤
+  &::-webkit-scrollbar { 
+    display: none !important; // 윈도우 크롬 등
+
   @include breakpoint($large) {
     grid-template-columns: repeat(1, 1fr);
   }
