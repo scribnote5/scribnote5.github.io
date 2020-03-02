@@ -386,8 +386,6 @@ body {
   }
 }
 
-// .sidebar_sticky::-webkit-scrollbar {display:none;} 
-
 .taxonomy__index__sidebar {
   display: grid;
   grid-column-gap: 2em;
@@ -581,6 +579,6 @@ body {
   }
 }
 
-.sticky::-webkit-scrollbar {
+.scrollbar__hide::-webkit-scrollbar {
   display:none;  
 }
