@@ -386,11 +386,11 @@ body {
   }
 }
 
-.scrollbar__hide__sidebar {
-  -ms-overflow-style: none; // IE에서 스크롤바 감춤
-  &::-webkit-scrollbar { 
-    display: none !important; // 윈도우 크롬 등
-}
+// .scrollbar__hide__sidebar {
+//   -ms-overflow-style: none; // IE에서 스크롤바 감춤
+//   &::-webkit-scrollbar { 
+//     display: none !important; // 윈도우 크롬 등
+// }
 
 .taxonomy__index__sidebar {
   display: grid;
