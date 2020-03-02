@@ -31,8 +31,9 @@
 
   <hr>
   <h3><a href="/categories/"><span style="font-weight: bold;">Categories</span></a></h3>
-    <div class="scrollbar__hide__sidebar">
-      <ul class="taxonomy__index__sidebar">
+  
+  <div class="scrollbar__hide__sidebar">
+    <ul class="taxonomy__index__sidebar">
       {% for i in (1..categories_max) reversed %}
         {% for category in site.categories %}
           {% if category[1].size == i %}
@@ -44,8 +45,8 @@
           {% endif %} 
         {% endfor %}
       {% endfor %}
-      </ul>
-    </div>
+    </ul>
+  </div>
   <!-- tages -->
   <!-- 
   <hr>
