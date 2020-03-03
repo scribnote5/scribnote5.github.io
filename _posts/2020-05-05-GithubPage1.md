@@ -25,56 +25,10 @@ last_modified_at: 2020-05-05
 $ _includes/sidebar.html
 ```
 
-~~~
-{% if page.author_profile or layout.author_profile or page.sidebar %}
-  <div class="sidebar sticky scrollbar__hide" style="-ms-overflow-style: none;">
-  {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
-  {% if page.sidebar %}
-    {% for s in page.sidebar %}
-      {% if s.image %}
-        <img src=
-        {% if s.image contains "://" %}
-          "{{ s.image }}"
-        {% else %}
-          "{{ s.image | relative_url }}"
-        {% endif %}
-        alt="{% if s.image_alt %}{{ s.image_alt }}{% endif %}">
-      {% endif %}
-      {% if s.title %}<h3>{{ s.title }}</h3>{% endif %}
-      {% if s.text %}{{ s.text | markdownify }}{% endif %}
-      {% if s.nav %}{% include nav_list nav=s.nav %}{% endif %}
-    {% endfor %}
-    {% if page.sidebar.nav %}
-      {% include nav_list nav=page.sidebar.nav %}
-    {% endif %}
-  {% endif %}
-  
-  <!-- 카테고리 갯수를 세고 이를 출력하는 코드 -->
-  {% assign categories_max = 0 %}
-  {% for category in site.categories %}
-    {% if category[1].size > categories_max %}
-      {% assign categories_max = category[1].size %}
-    {% endif %}
-  {% endfor %}
- 
-  <hr>
-  <h3><a href="/categories/"><span style="font-weight: bold;">Categories</span></a></h3>
-  <ul class="taxonomy__index__sidebar">
-    {% for i in (1..categories_max) reversed %}
-      {% for category in site.categories %}
-        {% if category[1].size == i %}
-        <li>
-          <a href="{{ '/categories/#' | append: category[0] | camelcase | downcase | prepend: site.url | replace: ' ', '-' }}">
-            {{ category[0] }}&nbsp;&nbsp;<span class="taxonomy__count">{{ i }}
-          </a> 
-        </li>
-        {% endif %} 
-      {% endfor %}
-    {% endfor %}
-  </ul>
-  </div>
-{% endif %}
-~~~
+- 해당 코드는 markdown 문법으로 제대로 출력되지 않아서 이미지 파일로 첨부한다. 코드는 하단 댓글로 첨부한다.
+
+![image](/assets/images/2020-05-05-GithubPage1/image0.png)
+
 
 - _includes/sidebar.html 파일에 코드를 추가하면 카테고리 리스트가 성공적으로 나온다. 만약 카테고리 리스트의 개수가 많아진다면 scroll bar가 생겨 side bar 일부를 가릴 수 있다. 이는 전체적인 뷰의 아름다움?을 해친다고 생각한다. 따라서 카테고리 리스트에 scroll bar가 생기지 않도록 코드를 추가하였다. 
 
