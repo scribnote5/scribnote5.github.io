@@ -25,7 +25,7 @@ last_modified_at: 2020-05-05
 $ _includes/sidebar.html
 ```
 
-<pre>
+~~~
 {% if page.author_profile or layout.author_profile or page.sidebar %}
   <div class="sidebar sticky scrollbar__hide" style="-ms-overflow-style: none;">
   {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
@@ -74,7 +74,7 @@ $ _includes/sidebar.html
   </ul>
   </div>
 {% endif %}
-</pre>
+~~~
 
 - _includes/sidebar.html 파일에 코드를 추가하면 카테고리 리스트가 성공적으로 나온다. 만약 카테고리 리스트의 개수가 많아진다면 scroll bar가 생겨 side bar 일부를 가릴 수 있다. 이는 전체적인 뷰의 아름다움?을 해친다고 생각한다. 따라서 카테고리 리스트에 scroll bar가 생기지 않도록 코드를 추가하였다. 
 
