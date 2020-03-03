@@ -25,7 +25,7 @@ last_modified_at: 2020-05-05
 $ _includes/sidebar.html
 ```
 
-```html
+```
 {% if page.author_profile or layout.author_profile or page.sidebar %}
   <div class="sidebar sticky scrollbar__hide" style="-ms-overflow-style: none;">
   {% if page.author_profile or layout.author_profile %}{% include author-profile.html %}{% endif %}
