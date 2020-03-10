@@ -25,7 +25,7 @@ last_modified_at: 2020-05-05
 $ _includes/sidebar.html
 ```
 
-- 해당 코드는 jekyll 문법으로 인하여 github page에서 출력되지 않아서 이미지 파일로 첨부한다. 코드는 하단 댓글로 첨부한다.
+- 해당 코드는 jekyll 문법으로 인하여 소스코드가 github page 화면에 출력되지 않는다. 따라서 이미지 파일로 대신하고 코드는 하단 댓글로 첨부한다.
 
 ![image](/assets/images/2020-05-05-GithubPage1/image0.png)
 
