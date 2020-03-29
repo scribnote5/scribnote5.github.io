@@ -1,21 +1,21 @@
 ---
 title: "Github Page Jekyll 설정"
-excerpt: "Github page jekyll 사용 중 뷰에서 마음에 들지 않은 부분을 변경하고 커스터마이징 한 코드를 설명한다."
+excerpt: "Github page jekyll 사용 중 뷰에서 마음에 들지 않은 레이아웃을 변경하고 커스터마이징 한 코드를 설명한다."
 
 categories:
   - Github Page
 
 last_modified_at: 2020-05-05
 ---
-- Github page jekyll 사용 중 뷰에서 마음에 들지 않은 부분을 변경하고 커스터마이징 한 코드를 설명한다.
+- Github page jekyll 사용 중 뷰에서 마음에 들지 않은 레이아웃을 변경하고 커스터마이징 한 코드를 설명한다.
 - 본 블로그는 github page의 jekyll 템플릿을 사용하여 개발되었으며, jekyll 템플릿의 minimal-mistakes 테마를 사용하였다. 
 - 블로그 생성 및 설정은 <https://devinlife.com/howto> 페이지를 참고하였다. 해당 페이지는 github page 배포, 댓글 달기, 구글 애널리스틱(통계 및 검색)까지 처음 github page 생성에 필요한 기초 내용을 친절하게 설명하고 있다. 해당 페이지를 따라한다면 1시간 안에 무난하고 웬만한 기본 기능이 들어간 gitub page를 생성할 수 있다.
 
 
 
 ## Sidebar Category 리스트 출력하기
-- 처음 github page을 생성하면서 가장 먼저 고려하였던 레이아웃은 그림처럼 sidebar에 category 리스트가 나오게 하는 것이었다. 하지만 기본 설정을 변경하는 것으로 category 리스트가 나오는 기능을 추가할 수 없었다. 기존 category 리스트를 출력하는 파일인 _layouts/categories.html의 코드를 바탕으로 해당 기능을 구현하였다. 
-- Category 리스트 링크는 하단의 jekyll 문법 페이지를 참고하였다. 만약 Category가 'Sabre Lite'처럼 공백이 포함되어 있다면 URL에서는 이를 'Sabre%Lite'로 인식하여 원하는 category 리스트로 이동이 불가능하였다. 이러한 문제를 보완하여 구현하였다. 
+- 처음 github page을 생성하면서 가장 먼저 고려하였던 레이아웃은 그림처럼 sidebar에 category 리스트가 나오는 것이었다. 하지만 기본 설정을 변경하는 것으로 category 리스트가 나오는 기능을 추가할 수 없었다. 기존 category 리스트를 출력하는 파일인 _layouts/categories.html의 코드를 바탕으로 해당 기능을 구현하였다. 
+- Category 리스트 링크는 하단의 jekyll 문법 페이지를 참고하였다. 만약 Category가 'Sabre Lite'처럼 공백이 포함되어 있다면 URL에서는 이를 'Sabre%Lite'로 인식하여, 원하는 category 리스트로 이동이 불가능하다. 이러한 문제를 인식 후 구현하였다. 
 
 출처: <https://jekyllrb.com/docs/liquid/filters/>
 
