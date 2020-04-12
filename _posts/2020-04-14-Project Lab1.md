@@ -71,7 +71,8 @@ last_modified_at: 2020-04-14
 - 현재 많이 사용하는 기술 스택을 사용하여 개발하고자 한다. 개발 환경과 기술 스택은 다음과 같으며 상황에 따라서 추후 변경될 수 있다. 
 
 - OS: Windwos 10
-- JAVA 버전: JDK 8
+- Java: JDK 8
+- IDE: Spring Tools 4 for Eclipse
 - 백엔드 프레임워크: Spring boot 2.2.6
 - ORM: SpringDataJPA
 - 동적 쿼리: QueryDSL
