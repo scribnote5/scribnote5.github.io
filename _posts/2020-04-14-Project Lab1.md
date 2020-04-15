@@ -1,5 +1,5 @@
 ---
-title: "<pre> 연구실 홈페이지 개발 프로젝트 소개</pre>"
+title: "<pre>0.</pre> 연구실 홈페이지 개발 프로젝트 소개"
 excerpt: "연구실 홈페이지 개발 프로젝트를 소개한다."
 
 categories:
