@@ -155,6 +155,6 @@ C:\Users\<User>\Desktop\Spring\jdk1.8.0_241\bin\javaw.exe
 - 'Eclipse 선택 설정'은 필자가 선택적으로 사용하는 설정들을 모아 놓았기에 사용자 취향에 따라서 선택적으로 적용하는 것을 추천한다.
 - 'Eclipse 단축키'는 eclipse에서 많이 사용하는 단축키를 모아 놓았다. 본격적인 개발 전 많이 사용하는 단축키를 익히면 개발 속도가 빨라지며, 스트레스를 덜 받을 것이다. 
 
-Eclipse 기본 설정
-Eclipse 선택 설정
-Eclipse 단축키
+- Eclipse 기본 설정: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse1/>
+- Eclipse 선택 설정: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse2/>
+- Eclipse 단축키: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse3/>
