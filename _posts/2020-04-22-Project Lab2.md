@@ -105,9 +105,7 @@ C:\Users\scribnote5\Desktop\Spring\jdk1.8.0_241\bin\javaw.exe
 
 - Eclipse 실행시 적용되는 JDK 경로를 수정한다.
 ```
-$ -vm
-```
-```
+-vm
 C:\Users\<User>\Desktop\Spring\jdk1.8.0_241\bin\javaw.exe 
 ```
 
@@ -150,7 +148,9 @@ C:\Users\<User>\Desktop\Spring\jdk1.8.0_241\bin\javaw.exe
 <https://blog.voidmainvoid.net/184>
 <https://www.opsian.com/blog/aggressive-opts/>
 
-### STS 설치 이후...
+
+
+## STS 설치 이후...
 - STS 설치 이후 이클립스 내에서 설정이 필요하다. 'Eclipse 기본 설정'은 필자가 필수적으로 사용하는 설정들을 모아 놓았기에 무조건 따라하는 것을 추천한다. 해당 설정들은 여러 블로그를 참고하여 작성한 설정들이므로, 다른 블로그와 중복되는 내용이 많다. 
 - 'Eclipse 선택 설정'은 필자가 선택적으로 사용하는 설정들을 모아 놓았기에 사용자 취향에 따라서 선택적으로 적용하는 것을 추천한다.
 - 'Eclipse 단축키'는 eclipse에서 많이 사용하는 단축키를 모아 놓았다. 본격적인 개발 전 많이 사용하는 단축키를 익히면 개발 속도가 빨라지며, 스트레스를 덜 받을 것이다. 
