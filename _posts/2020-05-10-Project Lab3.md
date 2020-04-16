@@ -28,7 +28,9 @@ last_modified_at: 2020-04-22
 - gradlew.bat: 원도우 실행 배치 스크립트 파일이다.
 - gradle/wrapper/gradle-wrapper.properties: gradle 버전 설정 관련 파일이다. 
 - build.gradle: 라이브러리 의존성 설정 관련 파일이다.
-Gradle 버전 변경
+
+
+### Gradle 버전 변경
 - **Powershell**를 사용하여 gradle 버전을 6.3으로 변경한다.
 ```
 # 프로젝트 경로로 이동
