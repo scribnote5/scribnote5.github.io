@@ -32,6 +32,7 @@ last_modified_at: 2020-04-22
 
 ### Gradle 버전 변경
 - **Powershell**를 사용하여 gradle 버전을 6.3으로 변경한다.
+
 ```
 # 프로젝트 경로로 이동
 $ cd C:\Users\<User>\Desktop\Spring\workspace\<Project>
