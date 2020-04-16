@@ -49,6 +49,9 @@ $ ./gradlew.bat -v
 
 ### build.gradle 설정
 ```
+$ build.gradle
+```
+```
 // 외부 의존 라이브러리를 클래스 패스에 추가한다. 
 buildscript {
 	ext { 
