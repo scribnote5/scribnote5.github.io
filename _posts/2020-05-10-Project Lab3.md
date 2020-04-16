@@ -108,6 +108,7 @@ dependencies {
 ```
 
 - gradle 버전이 업데이트 되면서 compile 키워드는 deprecated(앞으로 사라지게 됨) 되었다. 대신 api와 implementation을 키워드가 새로 생겨났다. api 키워드는 기존 compile 키워드와 동일하며 연관된 모든 의존 라이브러리를 재빌드한다. 반면 implementation 키워드는 연관된 단일 의존 라이브러리만 재빌드한다. 따라서 implementation 키워드를 사용하는 경우 빌드 시간이 감소한다.
+- 이후 추가적으로 사용하는 의존 라이브러리는 있는 경우 명시하도록 하겠다.
 
 출처: <https://jongmin92.github.io/2019/05/09/Gradle/gradle-api-vs-implementation/>
 <https://sikeeoh.github.io/2017/08/28/implementation-vs-api-android-gradle-plugin-3/>
@@ -134,7 +135,6 @@ dependencies {
 - 기존 application.properties 파일을 가독성이 좋고 이해하기 쉬운 yml 확장자로 변경한다.
 
 ![image](/assets/images/2020-05-10-Project Lab3/image4.png)
-
 
 - 만약 여러 개의 yml 파일을 사용하고 싶으면 하단 출처를 참고한다.
 
