@@ -91,5 +91,6 @@ last_modified_at: 2020-04-14
 
 ## 프론테엔드
 - 프론트엔드 프레임워크: Bootstrap 3.3.7
+- 템플릿 엔진: Thymeleaf 3.0.11
 - 자바스크립트 라이브러리: jQuery 3.4.1, Bootstrap 4.3.1
 - WYSIWYG editor: Summernote 0.8.16
