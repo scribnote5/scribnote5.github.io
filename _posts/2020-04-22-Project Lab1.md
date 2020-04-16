@@ -21,7 +21,7 @@ last_modified_at: 2020-04-22
 ## 프로젝트 폴더 관리
 - Spring 폴더를 생성하여 프로젝트 개발에 필요한 모든 리소스를 한 개의 파일 내에서 관리하고자 한다. 바탕화면에 'Spring' 폴더를 생성하여, 해당 폴더에 리소스를 다운 받는다. 하단 이미지는 프로젝트 개발에 필요한 리소스 집합이다.
 
-![image](/assets/images/2020-04-22-Project Lab2/image1.png)
+![image](/assets/images/2020-04-22-Project Lab1/image1.png)
 
 
 ## 자바 버전
@@ -50,22 +50,22 @@ last_modified_at: 2020-04-22
 ## JDK 다운로드
 - 본 프로젝트 개발에서는 현재 많이 사용하고 있는 JDK 8 버전을 사용한다. 비상업적 용도이므로 최근 업데이트된 JDK 8 버전을 사용해도 된다. 하단 URI에서 JDK 설치 파일을 다운 받는다.
 
-![image](/assets/images/2020-04-22-Project Lab2/image2.png)
+![image](/assets/images/2020-04-22-Project Lab1/image2.png)
 
 URI: <https://www.oracle.com/java/technologies/javase-jdk8-downloads.html>
 
 - JDK 설치 파일을 실행한다. 이 후 "Change" 버튼을 클릭하여 JDK 설치 경로를 변경한다. 필자의 JDK 설치 경로는 프로젝트 개발에 필요한 리소스 파일을 관리하는 별도의 폴더인 Spring 이다. JDK 설치 경로는 "C:\Users\<User>\Desktop\Spring\jdk1.8.0_241\" 다.
 
-![image](/assets/images/2020-04-22-Project Lab2/image3.png)
+![image](/assets/images/2020-04-22-Project Lab1/image3.png)
 
-![image](/assets/images/2020-04-22-Project Lab2/image4.png)
+![image](/assets/images/2020-04-22-Project Lab1/image4.png)
 
 
 
 ## Spring Tools 다운로드
 - 하단 URI에서 Spring Tools를 다운 받는다.
 
-![image](/assets/images/2020-04-22-Project Lab2/image5.png)
+![image](/assets/images/2020-04-22-Project Lab1/image5.png)
 
 URI: <https://spring.io/tools>
 
@@ -153,8 +153,10 @@ C:\Users\<User>\Desktop\Spring\jdk1.8.0_241\bin\javaw.exe
 ## STS 설치 이후...
 - STS 설치 이후 이클립스 내에서 설정이 필요하다. 'Eclipse 기본 설정'은 필자가 필수적으로 사용하는 설정들을 모아 놓았기에 무조건 따라하는 것을 추천한다. 해당 설정들은 여러 블로그를 참고하여 작성한 설정들이므로, 다른 블로그와 중복되는 내용이 많다. 
 - 'Eclipse 선택 설정'은 필자가 선택적으로 사용하는 설정들을 모아 놓았기에 사용자 취향에 따라서 선택적으로 적용하는 것을 추천한다.
-- 'Eclipse 단축키'는 eclipse에서 많이 사용하는 단축키를 모아 놓았다. 본격적인 개발 전 많이 사용하는 단축키를 익히면 개발 속도가 빨라지며, 스트레스를 덜 받을 것이다. 
+- 'Eclipse 기타 사용 팁'은 eclipse를 사용하면서 얻은 사소한 사용 팁(프로젝트 import 등)을 정리하였다.
+- 'Eclipse 단축키'는 eclipse에서 많이 사용하는 단축키를 모아 놓았다. 본격적인 개발 전 많이 사용하는 단축키를 익히면 개발 속도가 빨라질 것이다.
 
 - Eclipse 기본 설정: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse1/>
 - Eclipse 선택 설정: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse2/>
-- Eclipse 단축키: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse3/>
+- Eclipse 기타 사용 팁: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse3/>
+- Eclipse 단축키: <https://scribnote5.github.io/web/project%20lab/tool/Eclipse4/>
