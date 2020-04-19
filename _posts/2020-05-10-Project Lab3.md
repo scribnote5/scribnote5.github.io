@@ -139,3 +139,35 @@ dependencies {
 - 만약 여러 개의 yml 파일을 사용하고 싶으면 하단 출처를 참고한다.
 
 출처: <https://dhsim86.github.io/web/2017/03/28/spring_boot_profile-post.html>
+
+
+
+## application.yml
+- 스프링 부트 yml 파일은 설정관련 및 기타 정적인 값을 키값 형식으로 관리한다. 해당 파일을 사용하면 스프링 부트 애플리케이션의 환경 설정을 단일 파일로 편리하게 관리할 수 있다. 
+```
+src\main\resources\application.yml
+```
+```
+spring:
+  datasource:
+    # test는 DB 이름으로서 생성한 DB 이름으로 변경 필요
+    url: jdbc:mariadb://127.0.0.1:3306/test
+    # 개인 아이디로 변경 필요
+    username: scribnote5
+    # 개인 비밀번호로 변경 필요
+    password: 123123123
+    # jdbc 드라이버 이름
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+  # h2:
+    # console:
+      # enabled: true
+      # path: /console
+  devtools:
+    livereload:
+      enabled: true
+  thymeleaf:
+      cache: false
+```
