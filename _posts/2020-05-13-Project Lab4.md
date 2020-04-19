@@ -83,12 +83,13 @@ last_modified_at: 2020-05-13
 
 
 ### PostStatus.java
-- 게시판의 상태를 정의한 enum 파일이다. 
+- 게시판의 상태를 정의한 enum 파일이다.
+
 ```
 /lab/src/main/java/kr/ac/univ/lab/domain/enums/PostStatus.java
 ```
 
-``` java
+```java
 package kr.ac.univ.lab.domain.enums;
 
 public enum PostStatus {
@@ -110,10 +111,11 @@ public enum PostStatus {
 
 ### NewsBoard.java
 - 게시판 정보가 정의된 파일이다. 
+
 ```
 /lab/src/main/java/kr/ac/univ/lab/domain/NoticeBoard.java
 ```
-``` java
+```java
 package kr.ac.univ.lab.domain;
 
 import java.time.LocalDateTime;
@@ -190,6 +192,7 @@ public class NoticeBoard {
 
 ### NoticeBoard.java
 - DB에 접근하는 인터페이스가 정의된 파일이다. 
+
 ```
 /lab/src/main/java/kr/ac/univ/lab/domain/NoticeBoard.java
 ```
@@ -214,6 +217,7 @@ public interface NoticeBoardRepository extends JpaRepository<NoticeBoard, Long> 
 
 ### NoticeBoardService.java
 - Business Logic(데이터 처리)을 담당하는 파일이다.
+
 ```
 /lab/src/main/java/kr/ac/univ/lab/service/NoticeBoardService.java
 ```
@@ -265,10 +269,11 @@ public class NewsBoardService {
 
 ### NewsBoardController.java
 - URI 요청에 따른 view를 매핑하는 파일이다.
+
 ```
 /lab/src/main/java/kr/ac/univ/lab/controller/NoticeBoardController.java
 ```
-``` java
+```java
 package kr.ac.univ.lab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -319,6 +324,7 @@ public class NoticeBoardController {
 
 ### NewsBoardRestController.java
 - ajax 요청에 따른 데이터를 처리하는 파일이다.
+
 ```
 /lab/src/main/java/kr/ac/univ/lab/controller/NoticeBoardRestController.java
 ```
@@ -388,6 +394,7 @@ public class NoticeBoardRestController {
 
 ### LabApplication.java
 - CommandLineRunner는 서버 구동 시점에 초기화 작업을 수행한다. 샘플 데이터 200개를 DB에 삽입한다. 
+
 ```
 /lab/src/main/java/kr/ac/univ/lab/LabApplication.java
 ```
@@ -447,6 +454,7 @@ public class LabApplication {
 
 ### header.html
 - view의 상단 레이아웃을 구성한다.
+
 ```
 src/main/resources/templates/layout/header.html
 ```
@@ -487,6 +495,7 @@ src/main/resources/templates/layout/header.html
 
 ### footer.html
 - view의 하단 레이아웃을 구성한다.
+ㅇ
 ```
 src/main/resources/templates/layout/footer.html
 ```
@@ -507,7 +516,8 @@ src/main/resources/templates/layout/footer.html
 
 
 ### list.html
-- 게시글 리스트를 보여주는 파일이다. 
+- 게시글 리스트를 보여주는 파일이다.
+
 ```
 /lab/src/main/resources/templates/noticeBoard/list.html
 ```
@@ -597,7 +607,8 @@ src/main/resources/templates/layout/footer.html
 
 
 ### read.html
-- 게시글 내용을 보여주는 파일이다. 
+- 게시글 내용을 보여주는 파일이다.
+
 ```
 /lab/src/main/resources/templates/noticeBoard/read.html
 ```
@@ -702,6 +713,7 @@ src/main/resources/templates/layout/footer.html
 
 ### form.html
 - 게시글 등록 및 수정 페이지를 보여주는 파일이다. 
+
 ```
 /lab/src/main/resources/templates/noticeBoard/form.html
 ```
