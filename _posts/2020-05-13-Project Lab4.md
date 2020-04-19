@@ -495,7 +495,7 @@ src/main/resources/templates/layout/header.html
 
 ### footer.html
 - view의 하단 레이아웃을 구성한다.
-ㅇ
+
 ```
 src/main/resources/templates/layout/footer.html
 ```
