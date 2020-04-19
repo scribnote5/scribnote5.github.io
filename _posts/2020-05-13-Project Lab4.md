@@ -53,8 +53,8 @@ last_modified_at: 2020-05-13
 - form 태그를 사용한다. 도서에서는 form 태그를 사용하지 않는다. 이 또한 개발 방식의 차이라고 생각한다. ajax 통신을 위한 JSON 객체를 생성할 때 필요한 반복되는 변수 초기화 코드는 비효율적이라고 생각하여 form 태그를 사용하였다. 
 - form 태그를 사용하는 경우 github에서 제공하는 js 플러그인의 serializeObject() 함수를 사용하여 반복되는 변수 초기화 코드를 제거하였다. 
 
-출처: <https://www.leafcats.com/28>
-<https://kingbbode.tistory.com/28>
+출처: <https://www.leafcats.com/28><br>
+<https://kingbbode.tistory.com/28><br>
 <https://github.com/macek/jquery-serialize-object>
 
 
