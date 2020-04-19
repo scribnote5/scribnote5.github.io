@@ -848,6 +848,8 @@ src/main/resources/templates/layout/footer.html
 ## static 폴더
 - static 폴더 내의 파일들은 bootstrap, jquery, image 파일들로 구성된다. 
 - 해당 파일들은 gituhb 링크로 대신하며, 프로젝트에 폴더를 생성하고 해당 파일들을 복사 붙여넣기하면 된다.
+- github: https://github.com/scribnote5/lab
+- github commit: https://github.com/scribnote5/lab/commit/25823d6f4c8b10426da173d327ceabf4421c8721
 
 - src/main/resources/static/css/base.css
 - src/main/resources/static/css/bootstrap.min.css
@@ -856,12 +858,9 @@ src/main/resources/templates/layout/footer.html
 - src/main/resources/static/js/jquery.min.js 
 - src/main/resources/static/js/jquery.serialize-object.min.js
 
-- github: https://github.com/scribnote5/lab
-- github commit: https://github.com/scribnote5/lab/commit/25823d6f4c8b10426da173d327ceabf4421c8721
-
 
 
 ## 구현 결과
-- 프로젝트를 실행(단축키 F11) 후 브라우저로 'http://localhost:8080/NoticeBoard/list'에 접속하면 하단 그림과 같이 게시판을 확인할 수 있다.
+- 프로젝트를 실행(단축키 F11) 후 브라우저로 '<http://localhost:8080/NoticeBoard/list>'에 접속하면 하단 그림과 같이 게시판을 확인할 수 있다.
 
 ![image](/assets/images/2020-05-13-Project Lab4/image2.png)
