@@ -848,8 +848,8 @@ src/main/resources/templates/layout/footer.html
 ## static 폴더
 - static 폴더 내의 파일들은 bootstrap, jquery, image 파일들로 구성된다. 
 - 해당 파일들은 gituhb 링크로 대신하며, 프로젝트에 폴더를 생성하고 해당 파일들을 복사 붙여넣기하면 된다.
-- github: https://github.com/scribnote5/lab
-- github commit: https://github.com/scribnote5/lab/commit/25823d6f4c8b10426da173d327ceabf4421c8721
+- github: <https://github.com/scribnote5/lab>
+- github commit: <https://github.com/scribnote5/lab/commit/25823d6f4c8b10426da173d327ceabf4421c8721>
 
 - src/main/resources/static/css/base.css
 - src/main/resources/static/css/bootstrap.min.css
