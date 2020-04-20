@@ -98,3 +98,27 @@ _layouts/search.html
 <!-- style 태그 추가하여 padding 조절(좌우 50px 여백 추가) -->
 <div class="archive" style="padding: 0px 50px 0px 50px;">
 ```
+
+```
+$ _sass/minimal-mistakes/_page.scss
+```
+
+```html
+#main {
+  @include clearfix;
+  margin-left: auto;
+  margin-right: auto;
+  <!-- 주석 처리-->
+  // padding-left: 1em;
+  // padding-right: 1em;
+  -webkit-animation: $intro-transition;
+  animation: $intro-transition;
+  max-width: 100%;
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
+ 
+  @include breakpoint($x-large) {
+    max-width: $max-width;
+  }
+}
+```
