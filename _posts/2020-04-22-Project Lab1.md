@@ -62,6 +62,14 @@ URI: <https://www.oracle.com/java/technologies/javase-jdk8-downloads.html>
 
 
 
+## 자바 환경 변수 등록
+- 자바 환경 변수를 등록해야 하며, 방법은 하단 출처를 참고한다. 
+- 단, 하단 그림 처럼 JAVA_HOME 경로는 "C:\Users\<User>\Desktop\Spring\jdk1.8.0_241\"로 설정한다.
+
+![image](/assets/images/2020-04-22-Project Lab1/image6.png)
+
+
+
 ## Spring Tools 다운로드
 - 하단 URI에서 Spring Tools를 다운 받는다.
 
