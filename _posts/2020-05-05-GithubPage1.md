@@ -133,6 +133,7 @@ $ _sass/minimal-mistakes/_page.scss
 ```
 $ _sass\minimal-mistakes\_sidebar.scss
 ```
+
 ```css
 .sidebar {
   @include clearfix();
