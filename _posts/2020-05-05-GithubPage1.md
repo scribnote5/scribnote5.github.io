@@ -103,7 +103,7 @@ _layouts/search.html
 $ _sass/minimal-mistakes/_page.scss
 ```
 
-```html
+```css
 #main {
   @include clearfix;
   margin-left: auto;
@@ -121,4 +121,27 @@ $ _sass/minimal-mistakes/_page.scss
     max-width: $max-width;
   }
 }
+```
+
+
+
+## 모바일 모드에서 sidebar의 padding 조절
+- 다음 그림처럼 모바일 모드에서 화면 width와 sidebar의 여백이 부족하여서, 전체적인 여백의 미?를 해치고 있다. 여백의 미? 느끼기 위해서 sidebar에 우측과 좌측 padding 키웠다.
+
+![image](/assets/images/2020-05-05-GithubPage1/image4.png)
+
+```
+$ _sass\minimal-mistakes\_sidebar.scss
+```
+```css
+.sidebar {
+  @include clearfix();
+  @include breakpoint(max-width $large) {
+    /* fix z-index order of follow links */
+    position: relative;
+    z-index: 10;
+    padding: 0px 15px 0px 15px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 ```
