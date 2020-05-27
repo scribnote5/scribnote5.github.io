@@ -86,18 +86,17 @@ void foo(void) {
 - 다음 예제 코드의 'Number of Function Parameters'는 10이 된다. 사용하는 매개변수의 개수가 불가피하게 많아 지면 자료구조를 활용해야 한다.
 
 ```c
-void foo(
-	    int     arg1,
-	    int     arg2,
-	    int     arg3,
-	    int     arg4,
-	    int     arg5,
-	    int     arg6,
-	    int     arg7,
-	    int     arg8,
-	    int     arg9,
-	    int     arg10
-	    ) {
+void foo(int arg1, 
+         int arg2, 
+         int arg3, 
+         int arg4, 
+         int arg5, 
+         int arg6, 
+         int arg7,
+         int arg8, 
+         int arg9, 
+         int arg10) {
+	
 }
 ```
 
