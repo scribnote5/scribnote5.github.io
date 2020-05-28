@@ -30,7 +30,7 @@ last_modified_at: 2020-07-25
 MC/DC(Modified Condition/Decision Coverage) 커버리지
 - 가장 높은 수준의 코드 실행률로써 시험대상 소프트웨어 소스 코드내 분기문에 있는 모든 조건식 중 개별 조건식의 독립적인 변화가 분기문의 참, 거짓에 영향을 미치는 모든 조합에 대해 동적 시험간 적어도 한 번 이상 시험된 비율(%)을 의미한다.
 
-![image](/assets/images/2020-07-25-Dynamic Test/image1.png)
+![image](/assets/images/2020-07-25-Dynamic Test1/image1.png)
 
 ex) OR 연산자 기준 설명<br>
 - 조건 A가 T로 고정이고 조건 B가 T 또는 F로 변경된다면, 이는 결과에 영향을 미치지 않는다. 
