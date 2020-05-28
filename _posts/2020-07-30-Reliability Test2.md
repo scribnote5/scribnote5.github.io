@@ -1,6 +1,6 @@
 ---
-title: "정적 및 동적 시험과 화이트박스 및 블랙박스 테스팅"
-excerpt: "정적 및 동적 시험과 화이트박스 및 블랙박스 테스팅을 소개한다."
+title: "정적 및 동적시험과 화이트박스 및 블랙박스 테스팅"
+excerpt: "정적 및 동적시험과 화이트박스 및 블랙박스 테스팅을 소개한다."
 
 categories:
   - Static Test
@@ -8,7 +8,7 @@ categories:
 
 last_modified_at: 2020-07-30
 ---
-- 정적 및 동적 시험과 화이트박스 및 블랙박스 테스팅을 소개한다.
+- 정적 및 동적시험과 화이트박스 및 블랙박스 테스팅을 소개한다.
 
 ![image](/assets/images/2020-07-30-Reliability Test2/image1.png)
 
