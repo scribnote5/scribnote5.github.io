@@ -40,7 +40,7 @@ ex) OR 연산자 기준 설명<br>
 조건 B가 F로 고정이고 조건 A가 T 또는 F로 변경 된다면, 이는 결과에 영향을 미치지 않는다. <br>
 따라서  조건 A와 조건 B가 T인 경우는 MC/DC 커버리지의 테스트케이스가 될 수 없다.<br>
 
-ex) AND 연산자 기준 설명
+ex) AND 연산자 기준 설명<br>
 조건 A가 T로 고정이고 조건 B가 T 또는 F로 변경 된다면, 이는 결과에 영향을 미친다.<br>
 조건 B가 T로 고정이고 조건 A가 T 또는 F로 변경 된다면, 이는 결과에 영향을 미친다. <br>
 조건 A가 F로 고정이고 조건 B가 T 또는 F로 변경 된다면, 이는 결과에 영향을 미치지 않는다. <br>
@@ -49,14 +49,6 @@ ex) AND 연산자 기준 설명
 
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=220636029506&proxyReferer=https%3A%2F%2Fwww.google.com%2F> <br>
 <https://m.blog.naver.com/shiftspace/220561755364>
-
-
-### 함수 호출 커버리지
-- 호출 함수의 수를 전체 실행 가능한 함수의 수로 나누어 백분률로 표현한 것이다.
-
-
-### 함수 커버리지
-- 실행된 함수의 수를 전체 실행 가능한 함수의 수로 나누어 백분률로 표현한 것이다.
 
 
 
@@ -74,13 +66,12 @@ ex) AND 연산자 기준 설명
 - 요구사항 기반으로 코드 실행률을 점검하는 grey box 테스팅이다.
 - 요구사항 기반 시험만으로는 소스 코드상의 방어코드 및 소스 코드의 확장성 등의 부수적인 문제로 인하여 코드 실행률의 목표값 100%를 달성하기 어렵다.
 - Top-Down(하향식) 방식을 적용하여 요구사항 기반 시험 후 목표값 미충족 부분에 한해 구조기반 시험을 수행 해야한다.
-
-출처: <http://blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221250159366&parentCategoryNo=59&categoryNo=109&viewDate=&isShowPopularPosts=false&from=postList>
-
 - 요구사항기반 시험 절차는 다음과 같다.
 1. 요구사항 정의서와 같은 기술 문서를 분석하여, 소프트웨어 통합시험 절차서 작성
 2. 소프트웨어 통합시험절차서에 기술된 시험절차에 따라 통합 시험 수행(입력 값 생성)
 3. 타겟기반으로 테스팅을 수행하여 출력 값 확인
+
+출처: <http://blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221250159366&parentCategoryNo=59&categoryNo=109&viewDate=&isShowPopularPosts=false&from=postList>
 
 
 ### 2. 구조기반 시험

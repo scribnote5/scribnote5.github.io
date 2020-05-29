@@ -35,11 +35,12 @@ C#: C# Coding conventions 또는 .NET Framework Design Guideline<br>(Microsoft)
 - 전력형 무기 즉, 방위력 개선사업으로 개발되는 소프트웨어는 MISRA C: 2012, MISRA C++: 2008 가이드라인을 를 통해 검증하며, 국산화 소프트웨어는 DAPA 가이드라인을 통해 검증한다.<br>
 ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA 규칙으로 검증한다.
 
-- MISRA C에 대한 자세한 내용은 다음 글에서 확인할 수 있다. <br>
+- MISRA C: 2012에 대한 자세한 내용은 다음 글에서 확인할 수 있다.
+
 참고: <https://scribnote5.github.io/categories/#misra-c>
 
 - C언어 보안 취약점 방지를 위한 시큐어 코딩 표준에는 CWE, CERT C, IS/IOEC TS 17961:2013, C Secure, MISRA C가 존재한다.
-- MISRA C/C++는 다른 시큐어 코딩 표준과 겹치는 내용을 포함하고 있기에, MISRA C/C++을 검증하면 보안 취약점을 준수할 수 있다. 
+- MISRA C/C++ 가이드라인은 다른 시큐어 코딩 표준과 겹치는 내용을 포함하고 있기에, MISRA C/C++ 가이드라인을 검증하면 보안 취약점을 준수할 수 있다. 
 
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=mds_datasecurity&logNo=221422521951&proxyReferer=https%3A%2F%2Fwww.google.com%2F>
 
