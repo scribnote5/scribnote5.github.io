@@ -33,7 +33,7 @@ Java: Code conventions for the Java Programming Language(Oracle)<br>
 C#: C# Coding conventions 또는 .NET Framework Design Guideline<br>(Microsoft)
 
 - 전력형 무기 즉, 방위력 개선사업으로 개발되는 소프트웨어는 MISRA C: 2012, MISRA C++: 2008 가이드라인을 를 통해 검증하며, 국산화 소프트웨어는 DAPA 가이드라인을 통해 검증한다.<br>
-ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨어로 DAPA 규칙을으로 코딩 규칙을 검증한다.
+ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA 규칙으로 검증한다.
 
 - MISRA C에 대한 자세한 내용은 다음 글에서 확인할 수 있다. <br>
 참고: <https://scribnote5.github.io/categories/#misra-c>
