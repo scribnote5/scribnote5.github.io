@@ -82,7 +82,7 @@ last_modified_at: 2020-04-14
 ### 개발 환경
 - OS: Windwos 10
 - Java: Oracle JDK 11.0.7
-- IDE: Spring Tools 4 for Eclipse
+- IDE: Spring Tools 4 for Eclipse(sts-4.7.0.RELEASE)
 - DB: 10.1.44 MariaDB
 - WAS: 내장 Tomcat 
 
