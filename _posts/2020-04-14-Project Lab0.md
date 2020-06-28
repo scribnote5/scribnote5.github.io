@@ -80,8 +80,6 @@ last_modified_at: 2020-04-14
 - DB: 10.1.44 MariaDB
 - WAS: 내장 Tomcat 
 - 형상관리 도구: Git
-- Git 호스팅: Github
-- GIT GUI 도구: Source Tree 3.3.8
 
 
 ## 벡엔드  
@@ -91,7 +89,7 @@ last_modified_at: 2020-04-14
 - 의존성 관리: Gradle 6.3
 
 
-## 프론테엔드
+## 프론트엔드
 - 프론트엔드 프레임워크: Bootstrap 3.3.7
 - 템플릿 엔진: Thymeleaf 3.0.11
 - 자바스크립트 라이브러리: jQuery 3.4.1, Bootstrap 4.3.1
