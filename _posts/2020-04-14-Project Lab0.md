@@ -76,15 +76,17 @@ last_modified_at: 2020-04-14
 
 
 ## 개발 환경 및 기술 스택 
-- 현재 개발 환경 및 기술 스택은 다음과 같다. 상황에 따라서 추후 변경될 수 있다. 
+- 개발 환경 및 기술 스택은 다음과 같다. 상황에 따라서 추후 변경될 수 있다. 
+- Java를 처음 접하였을 때 부터 전자정부프레임워크를 지나 20.06까지 eclipse를 Java IDE로 사용하였다. 하지만 eclipse의 부족한 안정성, 성능 그리고 편의성으로 인하여 Spring boot 개발에 Visual Studio Code를 사용하기로 결심하였다.
+- 현재 eclipse에서 개발하고 블로그 게시글을 작성하였지만 앞으로 eclipse 대신 Visual Studio Code에서 개발하고 블로그 게시글을 작성하도록 하겠다.
 
 
 ### 개발 환경
 - OS: Windwos 10
 - Java: Oracle JDK 11.0.7
-- IDE: Spring Tools 4 for Eclipse(sts-4.7.0.RELEASE)
 - DB: 10.1.44 MariaDB
 - WAS: 내장 Tomcat 
+- IDE: Spring Tools 4 for Visual Studio Code 또는 Spring Tools 4 for Eclipse(sts-4.7.0.RELEASE)
 
 
 ## 벡엔드  
