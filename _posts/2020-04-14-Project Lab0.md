@@ -78,24 +78,25 @@ last_modified_at: 2020-04-14
 ## 개발 환경 및 기술 스택 
 - 개발 환경 및 기술 스택은 다음과 같다. 상황에 따라서 추후 변경될 수 있다. 
 - Java를 처음 접하였을 때 부터 전자정부프레임워크를 지나 20.06까지 eclipse를 Java IDE로 사용하였다. 하지만 eclipse의 부족한 안정성, 성능 그리고 편의성으로 인하여 Spring boot 개발에 Visual Studio Code를 사용하기로 결심하였다.
-- 현재 IDE로 eclipse를 사용하여 개발하고 이를 기반으로 블로그 게시글을 작성하였지만, 앞으로 eclipse 대신 IntelliJ를 사용할 예정이다. eclipse의 자잘한 버그, 성능 그리고 불편한 편의성에 한계를 느꼈기에 IntelliJ를 사용하는게 답인 것 같다.
+- 현재 IDE로 eclipse를 사용하여 개발하고 이를 기반으로 블로그 게시글을 작성하였지만, 앞으로 eclipse 대신 IntelliJ를 사용할 예정이다. eclipse의 자잘한 버그, 성능 그리고 불편한 편의성에 한계를 느꼈기 때문이다.
+
 
 ### 개발 환경
 - OS: Windwos 10
 - Java: Oracle JDK 11.0.7
 - DB: 10.1.44 MariaDB
 - WAS: 내장 Tomcat 
-- IDE: Spring Tools 4 for Visual Studio Code 또는 Spring Tools 4 for Eclipse(sts-4.7.0.RELEASE)
+- IDE: IntelliJ 또는 Spring Tools 4 for Eclipse(sts-4.7.0.RELEASE)
 
 
-## 벡엔드  
+### 벡엔드  
 - 백엔드 프레임워크: Spring boot 2.2.6
 - ORM: Spring Data JPA
 - 동적 쿼리: QueryDSL
 - 의존성 관리: Gradle 6.3
 
 
-## 프론트엔드
+### 프론트엔드
 - 프론트엔드 프레임워크: Bootstrap 3.3.7
 - 템플릿 엔진: Thymeleaf 3.0.11
 - 자바스크립트 라이브러리: jQuery 3.4.1, Bootstrap 4.3.1

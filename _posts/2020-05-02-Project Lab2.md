@@ -9,7 +9,7 @@ categories:
 last_modified_at: 2020-04-22
 ---
 - Windows Subsytem for Linux(WSL)에 mariaDB 설치 과정을 소개한다.
-- 본 프로젝트에서는 추후 우분투 서버 환경에서 프로젝트를 배포할 예정이다. 따라서 미리 mariaDB의 명령어를 공부하고 익숙해지기 위해서 Windows Subsytem for Linux(WSL)에 mariaDB를 설치하였다. 
+- 본 프로젝트에서는 추후 우분투 서버 환경에서 배포할 예정이다. 따라서 mariaDB의 명령어를 공부하고 익숙해지기 위해서, Windows Subsytem for Linux(WSL)에 mariaDB를 설치하였다. 
 - Windows Subsytem for Linux(WSL)란 리눅스에서 제공되는 프로그램들을 윈도우 환경에서 사용할 수 있도록 bash 쉘을 지원한다. 이를 통해서 별도의 가상머신 없이 리눅스를 사용할 수 있다.
 - 만약 해당 과정이 번거로운 경우, mariaDB를 윈도우 설치해서 사용해도 상관 없다. 사용자 편의에 따라서 선택하여 설치하면 된다. 
 
@@ -118,12 +118,13 @@ $ DROP DATABASE test;
 
 ## WSL mariaDB 서비스 자동 시작 - 오류로 불가
 - 본격적으로 프로젝트를 개발하기 위해서는 WSL 환경에서 mysql 서비스를 시작해야 한다. 
-mysql 서비스가 자동으로 수행되도록 알아 봤으나 실행 중 오류로 인하여 WSL를 재설치해야 했다. 
+mysql 서비스가 자동 수행되는 방법을 알아 봤으나 에러 발생으로 인하여 WSL를 재설치해야 했다. 
 
 
 
 ## DBeaver
 - 필자는 무료 DB 관리 도구이며 eclipse 기반으로 UI가 익숙한 DBeaver를 사용하였다. 
+- IntelliJ를 사용하는 DataGrip를 사용하면 된다.
 
 다운로드: <https://dbeaver.io/download/>
 
