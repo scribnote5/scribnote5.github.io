@@ -6,7 +6,7 @@ categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-04-22
+last_modified_at: 2020-07-13
 ---
 - Windows Subsytem for Linux(WSL)에 mariaDB 설치 과정을 소개한다.
 - 본 프로젝트에서는 추후 우분투 서버 환경에서 배포할 예정이다. 따라서 mariaDB의 명령어를 공부하고 익숙해지기 위해서, Windows Subsytem for Linux(WSL)에 mariaDB를 설치하였다. 
@@ -81,7 +81,7 @@ $ sudo mysql -u root -p
 # CREATE USER '<User>'@'%' IDENTIFIED BY '<Password>';
 $ CREATE USER 'scribnote5'@'%' IDENTIFIED BY '123123123';
 
-# 계정에게 권한 부여
+# 계정에 모든 권한 부여(모든 외부 IP에서 접근 가능하도록 설정)
 # GRANT ALL PRIVILEGES ON *.* TO '<User>'@'%' IDENTIFIED BY '<Password>';
 $ GRANT ALL PRIVILEGES ON *.* TO 'scribnote5'@'%' IDENTIFIED BY '123123123';
 
@@ -95,7 +95,7 @@ $ CREATE DATABASE test;
 
 
 ## mariaDB 계정 삭제
-- 만약 계정을 잘못 생성한 경우를 위한 계정 및 DB 삭제 명령어다.
+- 계정 및 DB 삭제 명령어다.
 
 ```
 # 계정 삭제
@@ -113,21 +113,3 @@ $ DROP DATABASE test;
 
 출처: <https://jimnong.tistory.com/744>
 <https://zetawiki.com/wiki/MySQL_%EC%9B%90%EA%B2%A9_%EC%A0%91%EC%86%8D_%ED%97%88%EC%9A%A9>
-
-
-
-## WSL mariaDB 서비스 자동 시작 - 오류로 불가
-- 본격적으로 프로젝트를 개발하기 위해서는 WSL 환경에서 mysql 서비스를 시작해야 한다. 
-mysql 서비스가 자동 수행되는 방법을 알아 봤으나 에러 발생으로 인하여 WSL를 재설치해야 했다. 
-
-
-
-## DBeaver
-- 필자는 무료 DB 관리 도구이며 eclipse 기반으로 UI가 익숙한 DBeaver를 사용하였다. 
-- IntelliJ를 사용하는 DataGrip를 사용하면 된다.
-
-다운로드: <https://dbeaver.io/download/>
-
-- DBeaver 설치 후 WSL의 maira DB에 연결하는 방법은 다음과 같다. 새로운 DB Connection을 생성하여 'Database', 'User name', 'Password'를 입력한다. 이후 'Test Connection ...'을 클릭하면 성공적으로 WSL의 mariaDB와 Connection 된 것을 확인할 수 있다.
-
-![image](/assets/images/2020-05-02-Project Lab2/image2.png)
