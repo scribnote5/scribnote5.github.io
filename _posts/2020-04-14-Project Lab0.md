@@ -1,5 +1,5 @@
 ---
-title: "&nbsp;0. 연구실 홈페이지 개발 프로젝트 소개"
+title: "Project Lab 0. 연구실 홈페이지 개발 프로젝트 소개"
 excerpt: "연구실 홈페이지 개발 프로젝트를 소개한다."
 
 categories:
@@ -90,10 +90,10 @@ last_modified_at: 2020-04-14
 
 
 ### 벡엔드  
-- 백엔드 프레임워크: Spring boot 2.2.6
+- 백엔드 프레임워크: Spring boot 2.2.8
 - ORM: Spring Data JPA
 - 동적 쿼리: QueryDSL
-- 의존성 관리: Gradle 6.3
+- 의존성 관리: Gradle 6.5.1
 
 
 ### 프론트엔드
