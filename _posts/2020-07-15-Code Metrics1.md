@@ -19,7 +19,9 @@ last_modified_at: 2020-07-17
 ## Cyclomatic Complexity
 - 의미: 함수 내 분기문의 개수- 계산 방법: 함수 내 분기문의 개수 + 1
 - 해결 방법: 복잡한 모듈 안의 속성, 함수들을 다른 모듈로 분리함으로서 복잡도를 하락시킨다. 
-- 다음 예제 코드의 'Cyclomatic Complexity'는 3이 된다. 'switch 문' 복잡도 1 + 'case S_sleep 내의 if 문' 복잡도 1 + '기본 복잡도' 1 = 3이 된다.
+
+ex) 다음 예제 코드의 'Cyclomatic Complexity'는 3이 된다.<br>
+'switch 문' 복잡도 1 + 'case S_sleep 내의 if 문' 복잡도 1 + '기본 복잡도' 1 = 3이 된다.
 
 ```c
 #include <stdint.h>
@@ -53,7 +55,10 @@ void foo(state process_state) {
 - 의미: 함수 내 조건문의 최대 중첩 깊이
 - 계산 방법: 프로그램을 제어 흐름 그래프로 표현 후 그래프의 높이
 - 해결 방법: 복잡한 분기문의 경우 새로운 함수를 생성하여 분리시킨다.
-- 다음 예제 코드의 'Number of Call Levels'는 4가 된다. if문의 중첩 깊이가 4와 2가 있지만  if 문의 최대 중첩 깊이가 4이기 때문이다. 해당 예제에서의 'Cyclomatic Complexity'는 'if문의 개수' 복잡도 6 + 기본 복잡도 1 = 7이 된다.
+
+ex) 다음 예제 코드의 'Number of Call Levels'는 4가 된다.<br>
+처음 if문의 중첩 깊이가 4 그리고 다음 if문의 중첩 깊이가 2지만, if문의 최대 중첩 깊이가 4이기 때문이다. <br>
+'Cyclomatic Complexity'는 'if문의 개수' 복잡도 6 + 기본 복잡도 1 = 7이 된다. 
 
 ```c
 void foo(void) {
@@ -81,7 +86,9 @@ void foo(void) {
 - 의미: 함수의 매개변수 개수
 - 계산 방법: 함수 호출 시 사용되는 인자의 개수
 - 해결 방법: 너무 많은 인자를 사용하는 경우 자료구조를 사용하고 사용하지 않는 인자는 삭제한다. 
-- 다음 예제 코드의 'Number of Function Parameters'는 10이 된다. 사용하는 매개변수의 개수가 불가피하게 많아 지면 자료구조를 활용해야 한다.
+
+ex) 다음 예제 코드의 'Number of Function Parameters'는 10이 된다. <br>
+사용하는 매개변수의 개수가 많아 지면 자료 구조를 사용하여 매개변수 개수를 감소시켜야 한다. 
 
 ```c
 void foo(int arg1, 
@@ -104,7 +111,8 @@ void foo(int arg1,
 - 의미: 함수 외부에서 함수를 호출하는 횟수
 - 계산 방법: 함수 외부에서 해당 함수를 호출한 횟수
 - 해결 방법: 자주 호출되는 함수는 상위 모듈의 코드 일부로 합쳐야 한다. 
-- 다음 예제 코드의 'Number of Calling Function'은 foo: 3, boo: 2, poo: 1이 된다.
+
+ex) 다음 예제 코드의 'Number of Calling Function'은 foo: 3, boo: 2, poo: 1이 된다. 
 
 ```c
 void foo(void) {
@@ -133,7 +141,9 @@ int main(void) {
 - 의미: 함수에서 다른 함수를 호출하는 횟수
 - 계산 방법: 함수 내 다른 함수를 호출한 횟수 (같은 함수를 호출하는 경우는 1로 계산)
 - 하위 모듈에서만 사용되는 함수는 하위 모듈의 코드 일부로 합쳐야 한다.
-- 다음 예제 코드의 'Number of Called Function'은 main: 3, poo: 2, boo: 1, foo: 0이 된다. poo: 2가 되는 이유는 foo 함수는 여러번 호출하여도 1로 계산되기 때문이다.
+
+ex) 다음 예제 코드의 'Number of Called Function'은 main: 3, poo: 2, boo: 1, foo: 0이 된다.<br>
+poo: 2가 되는 이유는 foo 함수는 여러번 호출하여도 1번 호출한 것으로 계산하기 때문이다.
 
 ```c
 void foo(void) {
@@ -167,8 +177,7 @@ int main(void) {
 - 해결 방법: 함수 내 불필요한 코드를 삭제한다.
 
 ex) 다음 예제 코드의 'Number of Executable Code Lines'는 7이 된다. <br>
-for 반복문은 세미콜론이 두 개이므로 실행되 코드 라인은 두 개로 계산된다. <br>
-
+for 반복문은 세미콜론이 두 개이므로 실행되 코드 라인은 두 개로 계산된다.
 
 ```c
 #include <stdint.h>
@@ -195,7 +204,7 @@ void foo(int n) {
 }
 ```
 
-- foo 함수 내에서 실행 가능한 코드 라인 수: 6
+- foo 함수 내에서 실행 가능한 라인 수는 다음과 같이 6이다.
 
 ```c
 if (n <= 1)
