@@ -1,5 +1,5 @@
 ---
-title: "&nbsp;2. Windows Subsytem for Linux(WSL)에 mariaDB 설치"
+title: "Project Lab 2. Windows Subsytem for Linux(WSL)에 mariaDB 설치"
 excerpt: "Windows Subsytem for Linux(WSL)에 mariaDB 설치 과정을 소개한다."
 
 categories:
