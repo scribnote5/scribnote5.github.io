@@ -6,7 +6,7 @@ categories:
   - Code Metrics
   - Static Test
 
-last_modified_at: 2020-07-17
+last_modified_at: 2020-07-15
 ---
 - 소프트웨어 품질 향상을 위한 소스코드 메트릭(Code Metrics)를 소개한다.
 - 소프트웨어의 복잡도 감소, 유지보수 용이성 증대 등 소프트웨어 품질향상을 위한 소스 코드의 품질 측정지표다.
