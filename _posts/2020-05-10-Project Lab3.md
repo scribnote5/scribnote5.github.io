@@ -126,9 +126,11 @@ OS:           Windows 10 10.0 amd64
 ![image](/assets/images/2020-05-10-Project Lab3/image4.png)
 
 - 모듈의 의존성을 설정한다.
+
 ```
 lab/setting.gradle
 ```
+
 ```
 rootProject.name = 'lab'
 include 'module-system-common'
@@ -139,9 +141,11 @@ include 'module-app-admin'
 ```
 
 - root 프로젝트의 의존성 라이브러리를 선언한다. 
+
 ```
 lab/build.gradle 
 ```
+
 ```
 // 외부 의존 라이브러리를 클래스 패스에 추가한다.
 buildscript {
@@ -221,9 +225,11 @@ project('module-app-api') {
 ```
 
 - 모듈의 역할에 따라 실행 가능한 자바 파일이 생성되지 않도록 한다.
+
 ```
 module-domain-core/build.gradle, module-system-common/build.gradle
 ```
+
 ```
 // 해당 모듈은 실제 실행되는 모듈에 종속되므로, 실행 가능한 자바 파일을 생성하지 않는다.
 bootJar { enabled = false }
