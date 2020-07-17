@@ -6,9 +6,9 @@ categories:
   - Code Metrics
   - Static Test
 
-last_modified_at: 2020-07-15
+last_modified_at: 2020-07-17
 ---
-- 소프트웨어 품질향상을 위한 소스코드 메트릭(Code Metrics)를 소개한다.
+- 소프트웨어 품질 향상을 위한 소스코드 메트릭(Code Metrics)를 소개한다.
 - 소프트웨어의 복잡도 감소, 유지보수 용이성 증대 등 소프트웨어 품질향상을 위한 소스 코드의 품질 측정지표다.
 - 다음 메트릭들은 방위사업청에서 배포한 '방위사업청 매뉴얼 제2020-8호 부록(무기체계 소프트웨어 개발 및 관리 매뉴얼)'에서 지정한 메트릭 기준표다. 
 
@@ -17,8 +17,7 @@ last_modified_at: 2020-07-15
 
 
 ## Cyclomatic Complexity
-- 의미: 함수 내 분기문의 개수
-- 계산 방법: 함수 내 분기문의 개수 + 1
+- 의미: 함수 내 분기문의 개수- 계산 방법: 함수 내 분기문의 개수 + 1
 - 해결 방법: 복잡한 모듈 안의 속성, 함수들을 다른 모듈로 분리함으로서 복잡도를 하락시킨다. 
 - 다음 예제 코드의 'Cyclomatic Complexity'는 3이 된다. 'switch 문' 복잡도 1 + 'case S_sleep 내의 if 문' 복잡도 1 + '기본 복잡도' 1 = 3이 된다.
 
@@ -166,16 +165,10 @@ int main(void) {
 - 의미: 함수 내 실행 가능한 코드 라인 수
 - 계산 방법: 중괄호([ ]), 빈 문장( ), 선언문(변수 선언 및 초기화), 레이블을 제외한 세미콜론(;) 또는 조건문(if, 단 else는 제외한다.)로 마치는 코드 라인 수
 - 해결 방법: 함수 내 불필요한 코드를 삭제한다.
-- 다음 예제 코드의 'Number of Executable Code Lines'는 7이 된다. for 반복문은 세미콜론이 두 개이므로 실행 코드 라인은 두 개로 계산된다.
 
-```c
-if (n <= 1)
-return 0;
-for (i = 2; i <= last; i++)
-if ((n % i) == 0)
-return 0;
-return 1;
-```
+ex) 다음 예제 코드의 'Number of Executable Code Lines'는 7이 된다. <br>
+for 반복문은 세미콜론이 두 개이므로 실행되 코드 라인은 두 개로 계산된다. <br>
+
 
 ```c
 #include <stdint.h>
@@ -200,6 +193,17 @@ void foo(int n) {
 
 	return 1;
 }
+```
+
+- foo 함수 내에서 실행 가능한 코드 라인 수: 6
+
+```c
+if (n <= 1)
+return 0;
+for (i = 2; i <= last; i++)
+if ((n % i) == 0)
+return 0;
+return 1;
 ```
 
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=221114801984&proxyReferer=https%3A%2F%2Fwww.google.com%2F><br>
