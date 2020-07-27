@@ -33,7 +33,7 @@ last_modified_at: 2020-07-29
 ## DB 테이블 설계
 - 해당 프로젝트에서 사용할 DB와 테이블을 생성한다. 
 
-```
+```sql
 # lab DB를 생성
 $ create database lab;
 
