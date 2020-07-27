@@ -84,7 +84,7 @@ Failed to lazily initialize a collection of role could not initialize proxy – 
 - 기존 소스 코드는 getOne으로 레퍼런스를 가져왔지만 서로 다른 트랜잭션에서 사용하였기에 위와 같은 에러가 발생하였다. 
 - 따라서  getOne으로 반환된 레퍼런스가 같은 트랜잭션에서 사용되도록 @Transactional 애노테이션을 Service 계층에 명시하였다.
 
-```
+```java
 @Transactional
 public Long updateNoticeBoard(Long idx, NoticeBoard noticeBoard) {
    NoticeBoard persistNoticeBoard = noticeBoardRepository.getOne(idx);
@@ -128,7 +128,7 @@ public Long updateNoticeBoard(Long idx, NoticeBoard noticeBoard) {
 
 - 기존 소스 코드: JSON 객체에 변수 직접 초기화
 
-```
+```javascript
 var jsonData = JSON.stringify({
    title: $('#title').val(),
    content: $('#content').val(),
@@ -138,7 +138,7 @@ var jsonData = JSON.stringify({
 
 - 변경된 소스 코드: serializeObject를 사용하여 JSON 객체 생성
 
-```
+```javascript
 var jsonData = $("#form").serializeObject();
 ```
 
