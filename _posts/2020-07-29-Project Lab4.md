@@ -142,8 +142,8 @@ var jsonData = JSON.stringify({
 var jsonData = $("#form").serializeObject();
 ```
 
-출처: <https://www.leafcats.com/28>
-<https://kingbbode.tistory.com/28>
+출처: <https://www.leafcats.com/28><br>
+<https://kingbbode.tistory.com/28><br>
 <https://github.com/macek/jQuery-serialize-object>
 
 
@@ -226,7 +226,7 @@ Thymeleaf 레이아웃 적용 방법 출처: <https://eblo.tistory.com/57>
 
 ![image](/assets/images/2020-07-29-Project Lab4/image2.png)
 
-summernote 사용법 및 적용 방법: <https://summernote.org/getting-started/>
+summernote 사용법 및 적용 방법: <https://summernote.org/getting-started/><br>
 <https://programmer93.tistory.com/27>
 
 
