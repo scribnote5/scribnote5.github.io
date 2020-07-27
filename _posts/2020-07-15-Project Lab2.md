@@ -6,7 +6,7 @@ categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-07-13
+last_modified_at: 2020-07-15
 ---
 - Windows Subsytem for Linux(WSL)에 mariaDB 설치 과정을 소개한다.
 - 본 프로젝트에서는 추후 우분투 서버 환경에서 배포할 예정이다. 따라서 mariaDB의 명령어를 공부하고 익숙해지기 위해서, Windows Subsytem for Linux(WSL)에 mariaDB를 설치하였다. 
