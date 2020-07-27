@@ -6,7 +6,7 @@ categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-07-17
+last_modified_at: 2020-07-22
 ---
 - Gradle Multi Module 기반의 프로젝트 구조와 구성 절차를 소개한다.
 
