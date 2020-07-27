@@ -234,7 +234,7 @@ summernote 사용법 및 적용 방법: <https://summernote.org/getting-started/
 ## 프로젝트 실행 및 결과
 - Run -> Edit Configureations... -> Profile을 'local'로 변경한다.
 - module-app-api 모듈과 module-app-web 모듈을 동시에 실행한다.
-- 'http://localhost:8080/notice-board/list'에 접속하면 하단 그림과 같이 CRUD 기능이 구현된 게시판을 확인할 수 있다. 
+- '<http://localhost:8080/notice-board/list>'에 접속하면 하단 그림과 같이 CRUD 기능이 구현된 게시판을 확인할 수 있다. 
 
 ![image](/assets/images/2020-07-29-Project Lab4/image3.png)
 
