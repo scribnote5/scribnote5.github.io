@@ -88,10 +88,10 @@ configure(queryDslProjects) {
 ![image](/assets/images/2020-07-30-Project Lab5/image2.png)
 
 
-### 조회수 개발
+## 조회수 개발
 - 게시글을 클릭하였을 때, 조회수가 올라가는 기능을 QueryDsl을 사용하여 개발하였다.
 
-- QueryDsl을 프로젝트 어느 곳에서나 사용할 수 있도록 설정한다.
+### QueryDsl을 프로젝트 어느 곳에서나 사용할 수 있도록 설정한다.
 
 ```
 module-domain-core/kr/ac/univ/common/config/QueryDslConfig
@@ -119,7 +119,7 @@ public class QueryDslConfig {
 }
 ```
 
-- Q도메인을 사용하여 다음과 같은 쿼리를 작성하였다.
+- Q도메인을 사용하여 다음 쿼리를 작성하였다.
 - findByTitle: 제목으로 게시글을 검색한다.(테스트 용도로 구현)
 - updateViewCountById: 게시글 조회수를 1 증가시킨다.
 
