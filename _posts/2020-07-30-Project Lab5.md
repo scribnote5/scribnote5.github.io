@@ -71,7 +71,7 @@ configure(queryDslProjects) {
 
    // clean 태스크 실행시 QClass 삭제
    clean {
-       delete file("src/main/generated") // intelliJ Annotation processor Q객체 생성 위치
+       delete file("src/main/generated") // intelliJ Annotation processor Q도메인 생성 위치
    }
 }
 ```
@@ -80,7 +80,7 @@ configure(queryDslProjects) {
 
 
 
-## Q 도메인
+## Q도메인
 - Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 Q도메인 경로를 자동으로 인식하고 Q도메인을 자동으로 생성한다.
 
 ![image](/assets/images/2020-07-30-Project Lab5/image1.png)
