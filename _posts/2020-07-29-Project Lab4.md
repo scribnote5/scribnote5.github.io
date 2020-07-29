@@ -9,8 +9,8 @@ categories:
 last_modified_at: 2020-07-29
 ---
 - Spring boot CRUD 게시판 개발 과정을 소개한다. 
-- github: https://github.com/scribnote5/lab
-- github commit: https://github.com/scribnote5/lab/commit/f788602d24b6fd1791f3e8ca2d8f379852103f5b
+- github: <https://github.com/scribnote5/lab>
+- github commit: <https://github.com/scribnote5/lab/commit/f788602d24b6fd1791f3e8ca2d8f379852103f5b>
 
 
 
@@ -18,7 +18,7 @@ last_modified_at: 2020-07-29
 - 프로젝트의 세부적인 메커니즘 설명은 생략한다. 따라서 프로젝트의 전체적인 흐름이 잘 이해 되지 않는다면 도서와 하단 웹 페이지들을 공부하는 것을 추천한다. 
 
 - '처음 배우는 스프링 부트 2' 도서 자세히 보기: <http://www.hanbit.co.kr/store/books/look.php?p_code=B4458049183>
-- 프로젝트 구조: <https://gmlwjd9405.github.io/2018/12/25/difference-dao-dto-entity.html>
+- 프로젝트 구조 및 흐름: <https://gmlwjd9405.github.io/2018/12/25/difference-dao-dto-entity.html>
 - REST 개념: <https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html>
 
 
@@ -26,12 +26,12 @@ last_modified_at: 2020-07-29
 ## properties 파일을 yml 파일로 변경
 - 기존 application.properties 파일을 가독성이 좋고 이해하기 쉬운 yml 확장자로 변경한다.
 - yml 파일은 설정관련 및 기타 정적인 값을 키값 형식으로 관리한다. 
-- 해당 파일을 사용하면 애플리케이션의 환경 설정을 단일 파일로 편리하게 관리할 수 있다. 
+- yml 확장자를 사용하면 애플리케이션의 환경 설정을 단일 파일로 편리하게 관리할 수 있다. 
 
 
 
 ## DB 테이블 설계
-- 해당 프로젝트에서 사용할 DB와 테이블을 생성한다. 
+- 프로젝트에서 사용할 DB와 게시판 테이블을 생성한다. 
 
 ```sql
 # lab DB를 생성
@@ -62,7 +62,7 @@ $ ALTER TABLE notice_board AUTO_INCREMENT=1
 
 ## 변경된 사항 및 개발 방향
 - '처음 배우는 스프링 부트 2' 도서에서 제공하는 게시판 코드는 체계적으로 잘 구현된 코드다.
-- '이런 부분에서는 어떻게 코딩하면 가독성이 좋아지고 성능을 향상시킬 수 있을까?'라는 생각을 하며, 소스 코드를 리펙토링 하였다. 
+- 잘 구현된 소스 코드라도 '이런 부분에서는 어떻게 코딩하면 가독성과 성능을 향상시킬 수 있을까?'라는 생각을 가졌으며, 소스 코드를 리펙토링 하였다. 
 
 
 
@@ -72,17 +72,17 @@ $ ALTER TABLE notice_board AUTO_INCREMENT=1
 
 
 ## RESTful
-- 도서에서는 RESTful의 제약 조건을 지키기 위해서 클라이언트-서버를 명확하게 분리하였다. 게시판 view를 보여주는 서버와 REST api를 제공하는 서버가 2개가 실행된다. 즉, module-app-web(@Controller) 서버와 module-app-api(@RestController) 서버 2개가 동시에 실행된다. 
-
+- 도서에서는 RESTful의 제약 조건을 지키기 위해서 클라이언트-서버를 명확하게 분리하였다. View를 보여주는 서버와 REST api를 제공하는 서버가 2개가 실행된다. 
+- 즉, module-app-web(@Controller, view를 담당) 서버와 module-app-api(@RestController, api를 담당) 서버 2개가 동시에 실행된다. 
 
 
 ## JPA 영속성 컨텍스트 에러
 - 최신 버전의 Spring Boot를 사용해서 인지 모르지만, 도서를 참고하다가 다음과 같은 에러를 마주쳤다.
 Failed to lazily initialize a collection of role could not initialize proxy – no Session
 
-- JPA는 매번 데이터베이스에 접근하는 비효율적인 계산을 방지하기 위해 영속성 컨텍스트에  엔티티를 관리한다. findOne은 엔티티의 데이터를 가져오지만, getOne은 엔티티의 참조를 가져온다. JPA는 Lazy Evaluation는 엔티티의 참조가 필요한 경우 사용되며 프록시(중계 역할)를 반환한다. 
-- 기존 소스 코드는 getOne으로 레퍼런스를 가져왔지만 서로 다른 트랜잭션에서 사용하였기에 위와 같은 에러가 발생하였다. 
-- 따라서  getOne으로 반환된 레퍼런스가 같은 트랜잭션에서 사용되도록 @Transactional 애노테이션을 Service 계층에 명시하였다.
+- JPA는 매번 데이터베이스에 접근하는 비효율적인 계산을 방지하기 위해 영속성 컨텍스트에  엔티티를 관리한다. findOne은 엔티티의 데이터를 가져오지만, getOne은 엔티티의 참조를 가져온다. JPA는 Lazy Evaluation는 엔티티의 참조가 필요한 경우 해당 트렌젝션에서만 사용되며 프록시(중계 역할)를 반환한다.
+- 기존 소스 코드는 getOne으로 레퍼런스를 가져왔지만, 서로 다른 트랜잭션에서 사용하였기에 위와 같은 에러가 발생하였다. 
+- 따라서 getOne으로 반환된 레퍼런스가 같은 트랜잭션에서 사용되도록 @Transactional 애노테이션을 Service 계층에서 사용하는 메소드에 명시하였다.
 
 ```java
 @Transactional
@@ -94,7 +94,7 @@ public Long updateNoticeBoard(Long idx, NoticeBoard noticeBoard) {
 }
 ```
 
-- 자세한 내용은 하단 출처를 참고한다. 
+- 자세한 내용은 하단 출처를 참고 하였다.
 
 출처: <https://bebong.tistory.com/entry/JPA-Lazy-Evaluation-LazyInitializationException-could-not-initialize-proxy-%E2%80%93-no-Session>
 
@@ -114,6 +114,7 @@ public Long updateNoticeBoard(Long idx, NoticeBoard noticeBoard) {
 
 ## HTML id, name, class 속성 구분
 - HTML id, name, class 속성은 각 목적에 따라 사용이 다르다. 도서에서는 이를 구분하지 않고 id 속성만 사용한다. 서버로 데이터를 전송하는 태그는 id 대신 name 속성을 사용하였다.
+
 - class 속성은 스타일 변경에 사용된다. 
 - id 속성은 Element를 구분하는 고유한 식별자로서 태그를 변경하기 위해서 사용된다. 
 - name 속성은 form 이벤트 발생 시 서버로 데이터를 전송하기 위한 식별자로 사용된다. 다음 설명하는 serializeObject 함수를 사용하기 위해서는 input 태그의 식별자로 name 속성을 사용해야 한다. 
@@ -122,9 +123,10 @@ public Long updateNoticeBoard(Long idx, NoticeBoard noticeBoard) {
 
 
 
-## form 태그 사용
-- 일반적으로 html에서 서버로 데이터를 form 태그를 사용하지만, 도서에서는 form 태그를 사용하지 않는다. ajax 통신을 위한 JSON 객체를 생성할 때 필요한 반복되는 변수 초기화 코드는 비효율적이다. 
-- form 태그를 사용하는 경우 github에서 제공하는 js 플러그인의 serializeObject() 함수를 사용하면 한줄로 반복되는 변수 초기화 코드를 제거할 수 있다. serializeObject() 함수는 input 태그의 name을 통해서 JSON 객체를 생성한다.
+## serializeObject() 함수 사용을 위한 form 태그 사용
+- ajax 통신을 위한 JSON 객체를 생성할 때 필요한 반복되는 변수 초기화 코드는 비효율적이다. 
+- 일반적으로 html에서 서버로 데이터를 form 태그를 사용하지만, 이는 선택 사항이며 도서에서는 form 태그를 사용하지 않는다. 
+- form 태그를 사용하는 경우, github에서 제공하는 js 플러그인의 serializeObject() 함수를 사용하면 한줄로 반복되는 변수 초기화 코드를 제거할 수 있다. serializeObject() 함수는 input 태그의 name을 통해서 JSON 객체를 생성한다.
 
 - 기존 소스 코드: JSON 객체에 변수 직접 초기화
 
@@ -150,14 +152,17 @@ var jsonData = $("#form").serializeObject();
 
 ## HTML id, name 명명규칙 변경
 - HTML id와 name의 명명규칙은 각 회사마다 다르게 정의하였기에 정답이 없다. 대표적으로 NHN은 snake case를 사용하고 다음에서는 camel case를 사용한다. 
-- 도서에서는 HTML id가 snake case를 사용하고 있다.(created_date) 하지만 serializeObject 함수를 사용하기 위해서는 자바의 필드명과 자바스크립트의 변수명이 같아야 한다. 따라서  HTML id와 name 속성 명명규칙으로 camel case을 적용하였다.(createdDate)
+- 도서에서는 HTML id가 snake case를 사용하고 있다.(created_date) 하지만 serializeObject 함수를 사용하기 위해서는 자바의 필드명과 자바스크립트의 변수명이 같아야 한다. 
+- 따라서 HTML id와 name 속성 명명규칙으로 camel case을 적용하였다.(createdDate)
 
 
 
 ## 'list.html' 게시글 생성일자로 내림차순 
-- 도서에서는 가장 최근에 작성한 게시글이 가장 첫번 째로 게시글로 등록된다. 게시글 idx(PK) 순서대로 내림차순하도록 변경하였다.
-pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1, pageable.getPageSize(), Sort.Direction.DESC, "idx");
+- 도서에서는 가장 최근에 작성한 게시글이 가장 첫번 째로 게시글로 등록된다. 게시글 idx(PK) 순서대로 내림 차순으로 정렬되도록 변경하였다.
 
+```java
+pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1, pageable.getPageSize(), Sort.Direction.DESC, "idx");
+```
 
 
 ## HTML 파일에서 <script>와 <link> 태그 위치
@@ -194,7 +199,7 @@ Thymeleaf 레이아웃 적용 방법 출처: <https://eblo.tistory.com/57>
 ## WYSIWYG editor 적용
 - 오픈 소스 WYSIWYG editor(웹 에디터)인 summernote를 게시판에 적용하였다.
 - summernote는 적용하기 위해서는 summernote 라이브러리, bootstrap.css, bootstrap.js, jquery 라이브러리가 필요하다. 
-- 프로젝트에서는 summernote 적용에 필요한 기본적인 파일만 추가하였다.
+- summernote는 여러 기능을 제공하지만, summernote 적용에 필요한 기본적인 파일만 프로젝트에 추가하였다.
 
 ![image](/assets/images/2020-07-29-Project Lab4/image1.png)
 
@@ -232,8 +237,7 @@ summernote 사용법 및 적용 방법: <https://summernote.org/getting-started/
 
 
 ## 프로젝트 실행 및 결과
-- Run -> Edit Configureations... -> Profile을 'local'로 변경한다.
-- module-app-api 모듈과 module-app-web 모듈을 동시에 실행한다.
+- Run -> Edit Configureations... -> module-app-api 모듈과 module-app-web 모듈의 Profile을 'local'로 변경 후 두 모듈을 동시에 실행한다.
 - '<http://localhost:8080/notice-board/list>'에 접속하면 하단 그림과 같이 CRUD 기능이 구현된 게시판을 확인할 수 있다. 
 
 ![image](/assets/images/2020-07-29-Project Lab4/image3.png)
