@@ -88,8 +88,10 @@ configure(queryDslProjects) {
 ![image](/assets/images/2020-07-30-Project Lab5/image2.png)
 
 
+
 ## 조회수 개발
-- 게시글을 클릭하였을 때, 조회수가 올라가는 기능을 QueryDsl을 사용하여 개발하였다.
+- 게시글을 클릭하였을 때, 조회수가 올라가는 기능을 QueryDsl로 개발하였다.
+
 
 ### QueryDsl을 프로젝트 어느 곳에서나 사용할 수 있도록 설정한다.
 
@@ -119,8 +121,8 @@ public class QueryDslConfig {
 }
 ```
 
-<br>
-- Q도메인을 사용하여 다음 쿼리를 작성하였다.
+
+### Q도메인을 사용하여 다음 쿼리를 작성하였다.
 - findByTitle: 제목으로 게시글을 검색한다.(테스트 용도로 구현)
 - updateViewCountById: 게시글 조회수를 1 증가시킨다.
 
@@ -180,9 +182,9 @@ public class NoticeBoardRepositoryImpl extends QuerydslRepositorySupport {
 }
 ```
 
-<br>
-- QueryDsl로 작성한 쿼리를 테스트한 소스 코드다.
-- 200개의 데이터를 삽입한 다음, 위에서 구현한 findByTitle과 updateViewCountById 쿼리를 테스트 하였다.
+
+### QueryDsl로 작성한 쿼리를 테스트한 소스 코드다.
+- 200개의 데이터를 삽입한 다음, 위에서 구현한 findByTitle과 updateViewCountById 쿼리를 테스트 한다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/QueryDslTest
@@ -268,9 +270,9 @@ public class QueryDslTest {
 }
 ```
 
-<br>
+### 게시글을 읽을 때 조회수 증가 기능을 추가한다.
 - Service 계층에 QueryDsl로 구현한 NoticeBoardReposityImpl 클래스를 생성자 주입으로 의존관계를 등록하였다.
-- findNoticeBoardByIdx(게시글을 읽는 경우)에 updateViewCountById(게시글 조회수를 1 증가)를 추가 하였다.
+- findNoticeBoardByIdx(게시글을 읽는 경우)에 updateViewCountById(게시글 조회수를 1 증가)를 추가하였다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService
