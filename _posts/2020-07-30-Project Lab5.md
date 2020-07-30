@@ -119,9 +119,7 @@ public class QueryDslConfig {
 }
 ```
 
-
-
-
+<br>
 - Q도메인을 사용하여 다음 쿼리를 작성하였다.
 - findByTitle: 제목으로 게시글을 검색한다.(테스트 용도로 구현)
 - updateViewCountById: 게시글 조회수를 1 증가시킨다.
@@ -182,6 +180,7 @@ public class NoticeBoardRepositoryImpl extends QuerydslRepositorySupport {
 }
 ```
 
+<br>
 - QueryDsl로 작성한 쿼리를 테스트한 소스 코드다.
 - 200개의 데이터를 삽입한 다음, 위에서 구현한 findByTitle과 updateViewCountById 쿼리를 테스트 하였다.
 
@@ -269,7 +268,7 @@ public class QueryDslTest {
 }
 ```
 
-
+<br>
 - Service 계층에 QueryDsl로 구현한 NoticeBoardReposityImpl 클래스를 생성자 주입으로 의존관계를 등록하였다.
 - findNoticeBoardByIdx(게시글을 읽는 경우)에 updateViewCountById(게시글 조회수를 1 증가)를 추가 하였다.
 
