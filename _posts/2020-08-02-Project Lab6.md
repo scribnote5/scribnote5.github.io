@@ -1,6 +1,6 @@
 ---
 title: "Project Lab 6. 게시판 개발(DTO, MapStruct) - 3"
-excerpt: "MapStruct를 사용하여 Object Mapping 기능을 담당하는 DTO를 개발 과정을 소개한다."
+excerpt: "Object Mapping를 제공하는 MapStruct를 사용하여, Domain 모델에서 DTO 모델로 변환하는  과정을 소개한다."
 
 categories:
   - Web
@@ -8,7 +8,7 @@ categories:
 
 last_modified_at: 2020-08-02
 ---
-- MapStruct를 사용하여 Object Mapping 기능을 담당하는 DTO를 개발 과정을 소개한다.
+- Object Mapping를 제공하는 MapStruct를 사용하여, Domain 모델에서 DTO 모델로 변환하는  과정을 소개한다.
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/f0d7ab13069ebdb5ec8018f8da510c03790a08c5>
 
@@ -151,7 +151,7 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 ```
 
 
-## NoticeBoard DTO 클래스
+### NoticeBoard DTO 클래스
 - 각 계층간 데이터를 전달할 때 데이터를 저장하는 DTO 클래스다. CommonDto 클래스를 상속 받는다.
 
 ```
@@ -191,7 +191,7 @@ public class NoticeBoardDto extends CommonDto {
 
 
 ### MapStruct로 생성된 MapperImpl 테스트
-- 자동으로 구현된 MapperImpl 클래스의 DTO to Entity 과정을 테스트 하였다.
+- 자동으로 구현된 MapperImpl 클래스의 DTO to Entity 과정을 테스트하였다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/MapStructTest
