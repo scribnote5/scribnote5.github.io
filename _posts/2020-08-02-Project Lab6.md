@@ -260,6 +260,8 @@ module-app-web/src/main/resources/templates/noticeBoard/list, form, read
 - Service 계층에서 MapStruct를 사용한 Entity와 DTO 간 변환 소스 코드를 추가하였다.
 - findNoticeBoardList는 페이징 처리하여 NoticeBoard 리스트를 반환하는 메소드다. 해당 메소드에서 Pageable 객체는 Paging을 담당하고 NoticeBoard 리스트를 반환하는 객체로  DTO 변환 과정이 기존과 다르다. 해당 객체를 DTO로 변환하는 소스 코드는 하단 출처를 참고하였다. 
 
+출처: <https://effectivecode.tistory.com/1220>
+
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService
 ```
@@ -319,5 +321,3 @@ public class NoticeBoardService {
    }
 }
 ```
-
-출처: <https://effectivecode.tistory.com/1220>
