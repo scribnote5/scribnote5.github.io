@@ -30,7 +30,8 @@ last_modified_at: 2020-08-02
 
 
 ### Domain model은 View 계층의 요구사항을 모두 반영할 수 없음
-- Domain은 실제 DB 테이블과 매칭된다. View 계층의 요구사항을 모두 반영하여 표현하기 어렵다. 이는 결합도가 증가하여 코드 수정이 불가피하게 발생할 수 있다.
+- Domain은 실제 DB 테이블과 매칭된다. View 계층의 요구사항을 모두 반영하여 표현하기 어렵다. 
+- 이는 결합도가 증가하여 코드 수정이 불가피하게 발생할 수 있다.
 
 출처: 
 <https://netframework.tistory.com/entry/16-Model-%EA%B8%B0%EC%88%A0-%EC%A0%95%EB%A6%AC-%EB%B0%8F-%EB%B9%84%EA%B5%90><br>
