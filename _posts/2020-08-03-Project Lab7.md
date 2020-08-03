@@ -12,8 +12,6 @@ last_modified_at: 2020-08-03
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/51751f0a9c6b8a7b2fc75e39f449697588f38026>
 
-![image](/assets/images/2020-08-03-Project Lab7/image1.png)
-
 
 
 ## 새로운 글 표시 기능
