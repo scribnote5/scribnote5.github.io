@@ -59,9 +59,11 @@ last_modified_at: 2020-08-02
 https://www.baeldung.com/java-performance-mapping-frameworks
 
 
-### 의존성 선언
+
+## MapperImpl 클래스 생성
 - mapstruct의 의존성이 lombok 보다 먼저 선언되어야 한다. 
 - 원인은 모르겠지만 의존성 순서가 변경되면 JUnit 테스트시 Mapper 인터페이스의 구현체인 MapperImpl 클래스를 인식하지 못한다.
+
 
 ```
 build.gradle
@@ -81,9 +83,9 @@ annotationProcessor "org.projectlombok:lombok"
 
 출처: <https://huisam.tistory.com/entry/mapStruct>
 
-
-### 모든 Mapper 클래스가 구현 받는 공통 인터페이스
-- Mapper 클래스가 공통적으로 사용하는 인터페이스다. 각 Mapper 클래스는 EntityMapper 인터페이스를 구현한다.
+<br>
+- Mapper 클래스가 공통적으로 사용하는 인터페이스다. 
+- 각 Mapper 클래스는 EntityMapper 인터페이스를 구현한다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/common/dto/mapper/EntityMapper
@@ -102,8 +104,7 @@ public interface EntityMapper <Dto, Entity> {
 }
 ```
 
-
-### 모든 DTO 클래스가 상속 받아 사용하는 공통 DTO
+<br>
 - DTO 클래스가 공통적으로 사용하는 클래스다. 각 DTO 클래스는 CommonDto 클래스를 상속 받는다.
 
 ```
@@ -132,9 +133,16 @@ public class CommonDto {
    private String lastModifiedBy;
    private boolean isAccess;
 }
-NoticeBoard Mapper 클래스
+```
+
+<br>
 - 각 domain이 DTO로 매핑될 때 사용되는 Mapper 클래스다. 해당 클래스에서는 Mapping 규칙을 정의한다. 
+
+```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/NoticeBoardMapper
+```
+
+```java
 package kr.ac.univ.noticeBoard.dto.mapper;
 
 import kr.ac.univ.common.dto.mapper.EntityMapper;
@@ -150,8 +158,7 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 }
 ```
 
-
-### NoticeBoard DTO 클래스
+<br>
 - 각 계층간 데이터를 전달할 때 데이터를 저장하는 DTO 클래스다. CommonDto 클래스를 상속 받는다.
 
 ```
@@ -181,16 +188,14 @@ public class NoticeBoardDto extends CommonDto {
 }
 ```
 
-
-### Gradle build
+<br>
 - Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 MapperImpl 경로를 자동으로 인식하고 Mapper 인터페이스가 구현되어 MapperImpl 클래스가 자동으로 생성한다.
 
 ![image](/assets/images/2020-08-02-Project Lab6/image1.png)
 
 ![image](/assets/images/2020-08-02-Project Lab6/image2.png)
 
-
-### MapStruct로 생성된 MapperImpl 테스트
+<br>
 - 자동으로 구현된 MapperImpl 클래스의 DTO to Entity 과정을 테스트하였다.
 
 ```
@@ -235,8 +240,8 @@ public class MapStructTest {
 ```
 
 
-### 기존 Entity 대신 DTO 사용
-- Entity 대신 DTO를 사용하도록 변경하였다. 
+### DTO 적용
+- 기존 소스 코드에서 사용하는 Entity 대신 DTO를 사용하도록 변경하였다. 
 - 따라서 controller에서 view로 전달하는 noticeBoard를 noticeBoardDto로 변경하였고, view 또한 noticeBoard를 noticeBoardDto로 변경하였다.
 
 ```
@@ -255,12 +260,9 @@ module-app-web/src/main/resources/templates/noticeBoard/list, form, read
 <tr th:each="noticeBoardDto : ${noticeBoardDtoList}">
 ```
 
-
-### Service 계층에 Entity <-> DTO 변환 소스 코드 추가
+<br>
 - Service 계층에서 MapStruct를 사용한 Entity와 DTO 간 변환 소스 코드를 추가하였다.
 - findNoticeBoardList는 페이징 처리하여 NoticeBoard 리스트를 반환하는 메소드다. 해당 메소드에서 Pageable 객체는 Paging을 담당하고 NoticeBoard 리스트를 반환하는 객체로  DTO 변환 과정이 기존과 다르다. 해당 객체를 DTO로 변환하는 소스 코드는 하단 출처를 참고하였다. 
-
-출처: <https://effectivecode.tistory.com/1220>
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService
@@ -321,3 +323,5 @@ public class NoticeBoardService {
    }
 }
 ```
+
+출처: <https://effectivecode.tistory.com/1220>

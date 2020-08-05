@@ -1,6 +1,6 @@
 ---
 title: "Project Lab 7. 게시판 개발(새로운 글 표시) - 4"
-excerpt: "- 새로운 게시글이 등록되었을 때, 사용자가 이를 확인 할 수 있는 기능의 개발 과정을 소개한다."
+excerpt: "- 새로운 게시글이 등록되었을 때, 사용자가 이를 확인 할 수 있는 기능 개발 과정을 소개한다."
 
 categories:
   - Web
@@ -8,7 +8,7 @@ categories:
 
 last_modified_at: 2020-08-03
 ---
-- 새로운 게시글이 등록되었을 때, 사용자가 이를 확인 할 수 있는 기능의 개발 과정을 소개한다.
+- 새로운 게시글이 등록되었을 때, 사용자가 이를 확인 할 수 있는 기능 개발 과정을 소개한다.
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/51751f0a9c6b8a7b2fc75e39f449697588f38026>
 
@@ -23,7 +23,8 @@ last_modified_at: 2020-08-03
 출처: <https://cafe.naver.com/thisisjava>
 
 
-### 날짜 비교하기
+
+## 날짜 비교하기
 - 게시글이 등록된 날짜와 현재 날짜를 비교하는 메소드다. 
 - 해당 메소드는 시간이 아닌 단순 날짜의 일로만 계산하기에, 시간에 따른 오차가 발생할 수 있다.
 - 만약 '게시글이 등록된 날짜'가 '현재 날짜 + 2일'보다 이전인 경우(최근에 등록된 게시글) true를 반환하며, 아닌 경우 false를 반환한다.
@@ -55,10 +56,9 @@ public class NewIconCheck {
 }
 ```
 
-
-### 날짜 비교 테스트
+<br>
 - '게시글이 등록된 날짜'와 '현재 날짜 + 2일'을 비교하여 최근에 등록된 게시글인지 판별하는 과정을 테스트하였다.
-- 테스트를 수행하려면 비교하고 싶은 날짜와 시간을 입력해야 한다.
+- 테스트를 수행하려면 비교하고 싶은 날짜와 시간을 수정해야 한다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/NewIconCheckTest.java
@@ -108,7 +108,7 @@ public class NewIconCheckTest {
 ```
 
 
-### NoticeBoard DTO 수정 
+## 게시글이 새로 등록되었는지 판별 후 보여주기
 - '최근에 등록된 게시글' 정보를 NoticeBoard DTO에 담아 전달하려고 한다.
 - 해당 정보를 저장하는 boolean 자료형의 isNewIcon 변수를 선언하였다.
 
@@ -148,8 +148,7 @@ public class NoticeBoardDto extends CommonDto {
 }
 ```
 
-
-### Service layer 수정
+<br>
 - '최근에 등록된 게시글' 정보를 판별하는 로직을 Service 계층의 findNoticeBoardList(모든 게시글 리스트 검색) 메소드에서 판별하도록 하였다. 
 - 'noticeBoardDto.setNewIcon(NewIconCheck.isNew(LocalDateTime.now()));' 해당 소스 코드는 이후 JPA Audit을 적용한 다음 createdDated(게시글 등록 날짜)로 변경할 예정이다. 해당 메소드의 파라미터로 게시글의 등록 날짜를 넘기면 된다. 
 
@@ -178,8 +177,7 @@ module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardServi
     }
 ```
 
-
-### list.html 수정
+<br>
 - DTO에서 '최근에 등록된 게시글'을 담은 정보는 NoticeBoard list.html에서 조건을 판별 후 아이콘을 출력한다.
 - 참고로 자바 코드인 DTO에서는 isNewIcon 변수를 사용하지만, thymeleaf에서는 is가 생략된 newIcon으로 사용된다.
 
