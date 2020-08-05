@@ -44,6 +44,10 @@ last_modified_at: 2020-07-30
 - 기존 QueryDsl plugins 사용으로 발생하는 불편함과 에러를 해결하기 위한 방법을 찾던 도중 Gradle annotationProcessor로 QueryDsl을 사용하는 방법을 적용하였다.
 - 해당 방법은 Gradle build 에러도 발생하지 않고 Q도메인 경로를 자동으로 인식한다.
 
+
+
+## Q도메인 생성
+
 ```
 build.gradle
 ```
@@ -76,24 +80,19 @@ configure(queryDslProjects) {
 }
 ```
 
-출처: <http://honeymon.io/tech/2020/07/09/gradle-annotation-processor-with-querydsl.html>
-
-
-
-## Q도메인
 - Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 Q도메인 경로를 자동으로 인식하고 Q도메인을 자동으로 생성한다.
 
 ![image](/assets/images/2020-07-30-Project Lab5/image1.png)
 
 ![image](/assets/images/2020-07-30-Project Lab5/image2.png)
 
+출처: <http://honeymon.io/tech/2020/07/09/gradle-annotation-processor-with-querydsl.html>
 
 
-## 조회수 개발
-- 게시글을 클릭하였을 때, 조회수가 올라가는 기능을 QueryDsl로 개발하였다.
+## 조회수 기능 개발
+- 게시글을 클릭하였을 때, 조회수 올라가는 기능을 QueryDsl로 개발하였다.
 
-
-### QueryDsl을 프로젝트 어느 곳에서나 사용할 수 있도록 설정한다.
+- QueryDsl을 프로젝트 어느 곳에서나 사용할 수 있도록 설정한다.
 
 ```
 module-domain-core/kr/ac/univ/common/config/QueryDslConfig
@@ -121,8 +120,8 @@ public class QueryDslConfig {
 }
 ```
 
-
-### Q도메인을 사용하여 쿼리 작성
+<br>
+- Q도메인을 사용하여 다음과 같은 쿼리를 작성하였다.
 - findByTitle: 제목으로 게시글을 검색한다.(테스트 용도로 구현)
 - updateViewCountById: 게시글 조회수를 1 증가시킨다.
 
@@ -182,9 +181,8 @@ public class NoticeBoardRepositoryImpl extends QuerydslRepositorySupport {
 }
 ```
 
-
-### QueryDsl로 작성한 쿼리를 테스트
-- 200개의 데이터를 삽입한 다음, 위에서 구현한 findByTitle과 updateViewCountById 쿼리를 테스트 한다.
+<br>
+- 200개의 데이터를 삽입한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리를 테스트 한다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/QueryDslTest
@@ -270,9 +268,10 @@ public class QueryDslTest {
 }
 ```
 
-### 게시글을 읽을 때 조회수 증가 기능을 추가
-- Service 계층에 QueryDsl로 구현한 NoticeBoardReposityImpl 클래스를 생성자 주입으로 의존관계를 등록하였다.
-- findNoticeBoardByIdx(게시글을 읽는 경우)에 updateViewCountById(게시글 조회수를 1 증가)를 추가하였다.
+<br>
+- Service 계층에 게시글을 읽을 때 조회수가 증가하는 메소드를 추가하였다.
+- QueryDsl로 구현한 NoticeBoardReposityImpl 클래스를 생성자 주입으로 의존관계를 등록하였다.
+- findNoticeBoardByIdx(게시글을 읽는 경우)에 updateViewCountById(게시글 조회수를 1 증가) 메소드에 의하여 조회수가 증가한다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService
