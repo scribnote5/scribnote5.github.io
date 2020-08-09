@@ -1,6 +1,6 @@
 ---
 title: "Project Lab 8. 게시판 개발(파일 업로드 및 다운로드) - 5"
-excerpt: "ajax 기반의 드래그 앤 드랍, 다중 파일 업로드 및 다운로드 개발 과정을 소개한다."
+excerpt: "드래그 앤 드랍, 다중 파일 업로드 및 다운로드를 ajax로 개발한 과정을 소개한다."
 
 categories:
   - Web
@@ -8,7 +8,7 @@ categories:
 
 last_modified_at: 2020-08-05
 ---
-- ajax를 사용한 드래그 앤 드랍, 다중 파일 업로드 및 다운로드 기능의 개발 과정을 소개한다.
+- 드래그 앤 드랍, 다중 파일 업로드 및 다운로드를 ajax로 개발한 과정을 소개한다.
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/c7dd944785ff76133498ff6e95df748b140c717b>
 
@@ -16,8 +16,8 @@ last_modified_at: 2020-08-05
 
 
 ## 파일 업로드 및 다운로드 설계
-- 파일 업로드는 ajax를 사용하여 REST api는 module-app-api 서버가 담당하도록 설계하였다.
-- 파일 드래그 앤 드랍 기능과 다중 파일 업로드 기능을 구현하여 편의성을 제공하였다.
+- ajax를 통한 파일 업로드 요청은 REST api를 사용하는 module-app-api 서버가 응답한다.
+- 파일 드래그 앤 드랍과 다중 파일 업로드 기능을 지원한다.
 
 출처: <https://mkyong.com/spring-boot/spring-boot-file-upload-example-ajax-and-rest/><br>
 <https://doublesprogramming.tistory.com/130><br>
@@ -33,7 +33,7 @@ last_modified_at: 2020-08-05
 - 파일 업로드시 파일의 정보를 저장하는 테이블을 생성한다.
 
 ```sql
-# notice_board_attached_테이블 생성
+# notice_board_attached_file 테이블 생성
 $ CREATE TABLE notice_board_attached_file (
  idx               bigint auto_increment    primary key,
  created_by        varchar(255)    null,
@@ -49,7 +49,7 @@ $ CREATE TABLE notice_board_attached_file (
 
 ## 업로드 파일 크기 설정
 - 업로드 되는 파일 크기에 대한 설정은 각 주석을 참고하면 된다.
-- max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 해당 예외를 내장 톰켓에서 처리하도록 한다. 이후 사용자가 정의한 예외를 처리할 때 필요한 설정이다. 
+- max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 해당 예외를 내장 톰켓에서 처리하도록 한다. 해당 설정은 제한된 파일 업로드 크기 보다 큰 경우 사용자가 정의한 예외 처리 방식으로 수행되도록 한다. 
 - <span style="color:red">업로드 되는 파일 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.</span>
  
 ```
