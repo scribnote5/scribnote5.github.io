@@ -1010,7 +1010,8 @@ public class AttachedFileRestController {
 
 ![image](/assets/images/2020-08-05-Project Lab8/image2.png)
 
-- 게시글의 파일을 삭제(X 버튼 클릭)하는 경우, upload 폴더에실제  파일이 삭제되는 것을 확인할 수 있다.
+- 드래그 앤 드랍으로 파일을 이동시키는 경우 파일 업로드가 된다.
+- 첨부 파일의 삭제(X 버튼 클릭) 클릭한 경우 첨부 파일이 취소되며, 해당 상태에서 Update 버튼을 클릭하면 upload 폴더에 실제 파일이 삭제된다.
 
 ![image](/assets/images/2020-08-05-Project Lab8/image3.png)
 
