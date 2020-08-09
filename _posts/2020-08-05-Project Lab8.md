@@ -49,7 +49,7 @@ $ CREATE TABLE notice_board_attached_file (
 
 ## 업로드 파일 크기 설정
 - 업로드 되는 파일 크기에 대한 설정은 각 주석을 참고하면 된다.
-- max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 해당 예외를 내장 톰켓에서 처리하도록 한다. 해당 설정은 제한된 파일 업로드 크기 보다 큰 경우 사용자가 정의한 예외 처리 방식으로 수행되도록 한다. 
+- max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 해당 예외를 내장 톰켓에서 처리하도록 한다. 해당 설정은 제한된 파일 업로드 크기 보다 큰 파일이 업로드되는 경우, 사용자가 정의한 예외 처리 방식으로 수행되도록 한다. 
 - <span style="color:red">업로드 되는 파일 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.</span>
  
 ```
@@ -199,7 +199,7 @@ public class NoticeBoardDto extends CommonDto {
 
 <br>
 - NoticeBoard 파일 업로드 Entity와 DTO 간 변환을 소스 코드를 생성하는 Mapper다.
-- default 메소드는 사용자가 정의한 메소드로, Entity의 파일 리스트 데이터를 DTO로 매핑하는 역할을 한다.
+- default 메소드는 사용자가 정의한 메소드로, Entity의 파일 리스트를 DTO의 파일 리스트로 매핑한다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/mapper/NoticeBoardMapper.java
@@ -234,7 +234,7 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 
 
 ## 파일 업로드 비즈니스 로직
-- NoticeBoard 파일 업로드에 사용하는 쿼리다.
+- NoticeBoard 파일 업로드에 사용하는 쿼리다. JPA로 대체 가능하다.
 - findAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 검색한다.
 - deleteAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 삭제한다.
 
@@ -297,11 +297,11 @@ public class NoticeBoardAttachedFileRepositoryImpl extends QuerydslRepositorySup
 
 <br>
 - 파일을 프로젝트 경로에 저장하는 로직이다.
-- 파일명 중복을 피하기 위해서 UUID를 사용하였다.
-- 자바 입출력 방법으로 IO와 NIO(New IO) 방식을 사용할 수 있다. 
-- NIO는 연결 클라이언트 수가 많고 하나의 입출력 처리 작업이 오래 걸리지 않는 경우에 사용하는 것이 좋다.
-- IO는 연결 클라이언트 수가 적고 전송되는 데이터가 대용량이면서 순차적으로 처리될 필요성이 있는 경우 사용하는 것이 좋다.
-- 본 프로젝트에서는 NIO 방식이 성능상 더 유리하다고 판단하여, NIO 방식으로 파일 업로드 및 다운로드를 구현하였다.
+- 파일명 중복을 피하기 위해서 파일명 앞에 고유한 식별문자를 생성하는 UUID를 사용하였다.
+- 자바에서는 입출력 방법으로 IO 라이브러리와  NIO(New IO) 라이브러리를 사용할 수 있다. 
+- NIO 라이브러리는 연결 클라이언트 수가 많고 하나의 입출력 처리 작업이 오래 걸리지 않는 경우에 사용하는 것이 좋다.
+- IO 라이브러리는 연결 클라이언트 수가 적고 전송되는 데이터가 대용량이면서 순차적으로 처리될 필요성이 있는 경우 사용하는 것이 좋다.
+- 본 프로젝트에서는 NIO 라이브러리가 IO 라이브러리 보다 성능상 더 유리하다고 생각하여, NIO 라이브러리로 파일 업로드 및 다운로드를 구현하였다.
 
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=rain483&logNo=220636709530&proxyReferer=https:%2F%2Fwww.google.com%2F><br>
 <http://eincs.com/2009/08/java-nio-bytebuffer-performance/>
@@ -432,7 +432,7 @@ public class NoticeBoardAttachedFileService {
 ```
 
 <br>
-- 게시글 데이터와 파일 업로드 데이터를 view에 전달하는 controller다.
+- 게시글 데이터와 파일 업로드 데이터를 View에 전달하는 Controller다.
 
 ```
 module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController.java
@@ -501,7 +501,7 @@ public class NoticeBoardController {
 ```
 
 <br>
-- 비동기 방식의 파일 업로드 및 삭제 요청에 응답할 수 있도록 소스 코드를 추가 하였다.
+- 비동기 방식(ajax)의 파일 업로드 및 삭제 요청에 응답할 수 있도록 RestController에 소스 코드를 추가하였다.
 
 ```
 module-app-api/src/main/java/kr/ac/univ/controller/NoticeBoardRestController.java
@@ -572,7 +572,8 @@ public class NoticeBoardRestController {
 ```
 
 <br>
-- Bytes 단위의 파일 크기를 더 큰 단위로 변환하는 uitl 메소드다.
+- Bytes 단위를 더 큰 단위로 변환하는 uitl 메소드다.
+- Bytes 단위의 파일 크기를 더 큰 파일 크기 단위로 저장하도록 한다.
 
 ```
 module-system-common/src/main/java/kr/ac/univ/util/FileUtil.java
@@ -610,9 +611,9 @@ public class FileUtil {
 
 
 ## View 로직
-- 파일 업로드는 파일 업로드 input tag를 사용하거나, 파일 업로드 영역으로 drag & drop 하면 된다.
-- 업로드 할 파일을 추가한 경우, 파일 정보 오른쪽에 있는 X 아이콘을 클릭하여 업로드 할 파일을 취소할 수 있다.
-- 게시글이 먼저 업로드된 다음 파일을 업로드가 진행되도록 비동기 방식으로 구현하였다.(파일 업로드 수행시 게시글의 idx가 필요하기 때문이다.)
+- input tag를 사용하거나, 파일 업로드 영역으로 drag & drop하면 파일 업로드를 할 수 있다.
+- 파일 정보 오른쪽에 있는 X 아이콘을 클릭하여 업로드 하는 파일을 취소할 수 있다.
+- 게시글이 먼저 업로드된 다음 파일을 업로드가 진행되도록 구현하였다.(파일 업로드 수행시 게시글의 idx가 필요하기 때문이다.)
 - 게시글의 파일을 수정하는 모든 경우를 고려하여 로직을 구현하였다.(3개의 첨부 파일 중 2개를 삭제하고 1개를 새로 업로드 하는 경우, 3개의 첨부 파일을 모두 삭제하는 경우, 첨부 파일이 없을 때 파일을 업로드하는 경우 등)
 - formdata 객체는 서버 전송에 필요한 데이터를 저장할 수 있다. 하지만 해당 객체는 보안상의 이유로 console.log(formdata);을 사용하여 객체 정보를 확인할 수 없다. formdata 객체의 정보를 확인하는 방법은 다음과 같다.
 
@@ -949,8 +950,8 @@ function convertFileSize(fileSize) {
 
 
 ## 파일 다운로드
-- 모든 파일의 다운로드 요청을 담당한다.
-- 파일 다운로드 응답에는 헤더, MimeType(웹을 통해 전달되는 다양한 형태의 파일 정보), 다운로드 파일의 bytes 총 3개의 객체 정보로 구성된다.
+- 모든 파일 다운로드 요청은 하나의 RestController에서 담당한다.
+- 파일 다운로드는 헤더, MimeType(웹을 통해 전달되는 다양한 형태의 파일 정보), 다운로드 파일의 bytes 총 3개의 정보로 구성하여 요청에 응답한다.
 
 ```
 module-app-api/src/main/java/kr/ac/univ/controller/AttachedFileRestController.java
@@ -1011,7 +1012,7 @@ public class AttachedFileRestController {
 ![image](/assets/images/2020-08-05-Project Lab8/image2.png)
 
 - 드래그 앤 드랍으로 파일을 이동시키는 경우 파일 업로드가 된다.
-- 첨부 파일의 삭제(X 버튼 클릭) 클릭한 경우 첨부 파일이 취소되며, 해당 상태에서 Update 버튼을 클릭하면 upload 폴더에 실제 파일이 삭제된다.
+- 첨부 파일의 삭제(X 버튼 클릭) 클릭한 경우 업로드 하는 파일이 취소되며, 해당 상태에서 Update 버튼을 클릭하면 upload 폴더에 실제 파일이 삭제된다.
 
 ![image](/assets/images/2020-08-05-Project Lab8/image3.png)
 
