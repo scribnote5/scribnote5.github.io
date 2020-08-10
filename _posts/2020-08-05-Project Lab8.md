@@ -925,6 +925,7 @@ module-app-web/src/main/resources/templates/noticeBoard/read.html
 <br>
 - Bytes 단위의 파일 크기를 더 큰 단위로 변환하는 uitl 함수다.
 - 테이블에 파일 데이터를 저장할 때 사용한다.
+- 
 
 ```
 module-app-web/src/main/resources/static/js/fileUtil.js
@@ -947,7 +948,18 @@ function convertFileSize(fileSize) {
 };
 ```
 
+<br>
+- fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시켰다. 
 
+```
+module-app-web/src/main/resources/templates/layout/script.html
+```
+
+```html
+...
+<script th:src="@{/js/fileUtil.js}"></script>
+...
+```
 
 ## 파일 다운로드
 - 모든 파일 다운로드 요청은 하나의 RestController에서 담당한다.
@@ -1004,6 +1016,8 @@ public class AttachedFileRestController {
 }
 ```
 
+
+
 ## 프로젝트 실행 결과
 - 파일 업로드를 수행하면 다음 이미지 처럼 프로젝트의 upload 폴더에 파일이 업로드 된다.
 
@@ -1011,6 +1025,7 @@ public class AttachedFileRestController {
 
 ![image](/assets/images/2020-08-05-Project Lab8/image2.png)
 
+<br>
 - 드래그 앤 드랍으로 파일을 이동시키는 경우 파일 업로드가 된다.
 - 첨부 파일의 삭제(X 버튼 클릭) 클릭한 경우 업로드 하는 파일이 취소되며, 해당 상태에서 Update 버튼을 클릭하면 upload 폴더에 실제 파일이 삭제된다.
 
