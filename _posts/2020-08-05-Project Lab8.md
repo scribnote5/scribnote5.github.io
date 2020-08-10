@@ -949,7 +949,7 @@ function convertFileSize(fileSize) {
 ```
 
 <br>
-- fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시켰다. 
+- fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시킨다. 
 
 ```
 module-app-web/src/main/resources/templates/layout/script.html
