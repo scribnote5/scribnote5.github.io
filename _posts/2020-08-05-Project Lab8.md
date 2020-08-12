@@ -233,7 +233,7 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 
 
 
-## 파일 업로드 비즈니스 로직
+## 비즈니스 로직
 - NoticeBoard 파일 업로드에 사용하는 쿼리다. JPA로 대체 가능하다.
 - findAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 검색한다.
 - deleteAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 삭제한다.
@@ -610,7 +610,7 @@ public class FileUtil {
 
 
 
-## View 로직
+## View
 - input tag를 사용하거나, 파일 업로드 영역으로 drag & drop하면 파일 업로드를 할 수 있다.
 - 파일 정보 오른쪽에 있는 X 아이콘을 클릭하여 업로드 하는 파일을 취소할 수 있다.
 - 게시글이 먼저 업로드된 다음 파일을 업로드가 진행되도록 구현하였다.(파일 업로드 수행시 게시글의 idx가 필요하기 때문이다.)
