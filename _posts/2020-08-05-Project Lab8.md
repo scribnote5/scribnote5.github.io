@@ -925,7 +925,6 @@ module-app-web/src/main/resources/templates/noticeBoard/read.html
 <br>
 - Bytes 단위의 파일 크기를 더 큰 단위로 변환하는 uitl 함수다.
 - 테이블에 파일 데이터를 저장할 때 사용한다.
-- 
 
 ```
 module-app-web/src/main/resources/static/js/fileUtil.js
