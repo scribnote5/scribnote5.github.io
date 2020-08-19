@@ -35,7 +35,8 @@ last_modified_at: 2020-07-30
 
 출처: <https://juneyr.dev/2019-07-11/querydsl-config>
 
-- 해당 방법을 2020.01IntelliJ에 적용한 경우 gradle build 할 때 'error: package com.querydsl.core.types does not exist' 에러가 발생하며 Q도메인이 생성된다. 그러나 에러 해결 방법을 찾지 못하였다.
+- 해당 방법을 2020.01IntelliJ에 적용한 경우 gradle build 할 때 'error: package com.querydsl.core.types does not exist' Q도메인이 생성되지만 에러가 발생한다.
+- 해당 에러는 프로젝트 빌드할 때 중간에 멈추게 만들어 devtools를 통한 auto 빌드를 어렵게 만든다. 하지만 에러를 해결하지 못하였다.
 
 출처: <https://www.inflearn.com/questions/23530>
 
