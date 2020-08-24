@@ -50,7 +50,7 @@ $ CREATE TABLE notice_board_attached_file (
 ## 업로드 파일 크기 설정
 - 업로드 되는 파일 크기에 대한 설정은 각 주석을 참고하면 된다.
 - max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 해당 예외를 내장 톰켓에서 처리하도록 한다. 해당 설정은 제한된 파일 업로드 크기 보다 큰 파일이 업로드되는 경우, 사용자가 정의한 예외 처리 방식으로 수행되도록 한다. 
-- <span style="color:red">업로드 되는 파일 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.</span>
+- <span style="color:red; font-weight: bold">업로드 되는 파일 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.</span>
  
 ```
 module-app-api/src/main/resources/application.yml
