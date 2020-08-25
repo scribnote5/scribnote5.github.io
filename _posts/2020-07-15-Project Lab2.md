@@ -39,7 +39,7 @@ $ sudo service mysql start
 
 
 ## mariaDB 보안 설정
-```
+```sh
 # mysql 보안 설정
 $ sudo mysql_secure_installation
 ```
