@@ -6,7 +6,7 @@ categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-07-22
+last_modified_at: 2020-08-27
 ---
 - Gradle Multi Module 기반의 프로젝트 구조와 구성 절차를 소개한다.
 
@@ -19,21 +19,23 @@ last_modified_at: 2020-07-22
 - REST란, '웹에 존재하는 모든 자원(이미지, 동영상, DB 자원)에 고유한 URI를 부여해 활용'하는 것으로, 자원을 정의하고 자원에 대한 주소를 지정하는 방법론을 의미한다.
 이런 REST의 형식을 따른 시스템을 RESTful 이라고 부른다.
 - 서버-클라이언트의 역할이 명확하게 분리되면서 하나의 큰 애플리케이션이 여러 개의 작은 애플리케이션으로 분리된다.
-- 이러한 RESTful 시스템을 개발할 때 가장 큰 문제점은 소스 코드의 중복 처리 및 동일성 보장이다. 여러 개의 작은 애플리케이션이 공통으로 가지는 Domain(구조와 규칙 등)을 동일하게 보장하는 메커니즘이 없다. 따라서, 개발자는 동일한 Domain을 가지고 있는 애플리케이션을 복붙하며 개발하게 된다.
+- 이러한 RESTful 시스템을 개발할 때 가장 큰 문제점은 소스 코드의 중복 처리 및 동일성 보장이다. 여러 개의 작은 애플리케이션이 공통으로 가지는 Domain(구조와 규칙 등)을 동일하게 보장하는 메커니즘이 없다. 따라서 개발자는 동일한 Domain을 가지고 있는 애플리케이션의 소스 코드를 복붙하며 개발하게 되는 문제점이 발생한다.
 
 출처: <https://medium.com/@hckcksrl/rest%EB%9E%80-c602c3324196><br>
 REST 개념: <https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html><br>
+URI와 URL 차이: <https://velog.io/@pa324/%EA%B0%9C%EB%B0%9C%EC%83%81%EC%8B%9D-URI-URL-%EC%B0%A8%EC%9D%B4-%EC%A0%95%EB%A6%AC>
 
 
 ### Gradle Multi Module
-- 멀티 모듈 프로젝트는 기존의 단일 프로젝트를 프로젝트 안의 모듈로서 갖을 수 있을 수 있는 구조를 제공한다.
-- 개발자는 하나의 시스템에서 중심 도메인을 모듈로 분리하여 위와 같은 소스 코드의 중복 처리 및 동일성을 보장한다. 
-- 하단의 우아한형제 기술 블로그를 참고하여, 다음과 같이 프로젝트를 구성하였고 그 원칙을 따르고자 하였다. 비교적 작은 시스템을 구축하는 것이기에, 필요하다고 생각하는 모듈을 생성하였고 다음과 같이 역할을 위임하였다. 전체적인 구조는 다음과 같다. 
+- 멀티 모듈 프로젝트는 기존의 단일 프로젝트 내에 여러 모듈을 가질 수 있는 구조를 제공한다.
+- 이로 인해서, 개발자는 하나의 프로젝트를 여러 모듈로 분리하여 RESTful 시스템 개발에서 발생하는 소스 코드 중복 처리 및 동일성 문제를 해결할 수 있다.
+- 본 프로젝트는 하단의 우아한형제 기술 블로그를 참고하여 프로젝트의 모듈을 구성하였고, 각 모듈의 역할을 설계하여 그 역할을 따르고자 하였다. 
+- 우아한형제 기술 블로그에서 다루는 프로젝트와 다르게 비교적 작은 시스템을 개발하기에, 본 프로젝트 구조를 고려하여 필요한 모듈과 그에 따른 역할을 변경하였다. 
+- 다음과 같이 프로젝트 내 모듈 구조를 가진다.
 
 lab: 루트 프로젝트<br>
 └─ module-system-common<br>
-- 하나의 프로젝트에서 모든 모듈이 사용된다. 
-- 가능하면 해당 모듈을 사용하지 않는다.
+- 하나의 프로젝트에서 모든 모듈이 사용할 수 있으나, 특별한 경우가 아니면 해당 모듈을 사용하지 않는다.
 - util 클래스, error 클래스, validation 클래스, Web Resources(html, css, javascript 등)과 같이 공통으로 사용하는 파일이 위치한다.
 
 └─ module-domain-core<br>
@@ -55,11 +57,18 @@ lab: 루트 프로젝트<br>
 출처: <https://woowabros.github.io/study/2019/07/01/multi-module.html>
 
 
-## Gradle api, implementation 키워드 차이
-- gradle 버전이 업데이트 되면서 compile 키워드는 deprecated(앞으로 사라지게 됨) 되었다. 대신 api와 implementation을 키워드가 새로 생겨났다. 
-- api 키워드는 기존 compile 키워드와 동일하며 연관된 모든 의존 라이브러리를 재빌드한다. 
-- implementation 키워드는 연관된 단일 의존 라이브러리만 재빌드한다. 
-- 따라서, 무분별한 api 키워드 대신  implementation 키워드를 사용하면 빌드 시간을 감소시킬 수 있다.
+### 의존관계 설정
+- 하단의 우아한형제 기술 블로그에서는 프로젝트 내 모듈들의 의존성을 관리하기 위해서 gradle의 api, implementation 키워드를 사용할 것을 권장하였다. 
+- 프로젝트 내 모듈들은 gradle api, implementation 키워드를 사용하여 의존성을 설정할 예정이다.
+
+출처: <https://woowabros.github.io/study/2019/07/01/multi-module.html>
+
+
+### Gradle api, implementation 키워드 차이
+- Gradle 버전이 업데이트 되면서 compile 키워드는 deprecated(앞으로 사라지게 됨) 되었다. 대신 이를 대체할 수 있는 api와 implementation을 키워드가 새로 생겨났다. 
+- api 키워드는 기존 compile 키워드와 동일하며, 연관된 모든 의존성 라이브러리를 재빌드하고 모든 상위 의존성 라이브러리에 접근할 수 있다. 
+- implementation 키워드는 연관된 단일 의존 라이브러리만 재빌드하고 해당 의존성 라이브러리만 접근할 수 있다. 
+- 프로젝트 내 구조를 고려하여, api 키워드 대신 implementation 키워드를 사용하면 프로젝트의 빌드 시간을 감소시킬 수 있다.
 
 ex) <br> 
 api: 의존 라이브러리 수정시 해당 모듈을 의존하고 있는 모듈들 또한 재빌드<br>
@@ -74,26 +83,21 @@ A 수정시 B 까지 재빌드
 <https://sikeeoh.github.io/2017/08/28/implementation-vs-api-android-gradle-plugin-3/>
 
 
-### 의존관계 설정
-- 하단의 우아한형제 기술 블로그에서는 여러 의존성 관리 방법 중 gradle의 api, implementation 키워드를 사용한 의존관계 설정을 권장한다.
-- 프로젝트의 모듈들은 해당 방식으로 의존 관계를 설정할 예정이다.
 
-출처: <https://woowabros.github.io/study/2019/07/01/multi-module.html>
-
-
-
-## Gradle Project 생성
+## IntelliJ Gradle Project 생성
+- IntelliJ에서 Gradle Project를 생성한다.
 - File -> New -> Project... -> Gradle 선택
 
 ![image](/assets/images/2020-05-10-Project Lab3/image1.png)
 
 - 프로젝트 정보를 입력 후 생성한다.
-- 프로젝트 생성이 완료되면 사용하지 않는 src 디렉터리를 삭제한다.
+- 프로젝트 생성 완료 후, 앞으로 사용하지 않는 src 디렉터리를 삭제한다.
 
 ![image](/assets/images/2020-05-10-Project Lab3/image2.png)
 
 
 ## Gradle 버전 변경
+- 프로젝트에서 사용하는 gradle의 버전을 최신 버전으로 변경한다.
 ```
 # 프로젝트 경로로 이동한 다음, gradle 버전을 변경
 $ ./gradlew.bat wrapper --gradle-version 6.5.1
@@ -115,12 +119,13 @@ OS:           Windows 10 10.0 amd64
 ```
 
 
-## Gradle Multi Module 생성 
-- Proejct 우클릭 -> New -> Module... 
+## IntelliJ Gradle Multi Module 생성 
+- IntelliJ에서 Gradle Project 내 Multi Module을 생성한다.
+- Project 우클릭 -> New -> Module... 
 
 ![image](/assets/images/2020-05-10-Project Lab3/image3.png)
 
-- Gradle 선택 후 모듈 정보를 입력하여 모듈을 생성한다.
+- Gradle 선택 후 모듈 정보를 입력한 다음 모듈을 생성한다.
 - 위와 같은 절차로 하나의 프로젝트 내에서 'module-system-common', 'module-domain-core', 'module-app-api', 'module-app-web', 'module-app-admin' 모듈을 생성한다. 
 
 ![image](/assets/images/2020-05-10-Project Lab3/image4.png)
@@ -140,7 +145,8 @@ include 'module-app-web'
 include 'module-app-admin'
 ```
 
-- root 프로젝트의 의존성 라이브러리를 선언한다. 
+<br>
+- root 프로젝트에서 Spring Boot를 사용하기 위한 필수 의존성 라이브러리를 선언한다.
 
 ```
 lab/build.gradle 
@@ -224,7 +230,9 @@ project('module-app-api') {
 }
 ```
 
-- 모듈의 역할에 따라 실행 가능한 자바 파일이 생성되지 않도록 한다.
+<br>
+- 모듈의 역할에 따라 실행 가능한 자바 파일(*.jar)이 생성되지 않도록 한다.
+- 이외 사용하지 않는 다른 모듈의 build.gradle 파일 내용은 삭제한다.
 
 ```
 module-domain-core/build.gradle, module-system-common/build.gradle
