@@ -134,6 +134,7 @@ var jsonData = JSON.stringify({
 });
 ```
 
+<br>
 - 변경된 소스 코드: serializeObject를 사용하여 JSON 객체 생성
 
 ```javascript
@@ -162,10 +163,10 @@ pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNu
 ```
 
 
-## HTML 파일에서 <script>와 <link> 태그 위치
-- script 및 css 파일은 html에 삽입되는 위치에 따라서 웹 페이지 로딩 속도가 차이나며, 잘못된 위치에 삽입되는 경우 사용자의 UX 경험을 떨어뜨릴 수 있다.
-- 하단 출처에서 권장하는 것처럼 css 파일은 head 태그 내에 그리고 script 파일은 body 태그 끝에 위치하도록 thymeleaf 레이아웃을 구성하였다.
 
+## HTML 파일에서 script 및 link 태그 위치
+- script 및 css 파일은 html에 삽입되는 위치에 따라서 웹 페이지 로딩 속도가 차이나며, 잘못된 위치에 삽입되는 경우 사용자의 UX 경험을 떨어뜨릴 수 있다.
+- 하단 출처에서 권장하는 것처럼, css 파일은 head 태그 내에 그리고 script 파일은 body 태그 끝에 위치하도록 thymeleaf 레이아웃을 구성하였다.
 
 ```html
 <!DOCTYPE html>
@@ -196,7 +197,7 @@ Thymeleaf 레이아웃 적용 방법 출처: <https://eblo.tistory.com/57>
 
 ## WYSIWYG editor 적용
 - 오픈 소스 WYSIWYG editor(웹 에디터)인 summernote를 게시판에 사용하였다.
-- 게시판에서는 summernote 기본 기능만 제공하며, 이에 필요한 summernote font 파일, bootstrap.css, bootstrap.js를 추가하였다. 
+- 프로젝트의 게시판에서는 summernote 기본 기능만 제공하며, 이에 필요한 summernote font 파일, bootstrap.css, bootstrap.js를 추가하였다. 
 
 ![image](/assets/images/2020-07-29-Project Lab4/image1.png)
 
