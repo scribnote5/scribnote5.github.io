@@ -201,6 +201,7 @@ Thymeleaf 레이아웃 적용 방법 출처: <https://eblo.tistory.com/57>
 
 ![image](/assets/images/2020-07-29-Project Lab4/image1.png)
 
+<br>
 - summernote를 적용한 소스 코드는 다음과 같다. 
 
 ```html
