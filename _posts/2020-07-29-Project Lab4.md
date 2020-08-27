@@ -6,7 +6,7 @@ categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-07-29
+last_modified_at: 2020-08-28
 ---
 - Spring Boot CRUD 게시판 개발 과정을 소개한다. 
 - github: <https://github.com/scribnote5/lab>
