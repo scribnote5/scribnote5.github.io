@@ -36,15 +36,20 @@ URI와 URL 차이: <https://velog.io/@pa324/%EA%B0%9C%EB%B0%9C%EC%83%81%EC%8B%9D
 lab: 루트 프로젝트<br>
 └─ module-system-common<br>
 - 하나의 프로젝트에서 모든 모듈이 사용할 수 있으나, 특별한 경우가 아니면 해당 모듈을 사용하지 않는다.
-- util 클래스, error 클래스, validation 클래스, Web Resources(html, css, javascript 등)과 같이 공통으로 사용하는 파일이 위치한다.
+- util 클래스(객체 empty 비교, file size 비교)와 같이 공통으로 사용하는 파일이 위치한다.
 
 └─ module-domain-core<br>
-- 시스템 핵심 도메인을 다루는 모듈이 위치한다.
-- domain 클래스, service 클래스, repository 클래스 파일이 위치한다.
+- 시스템 핵심 Domian을 다루는 모듈이 위치한다.
+- Domain 클래스, Service 클래스, Repository 클래스, DTO 클래스 파일들이 위치한다.
+
+└─ module-web-core<br>
+- Web 애플리케이션의 설정을 다루는 모듈이 위치한다.
+- 해당 모듈은 프로젝트 진행 중 각 역할을 세분화하기 위해 20.08.28 추가하였다.
+- Spring Security 클래스, Error 클래스, Handler 클래스, Validation 클래스 파일들이 위치한다.
 
 └─ module-app-api<br>
 - API 서버를 당담하는 모듈이 위치한다.
-- controller(RestControllr) 클래스 파일이 위치한다.
+- RestControllr 클래스 파일이 위치한다.
 
 └─ module-app-admin<br>
 - 관리자 계층을 다루는 모듈이 위치한다.
@@ -52,7 +57,7 @@ lab: 루트 프로젝트<br>
 
 └─ module-app-web<br>
 - 일반 사용자 계층을 다루는 모듈이 위치한다.
-- controller 클래스, Web Resources(html, css, javascript 등) 파일이 위치한다.
+- Controller 클래스, Web Resources(html, css, javascript 등) 파일이 위치한다.
 
 출처: <https://woowabros.github.io/study/2019/07/01/multi-module.html>
 
