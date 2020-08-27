@@ -103,6 +103,7 @@ A 수정시 B 까지 재빌드
 
 ## Gradle 버전 변경
 - 프로젝트에서 사용하는 gradle의 버전을 최신 버전으로 변경한다.
+
 ```
 # 프로젝트 경로로 이동한 다음, gradle 버전을 변경
 $ ./gradlew.bat wrapper --gradle-version 6.5.1
