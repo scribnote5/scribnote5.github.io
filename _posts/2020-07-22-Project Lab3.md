@@ -44,8 +44,8 @@ lab: 루트 프로젝트<br>
 
 └─ module-web-core<br>
 - Web 애플리케이션의 설정을 다루는 모듈이 위치한다.
-- 해당 모듈은 프로젝트 진행 중 각 역할을 세분화하기 위해 20.08.28 추가하였다.
-- Spring Security 클래스, Error 클래스, Handler 클래스, Validation 클래스 파일들이 위치한다.
+- 해당 모듈은 프로젝트 진행 중 각 역할을 세분화하기 위해 20.08.29에 추가하였다.
+- Error 클래스, Handler 클래스, Validation 클래스 파일들이 위치한다.
 
 └─ module-app-api<br>
 - API 서버를 당담하는 모듈이 위치한다.
