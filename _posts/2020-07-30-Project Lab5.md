@@ -31,23 +31,21 @@ last_modified_at: 2020-07-30
 ### 1. QueryDsl plugins 사용
 - 'com.ewerk.gradle.plugins.querydsl' 플러그인을 사용하는 방법이다. 
 - Gradle 버전이 4.6 이후일 때 적용 방법이 다르고, 2018년 이후 플러그인이 더이상 업데이트 되지 않고 있다.
-- Q도메인을 IntelliJ가 자동으로 인식하지 못하여 프로젝트에서 수동으로 Q도메인 경로를 지정해야 하는 번거로움이 있다. 
-
-출처: <https://juneyr.dev/2019-07-11/querydsl-config>
-
-- 해당 방법을 2020.01IntelliJ에 적용한 경우 gradle build 할 때 'error: package com.querydsl.core.types does not exist' Q도메인이 생성되지만 에러가 발생한다.
-- 해당 에러는 프로젝트 빌드할 때 중간에 멈추게 만들어 devtools를 통한 auto 빌드를 어렵게 만든다. 하지만 에러를 해결하지 못하였다.
+- Q Domain을 IntelliJ가 자동으로 인식하지 못하여 프로젝트에서 수동으로 Q Domain 경로를 지정해야 하는 번거로움이 있다. 
+- 해당 방법을 2020.01IntelliJ에 적용한 경우 gradle build 할 때 'error: package com.querydsl.core.types does not exist' Q Domain이 생성되지만 에러가 발생한다.
+- 해당 에러는 프로젝트 빌드할 때 중간에 멈추게 만들어 devtools를 통한 auto 빌드를 어렵게 하지만, 에러 해결 방법을 찾지 못했다.
 
 출처: <https://www.inflearn.com/questions/23530>
 
 
 ### 2. Gradle annotationProcessor 사용 
 - 기존 QueryDsl plugins 사용으로 발생하는 불편함과 에러를 해결하기 위한 방법을 찾던 도중 Gradle annotationProcessor로 QueryDsl을 사용하는 방법을 적용하였다.
-- 해당 방법은 Gradle build 에러도 발생하지 않고 Q도메인 경로를 자동으로 인식한다.
+- 해당 방법은 Gradle build 에러도 발생하지 않고 Q Domain 경로를 자동으로 인식한다.
+
+출처: <http://honeymon.io/tech/2020/07/09/gradle-annotation-processor-with-querydsl.html>
 
 
-
-## Q도메인 생성
+## 의존성 관리
 
 ```
 build.gradle
@@ -76,12 +74,13 @@ configure(queryDslProjects) {
 
    // clean 태스크 실행시 QClass 삭제
    clean {
-       delete file("src/main/generated") // intelliJ Annotation processor Q도메인 생성 위치
+       delete file("src/main/generated") // intelliJ Annotation processor Q Domain 생성 위치
    }
 }
 ```
 
-- Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 Q도메인 경로를 자동으로 인식하고 Q도메인을 자동으로 생성한다.
+<br>
+- Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 Q Domain을 자동으로 생성하고, Q Domain 경로를 자동으로 인식한다.
 
 ![image](/assets/images/2020-07-30-Project Lab5/image1.png)
 
@@ -90,10 +89,14 @@ configure(queryDslProjects) {
 출처: <http://honeymon.io/tech/2020/07/09/gradle-annotation-processor-with-querydsl.html>
 
 
-## 조회수 기능 개발
-- 게시글을 클릭하였을 때, 조회수 올라가는 기능을 QueryDsl로 개발하였다.
 
-- QueryDsl을 프로젝트 어느 곳에서나 사용할 수 있도록 설정한다.
+## 조회수 기능 개발
+- 게시글을 조회하였을 때 조회수가 올라가는 기능을 QueryDsl로 쿼리를 작성하여 개발하였다.
+
+
+
+## Config
+- QueryDsl을 프로젝트 내에서 사용할 수 있도록 설정한다.
 
 ```
 module-domain-core/kr/ac/univ/common/config/QueryDslConfig
@@ -121,8 +124,10 @@ public class QueryDslConfig {
 }
 ```
 
-<br>
-- Q도메인을 사용하여 다음과 같은 쿼리를 작성하였다.
+
+
+## Repository
+- Q Domain을 사용하여 다음과 같은 쿼리를 작성하였다.
 - findByTitle: 제목으로 게시글을 검색한다.(테스트 용도로 구현)
 - updateViewCountById: 게시글 조회수를 1 증가시킨다.
 
@@ -182,8 +187,10 @@ public class NoticeBoardRepositoryImpl extends QuerydslRepositorySupport {
 }
 ```
 
-<br>
-- 200개의 데이터를 삽입한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리를 테스트 한다.
+
+
+## JUnit Test
+- 200개의 데이터를 삽입한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리가 정상적으로 동작하는지 테스트 한다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/QueryDslTest
@@ -269,10 +276,10 @@ public class QueryDslTest {
 }
 ```
 
-<br>
-- Service 계층에 게시글을 읽을 때 조회수가 증가하는 메소드를 추가하였다.
-- QueryDsl로 구현한 NoticeBoardReposityImpl 클래스를 생성자 주입으로 의존관계를 등록하였다.
-- findNoticeBoardByIdx(게시글을 읽는 경우)에 updateViewCountById(게시글 조회수를 1 증가) 메소드에 의하여 조회수가 증가한다.
+
+
+## Service
+- findNoticeBoardByIdx(게시글을 조회할 때)에 NoticeBoardReposityImpl의 updateViewCountById(게시글 조회수를 1 증가시킨다.) 메소드에 의하여 조회수가 1 증가한다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService
@@ -303,6 +310,6 @@ public class NoticeBoardService {
 
 
 ## 프로젝트 실행 및 결과
-- 다음과 같이 게시글을 클릭하는 경우 조회수가 1씩 증가하는 것을 확인할 수 있다. 
+- 다음 이미지와 같이 게시글을 조회하는 경우 조회수가 1 증가하는 것을 확인할 수 있다. 
 
 ![image](/assets/images/2020-07-30-Project Lab5/image3.png)
