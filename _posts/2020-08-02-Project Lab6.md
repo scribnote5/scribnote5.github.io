@@ -41,7 +41,7 @@ last_modified_at: 2020-08-02
 
 ## DTO 사용 범위
 - 구글링한 결과, 이미 많은 개발자들은 'DTO의 사용 범위를 어디까지 정해야 하는가?'에 대한 고민을 계속 해왔다.
-- DTO를 Controller 계층에서만 사용한다? DTO를 Service 계층까지 사용한다? 등 다양한 의견들이 있었지만, 이에 대한 명확한 정답은 없었다. 
+- DTO를 controller 계층에서만 사용한다? DTO를 Service 계층까지 사용한다? 등 다양한 의견들이 있었지만, 이에 대한 명확한 정답은 없었다. 
 - <span style="color:red; font-weight: bold">프로젝트에서는 service까지 DTO를 사용하되, DTO <-> domain 변환은 service에서만 수행할 것이다.</span>
 
 출처: <https://velog.io/@aidenshin/DTO%EC%97%90-%EA%B4%80%ED%95%9C-%EA%B3%A0%EC%B0%B0><br>
