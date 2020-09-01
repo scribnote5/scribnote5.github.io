@@ -19,6 +19,7 @@ last_modified_at: 2020-07-30
 - 문자열이 아닌 자바 소스 코드로 쿼리를 작성하기에 컴파일 시점에 문법 오류를 발견할 수 있다.
 - DB 종류와 관계없이 하나의 통일된 문법으로 쿼리를 작성할 수 있다.
 - IDE에서 제공하는 소스 코드 자동 완성 기능을 활용 할 수 있다.
+ - 게시글 조회수 기능을 QueryDsl로 쿼리를 작성하여 개발하고자 한다.\
 
 출처: <https://ict-nroo.tistory.com/117>
 
@@ -46,6 +47,7 @@ last_modified_at: 2020-07-30
 
 
 ## 의존성 관리
+- querydsl 의존성을 추가하고 Q Domain를 생성하는 annotationProcessor를 작성한다.
 
 ```
 build.gradle
@@ -90,11 +92,6 @@ configure(queryDslProjects) {
 
 
 
-## 조회수 기능 개발
-- 게시글을 조회하였을 때 조회수가 올라가는 기능을 QueryDsl로 쿼리를 작성하여 개발하였다.
-
-
-
 ## Config
 - QueryDsl을 프로젝트 내에서 사용할 수 있도록 설정한다.
 
@@ -127,7 +124,7 @@ public class QueryDslConfig {
 
 
 ## Repository
-- Q Domain을 사용하여 다음과 같은 쿼리를 작성하였다.
+- QueryDsl를 사용하여 다음과 같은 쿼리를 작성하였다.
 - findByTitle: 제목으로 게시글을 검색한다.(테스트 용도로 구현)
 - updateViewCountById: 게시글 조회수를 1 증가시킨다.
 
@@ -190,7 +187,7 @@ public class NoticeBoardRepositoryImpl extends QuerydslRepositorySupport {
 
 
 ## Test
-- 200개의 데이터를 삽입한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리가 정상적으로 동작하는지 테스트 한다.
+- 200개의 데이터를 삽입한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리가 정상적으로 동작하는지 테스트 하였다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/QueryDslTest
@@ -279,7 +276,8 @@ public class QueryDslTest {
 
 
 ## Service
-- findNoticeBoardByIdx(게시글을 조회할 때)에 NoticeBoardReposityImpl의 updateViewCountById(게시글 조회수를 1 증가시킨다.) 메소드에 의하여 조회수가 1 증가한다.
+- NoticeBoard의 비즈니스 로직이다. 
+- findNoticeBoardByIdx: 게시글을 조회할 때 NoticeBoardReposityImpl의 updateViewCountById 메소드를 호출하여 게시글 조회수를 1 증가시킨다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService

@@ -25,31 +25,32 @@ last_modified_at: 2020-08-28
 
 
 
-## DB 및 게시판 Table 설계
+## Table 설계
 - 프로젝트에서 사용할 DB와 게시판 table을 생성한다. 
 
 ```sql
-# lab DB를 생성
+/* lab DB를 생성 */
 $ create database lab;
 
-# notice_board 테이블 생성
-$ create table notice_board
+/* notice_board table */
+CREATE TABLE notice_board
 (
-   idx                  bigint          auto_increment      primary key,
-   created_by           varchar(255)    null,
-   created_date         date            null,
-   last_modified_by     varchar(255)    null,
-   last_modified_date   datetime        null,
-   active_status        varchar(255)    null,
-   content              longtext        null,
-   title                varchar(255)    null,
-   view_count           bigint          null
+   idx                bigint auto_increment    primary key,
+   created_by         varchar(255)     null,
+   created_date       datetime(6)      null,
+   last_modified_by   varchar(255)     null,
+   last_modified_date datetime(6)      null,
+   active_status      varchar(255)     null,
+   content            longtext         null,
+   title              varchar(255)     null,
+   view_count         bigint           null
 );
 
-# notice_board 테이블의 자동 증가하는 idx 컬럼을 1로 초기화
-# 테이블 삭제 후 테이블을 다시 생성해야 함
-$ DROP TABLE notice_board;
-$ ALTER TABLE notice_board AUTO_INCREMENT=1;
+/* notice_board 테이블의 자동 증가하는 idx 컬럼을 1로 초기화 */
+ALTER TABLE notice_board AUTO_INCREMENT=1;
+
+/* 테이블 삭제 후 테이블을 다시 생성해야 함 */
+DROP TABLE notice_board;
 ```
 
 
