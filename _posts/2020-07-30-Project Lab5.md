@@ -1,6 +1,6 @@
 ---
 title: "Project Lab 5. 게시판 개발(QueryDsl, 조회수 개발) - 2"
-excerpt: "QueryDsl를 사용하여 게시판 조회수 증가 기능 개발 과정을 소개한다."
+excerpt: "QueryDsl를 사용한 게시판 조회수 개발 과정을 소개한다."
 
 categories:
   - Web
@@ -8,7 +8,7 @@ categories:
 
 last_modified_at: 2020-07-30
 ---
-- QueryDsl를 사용하여 게시판 조회수 증가 기능 개발 과정을 소개한다.
+- QueryDsl를 사용한 게시판 조회수 개발 과정을 소개한다.
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/f4397007c39e0844c2c05822a640561636b14631>
 
