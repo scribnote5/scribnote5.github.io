@@ -187,7 +187,7 @@ public class NoticeBoardRepositoryImpl extends QuerydslRepositorySupport {
 
 
 ## Test
-- 200개의 데이터를 삽입한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리가 정상적으로 동작하는지 테스트 하였다.
+- 200개의 데이터를 등록한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리가 정상적으로 동작하는지 테스트 하였다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/QueryDslTest
