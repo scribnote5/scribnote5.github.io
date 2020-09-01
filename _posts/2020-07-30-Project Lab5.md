@@ -47,7 +47,7 @@ last_modified_at: 2020-07-30
 
 
 ## 의존성 관리
-- querydsl 의존성을 추가하고 Q Domain를 생성하는 annotationProcessor를 작성한다.
+- Querydsl 의존성과 Q Domain를 생성하는 annotationProcessor를 추가한다.
 
 ```
 build.gradle
