@@ -1,12 +1,12 @@
 ---
 title: "Project Lab 6. 게시판 개발(DTO, MapStruct) - 3"
-excerpt: "Object Mapping를 제공하는 MapStruct를 사용하여, Domain 모델에서 DTO 모델로 변환하는  과정을 소개한다."
+excerpt: "Object Mapping를 제공하는 MapStruct를 사용하여, Domain 모델에서 DTO 모델로 변환하는 과정을 소개한다."
 
 categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-08-02
+last_modified_at: 2020-09-03
 ---
 - Object Mapping를 제공하는 MapStruct를 사용하여, Domain 모델에서 DTO 모델로 변환하는  과정을 소개한다.
 - github: <https://github.com/scribnote5/lab>
@@ -16,22 +16,21 @@ last_modified_at: 2020-08-02
 
 ## DTO(Data Transfer Object)
 - 계층간 데이터 교환을 위한 객체(Java Beans)이다.
-- DTO는 domain Model을 복사한 형태로, presentation layer에 부가적인 데이터를 추가한 정도로 사용한다.
-- Domain Model 객체는 데이터 접근만을 위한 persistent layer에서 사용한다.
+- DTO는 데이터 접근만을 위해 사용하는 domain Model을 복사한 형태로, view에서 사용하는 부가적인 데이터를 추가하였다.
 
 
 
 ## DTO를 사용하는 이유
 - 기존 domain model은 개발하기 빠르다는 장점이 있다.
-- 하지만 프로젝트의 로직이 복잡해짐에 따라 DTO를 사용하는 것이 유지보수와 객체지향 프로그래밍을 위해 유리하다고 생각하였다.
+- 하지만 프로젝트의 로직이 복잡해지는 경우, DTO를 사용하면 조금더 객체지향 프로그래밍을 할 수 있고, 추후 유지보수가 쉬워지는 장점이 있다.
 
 
 ### 객체의 역할을 철저하게 분리하기 위해
--  Domain model에 view 계층의 로직이 포함되기에, 모든 클래스는 하나의 책임만 가지 객체의 '단일 책임 원칙'을 위반하게 된다.
+-  Domain에 view 로직이 포함될 수 있다. 따라서 모든 클래스는 하나의 책임만 가지 객체의 '단일 책임 원칙'을 위반하게 된다.
 
 
 ### Domain model은 View 계층의 요구사항을 모두 반영할 수 없음
-- Domain은 실제 DB 테이블과 매칭된다. view의 요구사항을 모두 반영하여 표현하기 어렵다. 요구사항을 모두 반영하게 된다면 결합도가 증가하기 때문에, 코드 수정이 불가피하게 발생할 수 있다.
+- Domain은 실제 DB 테이블과 매칭되기에, view의 요구사항을 모두 반영하여 표현하기 어렵다. 만약 요구사항을 모두 반영하게 된다면 객체 간의 결합도가 증가하기 때문에, 코드 수정이 불가피하게 발생할 수 있다.
 
 출처: 
 <https://netframework.tistory.com/entry/16-Model-%EA%B8%B0%EC%88%A0-%EC%A0%95%EB%A6%AC-%EB%B0%8F-%EB%B9%84%EA%B5%90><br>
@@ -41,8 +40,8 @@ last_modified_at: 2020-08-02
 
 ## DTO 사용 범위
 - 구글링한 결과, 이미 많은 개발자들은 'DTO의 사용 범위를 어디까지 정해야 하는가?'에 대한 고민을 계속 해왔다.
-- DTO를 controller 계층에서만 사용한다? DTO를 Service 계층까지 사용한다? 등 다양한 의견들이 있었지만, 이에 대한 명확한 정답은 없었다. 
-- <span style="color:red; font-weight: bold">프로젝트에서는 service까지 DTO를 사용하되, DTO <-> domain 변환은 service에서만 수행할 것이다.</span>
+- 'DTO를 controller에서만 사용한다? DTO를 service까지 사용한다?' 등 다양한 의견들이 있었지만, 이에 대한 명확한 정답은 없었다. 
+- <span style="color:red; font-weight: bold">본 프로젝트에서는 service까지 DTO를 사용하되, DTO <-> domain 변환은 service에서만 수행할 것이다.</span>
 
 출처: <https://velog.io/@aidenshin/DTO%EC%97%90-%EA%B4%80%ED%95%9C-%EA%B3%A0%EC%B0%B0><br>
 <https://os94.tistory.com/157><br>
@@ -52,7 +51,7 @@ last_modified_at: 2020-08-02
 
 ## Mapstrcut
 - DTO <-> Entity간 객체 mapping 소스 코드를 자동으로 생성하는 라이브러리다. 
-- 하단 출처처럼 객체 Mapping을 지원하는 라이브러리가 많이 존재하지만, 이 중 MapStruct의 처리 속도가 가장 빠르고 가장 보편적으로 사용하기에 MapStruct를 사용하게 되었다.
+- 하단 출처처럼 객체 간 mapping을 지원하는 라이브러리가 많이 존재하지만 이 중 MapStruct의 처리 속도가 가장 빠르고 가장 보편적으로 사용하기에, MapStruct를 선택하게 되었다.
 
 출처: 
 <https://www.baeldung.com/java-performance-mapping-frameworks>
@@ -60,8 +59,8 @@ last_modified_at: 2020-08-02
 
 
 ## 의존성 관리
-- <span style="color:red; font-weight: bold">Mapstruct의 의존성이 lombok 보다 먼저 선언되어야 한다.</span>
-- 원인은 모르겠지만 의존성 순서가 변경되면 JUnit 테스트시 Mapper 인터페이스의 구현체인 MapperImpl 클래스를 인식하지 못하는 문제가 발생한다.
+- Mapstrcut 의존성을 추가한다.
+- <span style="color:red; font-weight: bold">Mapstruct의 의존성이 lombok 보다 먼저 선언되어야 한다.</span> 원인은 모르겠지만 의존성 순서가 변경되면 JUnit 테스트시 Mapper 인터페이스의 구현체인 MapperImpl 클래스를 인식하지 못하는 문제가 발생한다.
 
 출처: <https://huisam.tistory.com/entry/mapStruct>
 
@@ -83,9 +82,9 @@ annotationProcessor "org.projectlombok:lombok"
 
 
 
-## MapperImpl 클래스 생성
-- Mapper 클래스가 공통적으로 사용하는 인터페이스다. 
-- DTO <-> Entity 변환을 담담하는 MapperImpl 클래스는 EntityMapper 인터페이스를 구현하면 된다.
+## Domain 및 DTO
+- 모든 Mapper 클래스가 공통적으로 사용하는 인터페이스다. 
+- DTO <-> Entity mapping을 담당하는 MapperImpl 클래스는 EntityMapper 인터페이스를 구현받으며, EntityMapper 인터페이스의 메소드는 Mapstruct에 의해 자동으로 DTO <-> Entity mapping 소스 코드가 생성된다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/common/dto/mapper/EntityMapper
@@ -105,7 +104,7 @@ public interface EntityMapper <Dto, Entity> {
 ```
 
 <br>
-- 각 domain이 DTO로 매핑될 때 사용되는 규칙을 정의하는 Mapper 클래스다.
+- NoticeBoard Entity<->DTO mapping 소스 코드가 Mapstruct에 의해 생성되도록 메소드를 선언 및 하는 클래스다. 
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/NoticeBoardMapper
@@ -128,7 +127,7 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 ```
 
 <br>
-- DTO 클래스가 공통적으로 사용하는 데이터를 담은 클래스다. 각 DTO 클래스는 CommonDto 클래스를 상속 받는다.
+- DTO 클래스가 공통적으로 사용하는 데이터를 담은 클래스다. 모든 DTO 클래스는 CommonDto 클래스를 상속 받는다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/common/dto/CommonDto
@@ -159,7 +158,7 @@ public class CommonDto {
 ```
 
 <br>
-- 각 계층간 데이터를 전달할 때 데이터를 저장하는 DTO 클래스다. CommonDto 클래스를 상속 받는다.
+- NoticeBoard에서 사용하는 DTO다. 
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto
@@ -190,7 +189,7 @@ public class NoticeBoardDto extends CommonDto {
 
 <br>
 - Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 MapperImpl 경로를 자동으로 인식하고 Mapper 인터페이스가 구현되어 MapperImpl 클래스가 자동으로 생성한다.
-- <span style="color:red; font-weight: bold">DTO <-> Entity간 객체 mapping을 담당하는 소스 코드가 MapperImpl에 자동으로 생성되기 위해서는, domain에 builder pattern이 구현되야 한다. 자동으로 생성된 MapperImpl 클래스를 확인해 보면, builder pattern을 사용하여 mapping을 수행하는 것을 확인할 수 있다.</span>
+- <span style="color:red; font-weight: bold">DTO <-> Entity mapping을 담당하는 소스 코드가 MapperImpl에 자동으로 생성되기 위해서는, domain에 builder pattern이 구현되야 한다. 자동으로 생성된 MapperImpl 클래스를 확인해 보면, builder pattern을 사용하여 mapping을 수행하는 것을 확인할 수 있다.</span>
 
 ![image](/assets/images/2020-08-02-Project Lab6/image1.png)
 
@@ -198,7 +197,7 @@ public class NoticeBoardDto extends CommonDto {
 
 
 ## Test
-- MapperImpl 클래스의 DTO <-> Entity간 객체 mapping을 테스트하였다.
+- MapperImpl 클래스의 DTO <-> Entity mapping을 테스트 하였다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/MapStructTest
@@ -244,7 +243,8 @@ public class MapStructTest {
 
 
 ## Service
-- MapStruct를 사용하여 DTO <-> Entitiy 객체간 mapping 소스 코드를 추가하였다.
+- NoticeBoard의 비즈니스 로직이다. 
+- MapStruct를 사용하여 DTO <-> Entitiy mapping 소스 코드를 추가하였다.
 - findNoticeBoardList는 페이징 처리하여 NoticeBoard 리스트를 반환하는 메소드다. 해당 메소드에서 Pageable 객체는 Paging을 담당하고 NoticeBoard 리스트를 반환하는 객체로  DTO 변환 과정이 기존과 다르다. 해당 객체를 DTO로 변환하는 소스 코드는 하단 출처를 참고하였다.
 
 출처: <https://effectivecode.tistory.com/1220>
@@ -312,7 +312,8 @@ public class NoticeBoardService {
 
 
 ## Controller
-- Controller에서 view로 전달하는 변수명인 noticeBoard를 noticeBoardDto로 변경하였다.
+- NoticeBoard 관련 클라이언트의 요청을 view로 매핑한다.
+- Controller에서 view로 전달하는 noticeBoard 변수명을 noticeBoardDto로 변경하였다.
 
 ```
 module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController
@@ -325,7 +326,8 @@ model.addAttribute("noticeBoardDto", noticeBoardService.findNoticeBoardByIdx(idx
 
 
 ## View
-- Controller에서 전달 받는 변수명인 noticeBoard를 noticeBoardDto로 변경하였다.
+- NoticeBoard 관련 데이터를 화면에 출력한다.
+- Controller에서 전달받은 noticeBoard 변수명을 noticeBoardDto로 변경하였다.
 
 ```
 module-app-web/src/main/resources/templates/noticeBoard/list, form, read
