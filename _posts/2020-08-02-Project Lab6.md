@@ -41,7 +41,7 @@ last_modified_at: 2020-09-03
 ## DTO 사용 범위
 - 구글링한 결과, 이미 많은 개발자들은 'DTO의 사용 범위를 어디까지 정해야 하는가?'에 대한 고민을 계속 해왔다.
 - 'DTO를 controller에서만 사용한다? DTO를 service까지 사용한다?' 등 다양한 의견들이 있었지만, 이에 대한 명확한 정답은 없었다. 
-- <span style="color:red; font-weight: bold">본 프로젝트에서는 service까지 DTO를 사용하되, DTO <-> domain 변환은 service에서만 수행할 것이다.</span>
+- <span style="color:red; font-weight: bold">본 프로젝트에서는 service까지 DTO를 사용하되, DTO <-> domain 간 객체 mapping은 service에서만 수행할 것이다.</span>
 
 출처: <https://velog.io/@aidenshin/DTO%EC%97%90-%EA%B4%80%ED%95%9C-%EA%B3%A0%EC%B0%B0><br>
 <https://os94.tistory.com/157><br>
@@ -84,7 +84,7 @@ annotationProcessor "org.projectlombok:lombok"
 
 ## Domain 및 DTO
 - 모든 Mapper 클래스가 공통적으로 사용하는 인터페이스다. 
-- DTO <-> Entity mapping을 담당하는 MapperImpl 클래스는 EntityMapper 인터페이스를 구현받으며, EntityMapper 인터페이스의 메소드는 Mapstruct에 의해 자동으로 DTO <-> Entity mapping 소스 코드가 생성된다.
+- DTO <-> Entity간 객체 mapping을 담당하는 MapperImpl 클래스는 EntityMapper 인터페이스를 구현받으며, EntityMapper 인터페이스의 메소드는 Mapstruct에 의해 자동으로 DTO <-> Entity간 객체 mapping 소스 코드가 생성된다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/common/dto/mapper/EntityMapper
@@ -104,7 +104,7 @@ public interface EntityMapper <Dto, Entity> {
 ```
 
 <br>
-- NoticeBoard Entity<->DTO mapping 소스 코드가 Mapstruct에 의해 생성되도록 메소드를 선언 및 하는 클래스다. 
+- NoticeBoard Entity<->DTO간 객체 mapping 소스 코드가 Mapstruct에 의해 생성되도록 메소드를 선언 및 하는 클래스다. 
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/NoticeBoardMapper
@@ -189,7 +189,7 @@ public class NoticeBoardDto extends CommonDto {
 
 <br>
 - Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 MapperImpl 경로를 자동으로 인식하고 Mapper 인터페이스가 구현되어 MapperImpl 클래스가 자동으로 생성한다.
-- <span style="color:red; font-weight: bold">DTO <-> Entity mapping을 담당하는 소스 코드가 MapperImpl에 자동으로 생성되기 위해서는, domain에 builder pattern이 구현되야 한다. 자동으로 생성된 MapperImpl 클래스를 확인해 보면, builder pattern을 사용하여 mapping을 수행하는 것을 확인할 수 있다.</span>
+- <span style="color:red; font-weight: bold">DTO <-> Entity간 객체 mapping을 담당하는 소스 코드가 MapperImpl에 자동으로 생성되기 위해서는, domain에 builder pattern이 구현되야 한다. 자동으로 생성된 MapperImpl 클래스를 확인해 보면, builder pattern을 사용하여 mapping을 수행하는 것을 확인할 수 있다.</span>
 
 ![image](/assets/images/2020-08-02-Project Lab6/image1.png)
 
@@ -197,7 +197,7 @@ public class NoticeBoardDto extends CommonDto {
 
 
 ## Test
-- MapperImpl 클래스의 DTO <-> Entity mapping을 테스트 하였다.
+- MapperImpl 클래스의 DTO <-> Entity간 객체 mapping을 테스트 하였다.
 
 ```
 module-app-web/src/test/java/kr/ac/univ/MapStructTest
@@ -244,7 +244,7 @@ public class MapStructTest {
 
 ## Service
 - NoticeBoard의 비즈니스 로직이다. 
-- MapStruct를 사용하여 DTO <-> Entitiy mapping 소스 코드를 추가하였다.
+- MapStruct를 사용하여 DTO <-> Entitiy간 객체 mapping 소스 코드를 추가하였다.
 - findNoticeBoardList는 페이징 처리하여 NoticeBoard 리스트를 반환하는 메소드다. 해당 메소드에서 Pageable 객체는 Paging을 담당하고 NoticeBoard 리스트를 반환하는 객체로  DTO 변환 과정이 기존과 다르다. 해당 객체를 DTO로 변환하는 소스 코드는 하단 출처를 참고하였다.
 
 출처: <https://effectivecode.tistory.com/1220>
