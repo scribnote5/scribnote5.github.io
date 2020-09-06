@@ -187,7 +187,7 @@ module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardServi
 
 ## View
 - NoticeBoard 관련 데이터를 화면에 출력한다.
-- 최근 등록된 게시글은 NoticeBoard list.html에서 newIcon의 조건을 판별 후 참인 경우 N 아이콘을 출력한다.
+- 최근 등록된 게시글은 NoticeBoard list.html에서 newIcon의 조건을 판별 후 true인 경우 N 아이콘을 출력한다.
 - 참고로 자바 DTO에서는 isNewIcon 변수를 사용하지만, 이와 다르게 thymeleaf에서는 is가 생략된 newIcon으로 사용한다.
 
 ```
