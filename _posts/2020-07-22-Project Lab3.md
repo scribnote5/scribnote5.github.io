@@ -43,15 +43,9 @@ lab: 루트 프로젝트<br>
 - Domain 클래스, Service 클래스, Repository 클래스, DTO 클래스 파일들이 위치한다.
 
 └─ module-web-core<br>
-<<<<<<< HEAD
-- Web 애플리케이션의 설정 및 공통적으로 사용하는 Web Resource를 다루는 모듈이 위치한다.
-- <span style="color:red; font-weight: bold">해당 모듈은 프로젝트 진행 중 각 역할을 세분화하고 모듈간의 의존성을 낮추기 위해서 20.08.31에 추가하였으며, 이후 모듈의 역할을 구체적으로 정하고 세분화 작업을 수행할 예정이다.</span>
-- Error 클래스, Handler 클래스, Validation 클래스, module-web-core와 module-app-admin이 공통적으로 사용하는 Web Resources(html, css, javascript 등) 파일이 위치한다.
-=======
 - Web 애플리케이션의 설정을 다루는 모듈이 위치한다.
-- 해당 모듈은 프로젝트 진행 중 각 역할을 세분화하기 위해 20.08.29에 추가하였다.
-- Error 클래스, Handler 클래스, Validation 클래스 파일들이 위치한다.
->>>>>>> 00e6e92120976e3fc969517a9ab3f1483287e8bf
+- <span style="color:red; font-weight: bold">해당 모듈은 프로젝트 진행 중 각 역할을 세분화하고 모듈간의 의존성을 낮추기 위해서 20.09.07에 추가하였으며, 이후 모듈의 역할을 구체적으로 정하고 세분화 작업을 수행할 예정이다.</span>
+- Error 클래스, Handler 클래스, Validation 클래스, module-web-core와 module-app-admin이 공통적으로 사용하는 Web Resources(html, css, javascript 등) 파일이 위치한다. Web Resource는 추후 리펙토링 때 분리할 예정이다.
 
 └─ module-app-api<br>
 - API 서버를 당담하는 모듈이 위치한다.
