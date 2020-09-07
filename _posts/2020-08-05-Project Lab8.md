@@ -1,25 +1,26 @@
 ---
 title: "Project Lab 8. 게시판 개발(파일 업로드 및 다운로드) - 5"
-excerpt: "드래그 앤 드랍, 다중 파일 업로드 및 다운로드를 ajax로 개발한 과정을 소개한다."
+excerpt: "드래그 앤 드랍 기능을 지원하는 다중 파일 업로드 및 파일 다운로드를 ajax로 개발한 과정을 소개한다."
 
 categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-08-05
+last_modified_at: 2020-09-08
 ---
-- 드래그 앤 드랍, 다중 파일 업로드 및 다운로드를 ajax로 개발한 과정을 소개한다.
+래그 앤 드랍 기능을 지원하는 다중 파일 업로드 및 파일 다운로드를 ajax로 개발한 과정을 소개한다.
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/c7dd944785ff76133498ff6e95df748b140c717b>
 
 
 
-
 ## 파일 업로드 및 다운로드 설계
-- ajax를 통한 파일 업로드 요청은 REST api를 사용하는 module-app-api 서버가 응답한다.
-- 파일 드래그 앤 드랍과 다중 파일 업로드 기능을 지원한다.
+- Spirng은 MultipartResolver 인터페이스와 Servlet Multipart Request 그리고 Apache Commons FileUpload API 두 개의 구현체로 파일 업로드를 지원한다. 본 프로젝트에서는 Servlet Multipart Request를 사용하여 파일 업로드를 구현한다.
+- module-app-web 모듈 서버에서 다중 파일 업로드를 하게 되면 ajax를 통하여 요청하며, REST api를 사용하는 module-app-api 모듈 서버가 응답한다.
+- 다중 파일 업로드는 드래그 앤 드랍 기능을 지원한다.
 
-출처: <https://mkyong.com/spring-boot/spring-boot-file-upload-example-ajax-and-rest/><br>
+출처: <https://advenoh.tistory.com/26>
+<https://mkyong.com/spring-boot/spring-boot-file-upload-example-ajax-and-rest/><br>
 <https://doublesprogramming.tistory.com/130><br>
 <https://sooin01.tistory.com/m/entry/jQuery-ajax-%ED%8C%8C%EC%9D%BC%EC%97%85%EB%A1%9C%EB%93%9C><br>
 <https://cofs.tistory.com/181><br>
@@ -29,8 +30,8 @@ last_modified_at: 2020-08-05
 
 
 
-## 파일 업로드 테이블 설계
-- 파일 업로드시 파일의 정보를 저장하는 테이블을 생성한다.
+## Table 설계
+- 프로젝트에서 사용할 게시판 첨부 파일 table을 생성한다.
 
 ```sql
 # notice_board_attached_file 테이블 생성
@@ -47,10 +48,10 @@ $ CREATE TABLE notice_board_attached_file (
 
 
 
-## 업로드 파일 크기 설정
-- 업로드 되는 파일 크기에 대한 설정은 각 주석을 참고하면 된다.
-- max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 해당 예외를 내장 톰켓에서 처리하도록 한다. 해당 설정은 제한된 파일 업로드 크기 보다 큰 파일이 업로드되는 경우, 사용자가 정의한 예외 처리 방식으로 수행되도록 한다. 
-- <span style="color:red; font-weight: bold">업로드 되는 파일 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.</span>
+## Config
+- max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 예외를 내장 톰켓에서 처리하도록 한다. 
+- 해당 설정은 제한된 파일 업로드 크기보다 큰 파일이 업로드되는 경우, 사용자 정의 예외 처리 방식으로 수행된다. 현재 github commit된 코드는 server.tomcat.max-swallow-size의 들여쓰기를 잘못 사용한 상태로 하단 소스 코드로 변경해야 한다. 예외 처리는 추후 다루도록 하겠다.
+- <span style="color:red; font-weight: bold">파일 업로드 되는 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.(root 프로젝트에 upload 폴더를 생성하면 된다.)</span>
  
 ```
 module-app-api/src/main/resources/application.yml
@@ -64,16 +65,16 @@ spring:
      max-file-size: 20MB
      # form-data 요청에 따른 모든 파일의 최대 크기
      max-request-size: 20MB
-   server:
-     tomcat:
-       max-swallow-size: -1
+server:
+   tomcat:
+     max-swallow-size: -1
 ...
 ```
 
 
 
 ## Domain 및 DTO 설계
-- 파일 업로드를 저장하는데 사용하는 공통 domain이다.
+- 모든 Attachedfile에서 공통적으로 사용하는 Domain이다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/common/domain/AttachedFileAudit.java
@@ -101,7 +102,7 @@ public abstract class AttachedFileAudit {
 ```
 
 <br>
-- NoticeBoard 파일 업로드에 사용하는 domain이다.
+- NoticeBoard attachedfile에서 사용하는 DTO다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/domain/NoticeBoardAttachedFile.java
@@ -198,8 +199,8 @@ public class NoticeBoardDto extends CommonDto {
 ```
 
 <br>
-- NoticeBoard 파일 업로드 Entity와 DTO 간 변환을 소스 코드를 생성하는 Mapper다.
-- default 메소드는 사용자가 정의한 메소드로, Entity의 파일 리스트를 DTO의 파일 리스트로 매핑한다.
+- NoticeBoard DTO <-> Entity간 객체 mapping 소스 코드가 Mapstruct에 의해 생성되도록 메소드를 선언 및 정의하는 클래스다.
+- default 메소드는 사용자가 정의한 메소드로, Entity 파일 리스트를 DTO의 파일 리스트로 매핑한다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/mapper/NoticeBoardMapper.java
@@ -233,10 +234,10 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 
 
 
-## 비즈니스 로직
-- NoticeBoard 파일 업로드에 사용하는 쿼리다. JPA로 대체 가능하다.
+## Repository
+- QueryDsl를 사용하여 다음과 같은 쿼리를 작성하였다.(JPA로 대체 가능하다.)
 - findAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 검색한다.
-- deleteAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 삭제한다.
+- deleteAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 삭제한다
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/repository/NoticeBoardAttachedFileRepositoryImpl.java
@@ -295,13 +296,16 @@ public class NoticeBoardAttachedFileRepositoryImpl extends QuerydslRepositorySup
 }
 ```
 
-<br>
-- 파일을 프로젝트 경로에 저장하는 로직이다.
-- 파일명 중복을 피하기 위해서 파일명 앞에 고유한 식별문자를 생성하는 UUID를 사용하였다.
+
+
+## Service
+- NoticeBoard attachedfile의 비즈니스 로직이다. 
+- uploadAttachedFile: view에서 전달받은 파일을 저장하는 로직이다. 
+- 파일명 앞에 고유한 식별문자를 생성하는 UUID를 사용하여 파일명 중복이 발생하지 않도록 하였다.
 - 자바에서는 입출력 방법으로 IO 라이브러리와  NIO(New IO) 라이브러리를 사용할 수 있다. 
 - NIO 라이브러리는 연결 클라이언트 수가 많고 하나의 입출력 처리 작업이 오래 걸리지 않는 경우에 사용하는 것이 좋다.
 - IO 라이브러리는 연결 클라이언트 수가 적고 전송되는 데이터가 대용량이면서 순차적으로 처리될 필요성이 있는 경우 사용하는 것이 좋다.
-- 본 프로젝트에서는 NIO 라이브러리가 IO 라이브러리 보다 성능상 더 유리하다고 생각하여, NIO 라이브러리로 파일 업로드 및 다운로드를 구현하였다.
+- 프로젝트에서는 업로드하는 파일 크기를 20 MB로 제한할 예정이므로, NIO 라이브러리가 IO 라이브러리 보다 성능상 더 유리하다고 생각였기에 NIO 라이브러리를 사용하여 파일 업로드 및 다운로드를 구현하였다.
 
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=rain483&logNo=220636709530&proxyReferer=https:%2F%2Fwww.google.com%2F><br>
 <http://eincs.com/2009/08/java-nio-bytebuffer-performance/>
@@ -431,8 +435,11 @@ public class NoticeBoardAttachedFileService {
 }
 ```
 
-<br>
-- 게시글 데이터와 파일 업로드 데이터를 View에 전달하는 Controller다.
+
+
+## Controller
+- NoticeBoard attachedfile 관련 클라이언트의 요청을 view로 매핑한다.
+- noticeBoardForm, noticeBoardRead: noticeBoard와 연관된 noticeBoard attachedfile을 데이터를 조회 후 noticeBoard 데이터와 함께 view에 전달한다.
 
 ```
 module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController.java
@@ -500,8 +507,10 @@ public class NoticeBoardController {
 }
 ```
 
-<br>
-- 비동기 방식(ajax)의 파일 업로드 및 삭제 요청에 응답할 수 있도록 RestController에 소스 코드를 추가하였다.
+
+
+## RestController
+- NoticeBoard attachedfile 관련 클라이언트의 요청을 json 타입으로 응답한다.
 
 ```
 module-app-api/src/main/java/kr/ac/univ/controller/NoticeBoardRestController.java
@@ -571,50 +580,70 @@ public class NoticeBoardRestController {
 }
 ```
 
-<br>
-- Bytes 단위를 더 큰 단위로 변환하는 uitl 메소드다.
-- Bytes 단위의 파일 크기를 더 큰 파일 크기 단위로 저장하도록 한다.
+
+
+- Attachedfile 다운로드 클라이언트의 요청을 응답한다.
+- downloadAttachedFile: 모든 파일 다운로드는 요청은 하나의 URL에서 담당하며, 파일 이름을 같이 전달한다.
+- 헤더, MimeType(웹을 통해 전달되는 다양한 형태의 파일 정보), 다운로드 파일의 bytes 총 3개의 정보로 구성되어 파일 다운로드 요청에 응답한다.
 
 ```
-module-system-common/src/main/java/kr/ac/univ/util/FileUtil.java
+module-app-api/src/main/java/kr/ac/univ/controller/AttachedFileRestController.java
 ```
 
 ```java
-package kr.ac.univ.util;
+package kr.ac.univ.controller;
 
-import java.text.DecimalFormat;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-public class FileUtil {
-   public static String getExtension(String fileName) {
-       return (fileName.substring(fileName.lastIndexOf("."))).toLowerCase();
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+@RestController
+@RequestMapping("/api/attachedFiles")
+public class AttachedFileRestController {
+   @GetMapping("/download/{savedFileName}")
+   public ResponseEntity<?> downloadAttachedFile(@PathVariable("savedFileName") String savedFileName) throws Exception {
+       // 파일 이름이 한글인 경우 인코딩이 깨지지 않도록 변경
+       String encordedSavedFileName = URLEncoder.encode(savedFileName, "UTF-8").replace("+", "%20");
+
+       // 헤더 추가
+       HttpHeaders header = new HttpHeaders();
+       header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + encordedSavedFileName.substring(33));
+       header.add("Cache-Control", "no-cache, no-store, must-revalidate");
+       header.add("Pragma", "no-cache");
+       header.add("Expires", "0");
+
+       // MimeType 추가, application/octet-stream은 text/plain 타입을 제외한 기본 값
+       MediaType mediaType = MediaType.parseMediaType("application/octet-stream");
+
+       // 다운로드 파일 추가
+       Path path = Paths.get("./upload/" + savedFileName);
+       ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+
+       return ResponseEntity.ok()
+               .headers(header)
+               .contentType(mediaType)
+               .body(resource);
    }
-
-   public static String convertFileSize(long fileSize) {
-       String retFormat = "0";
-       String[] s = { "bytes", "KB", "MB", "GB", "TB", "PB" };
-       DecimalFormat df = new DecimalFormat("#,###.##");
-
-       if (fileSize != 0) {
-           int idx = (int) Math.floor(Math.log(fileSize) / Math.log(1024));
-           double ret = ((fileSize / Math.pow(1024, Math.floor(idx))));
-           retFormat = df.format(ret) + " " + s[idx];
-       } else {
-           retFormat += " " + s[0];
-       }
-
-       return retFormat;
-   }
-
 }
 ```
 
 
 
 ## View
-- input tag를 사용하거나, 파일 업로드 영역으로 drag & drop하면 파일 업로드를 할 수 있다.
-- 파일 정보 오른쪽에 있는 X 아이콘을 클릭하여 업로드 하는 파일을 취소할 수 있다.
-- 게시글이 먼저 업로드된 다음 파일을 업로드가 진행되도록 구현하였다.(파일 업로드 수행시 게시글의 idx가 필요하기 때문이다.)
-- 게시글의 파일을 수정하는 모든 경우를 고려하여 로직을 구현하였다.(3개의 첨부 파일 중 2개를 삭제하고 1개를 새로 업로드 하는 경우, 3개의 첨부 파일을 모두 삭제하는 경우, 첨부 파일이 없을 때 파일을 업로드하는 경우 등)
+- NoticeBoard attachedfiled 관련 데이터를 화면에 출력한다.
+- input tag를 사용하거나, 파일 업로드 영역으로 파일을 드래그앤드랍 하면 파일을 업로드 할 수 있다.
+- 파일을 업로드 하면 파일 정보가 Upload attached file 영역에 출력된다. 파일 정보 오른쪽에 있는 X 아이콘을 클릭하여 업로드 하는 파일을 취소할 수 있다.
+- 게시글이 먼저 업로드된 다음 파일을 업로드가 진행되도록 구현하였다.(파일 업로드 수행시 게시글의 idx가 필요하기 때문이다.) 또한 파일을 수정하는 모든 경우를 고려하여 알고리즘 로직을 구현하였으며, 자세한 알고리즘 로직은 주석을 참고하면 된다.(3개의 첨부 파일 중 2개를 삭제하고 1개를 새로 업로드 하는 경우, 3개의 첨부 파일을 모두 삭제하는 경우, 첨부 파일이 없을 때 파일을 업로드하는 경우 등)
 - formdata 객체는 서버 전송에 필요한 데이터를 저장할 수 있다. 하지만 해당 객체는 보안상의 이유로 console.log(formdata);을 사용하여 객체 정보를 확인할 수 없다. formdata 객체의 정보를 확인하는 방법은 다음과 같다.
 
 ```javascript
@@ -904,7 +933,7 @@ module-app-web/src/main/resources/templates/noticeBoard/form.html
 ```
 
 <br>
-- 첨부 파일명과 파일 크기를 클릭하면 api 서버가 요청에 응답하여, 파일을 다운로드 받을 수 있다.
+- 업로드된 파일 데이터를 클릭하면 api 서버가 요청에 응답하여, 파일을 다운로드 한다.
 
 ```
 module-app-web/src/main/resources/templates/noticeBoard/read.html
@@ -922,9 +951,46 @@ module-app-web/src/main/resources/templates/noticeBoard/read.html
 </tr>
 ```
 
+
+
+## Util
+- Java: 파일 업로드할 때 저장되는 파일의 크기 단위를 변경한다.
+
+```
+module-system-common/src/main/java/kr/ac/univ/util/FileUtil.java
+```
+
+```java
+package kr.ac.univ.util;
+
+import java.text.DecimalFormat;
+
+public class FileUtil {
+   public static String getExtension(String fileName) {
+       return (fileName.substring(fileName.lastIndexOf("."))).toLowerCase();
+   }
+
+   public static String convertFileSize(long fileSize) {
+       String retFormat = "0";
+       String[] s = { "bytes", "KB", "MB", "GB", "TB", "PB" };
+       DecimalFormat df = new DecimalFormat("#,###.##");
+
+       if (fileSize != 0) {
+           int idx = (int) Math.floor(Math.log(fileSize) / Math.log(1024));
+           double ret = ((fileSize / Math.pow(1024, Math.floor(idx))));
+           retFormat = df.format(ret) + " " + s[idx];
+       } else {
+           retFormat += " " + s[0];
+       }
+
+       return retFormat;
+   }
+
+}
+```
+
 <br>
-- Bytes 단위의 파일 크기를 더 큰 단위로 변환하는 uitl 함수다.
-- 테이블에 파일 데이터를 저장할 때 사용한다.
+- Javascript: 업로드 하는 파일의 크기 단위를 변경한다.(Byte 단위를 KB, MB 단위로 변경한다.)
 
 ```
 module-app-web/src/main/resources/static/js/fileUtil.js
@@ -948,7 +1014,7 @@ function convertFileSize(fileSize) {
 ```
 
 <br>
-- fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시킨다. 
+- Javascript: fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시킨다. 
 
 ```
 module-app-web/src/main/resources/templates/layout/script.html
@@ -960,72 +1026,17 @@ module-app-web/src/main/resources/templates/layout/script.html
 ...
 ```
 
-## 파일 다운로드
-- 모든 파일 다운로드 요청은 하나의 RestController에서 담당한다.
-- 파일 다운로드는 헤더, MimeType(웹을 통해 전달되는 다양한 형태의 파일 정보), 다운로드 파일의 bytes 총 3개의 정보로 구성하여 요청에 응답한다.
-
-```
-module-app-api/src/main/java/kr/ac/univ/controller/AttachedFileRestController.java
-```
-
-```java
-package kr.ac.univ.controller;
-
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-@RestController
-@RequestMapping("/api/attachedFiles")
-public class AttachedFileRestController {
-   @GetMapping("/download/{savedFileName}")
-   public ResponseEntity<?> downloadAttachedFile(@PathVariable("savedFileName") String savedFileName) throws Exception {
-       // 파일 이름이 한글인 경우 인코딩이 깨지지 않도록 변경
-       String encordedSavedFileName = URLEncoder.encode(savedFileName, "UTF-8").replace("+", "%20");
-
-       // 헤더 추가
-       HttpHeaders header = new HttpHeaders();
-       header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + encordedSavedFileName.substring(33));
-       header.add("Cache-Control", "no-cache, no-store, must-revalidate");
-       header.add("Pragma", "no-cache");
-       header.add("Expires", "0");
-
-       // MimeType 추가, application/octet-stream은 text/plain 타입을 제외한 기본 값
-       MediaType mediaType = MediaType.parseMediaType("application/octet-stream");
-
-       // 다운로드 파일 추가
-       Path path = Paths.get("./upload/" + savedFileName);
-       ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
-
-       return ResponseEntity.ok()
-               .headers(header)
-               .contentType(mediaType)
-               .body(resource);
-   }
-}
-```
-
 
 
 ## 프로젝트 실행 결과
-- 파일 업로드를 수행하면 다음 이미지 처럼 프로젝트의 upload 폴더에 파일이 업로드 된다.
+- NoticeBoard form 페이지에서 파일을 업로드 하면 다음 이미지 처럼 프로젝트의 upload 폴더에 파일이 업로드 된다.
 
 ![image](/assets/images/2020-08-05-Project Lab8/image1.png)
 
 ![image](/assets/images/2020-08-05-Project Lab8/image2.png)
 
 <br>
-- 드래그 앤 드랍으로 파일을 이동시키는 경우 파일 업로드가 된다.
+- 드래그앤드랍으로 파일을 이동시키는 경우 파일 업로드가 된다.
 - 첨부 파일의 삭제(X 버튼 클릭) 클릭한 경우 업로드 하는 파일이 취소되며, 해당 상태에서 Update 버튼을 클릭하면 upload 폴더에 실제 파일이 삭제된다.
 
 ![image](/assets/images/2020-08-05-Project Lab8/image3.png)
