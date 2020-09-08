@@ -1,6 +1,6 @@
 ---
 title: "Project Lab 8. 게시판 개발(파일 업로드 및 다운로드) - 5"
-excerpt: "드래그 앤 드랍 기능을 지원하는 다중 파일 업로드 및 파일 다운로드를 ajax로 개발한 과정을 소개한다."
+excerpt: "드래그앤드랍 기능을 지원하는 다중 파일 업로드 및 파일 다운로드를 ajax로 개발한 과정을 소개한다."
 
 categories:
   - Web
@@ -17,7 +17,7 @@ last_modified_at: 2020-09-08
 ## 파일 업로드 및 다운로드 설계
 - Spirng은 MultipartResolver 인터페이스와 Servlet Multipart Request 그리고 Apache Commons FileUpload API 두 개의 구현체로 파일 업로드를 지원한다. 본 프로젝트에서는 Servlet Multipart Request를 사용하여 파일 업로드를 구현한다.
 - module-app-web 모듈 서버에서 다중 파일 업로드를 하게 되면 ajax를 통하여 요청하며, REST api를 사용하는 module-app-api 모듈 서버가 응답한다.
-- 다중 파일 업로드는 드래그 앤 드랍 기능을 지원한다.
+- 다중 파일 업로드는 드래그앤드랍 기능을 지원한다.
 
 출처: <https://advenoh.tistory.com/26>
 <https://mkyong.com/spring-boot/spring-boot-file-upload-example-ajax-and-rest/><br>
@@ -642,7 +642,8 @@ public class AttachedFileRestController {
 ## View
 - NoticeBoard attachedfiled 관련 데이터를 화면에 출력한다.
 - input tag를 사용하거나, 파일 업로드 영역으로 파일을 드래그앤드랍 하면 파일을 업로드 할 수 있다.
-- 파일을 업로드 하면 파일 정보가 Upload attached file 영역에 출력된다. 파일 정보 오른쪽에 있는 X 아이콘을 클릭하여 업로드 하는 파일을 취소할 수 있다.
+- 파일을 업로드 하면 파일 데이터가 insertFileArray 배열에 추가되고 attachedFileList div 태그 내에 파일 데이터가 출력된다. 파일 데이터 오른쪽에 있는 X 아이콘을 클릭하면 해당되는 insertFileArray 배열의 요소와 attachedFileList div 태그내에 파일 데이터가 삭제되어 업로드 하는 파일을 취소할 수 있다. 
+- 게시글을 수정하는 경우 업로드된 파일 데이터가 uploadedAttachedFileList div 태그내에 파일 데이터가 출력된다. 파일 데이터 오른쪽에 있는 X 아이콘을 클릭하면 해당되는 파일 idx(pk)가 deleteFileArray 배열의 요소에 추가되고 uploadedAttachedFileList div 태그내에 파일 데이터가 삭제되어 업로드된 파일을 삭제할 수 있다. 
 - 게시글이 먼저 업로드된 다음 파일을 업로드가 진행되도록 구현하였다.(파일 업로드 수행시 게시글의 idx가 필요하기 때문이다.) 또한 파일을 수정하는 모든 경우를 고려하여 알고리즘 로직을 구현하였으며, 자세한 알고리즘 로직은 주석을 참고하면 된다.(3개의 첨부 파일 중 2개를 삭제하고 1개를 새로 업로드 하는 경우, 3개의 첨부 파일을 모두 삭제하는 경우, 첨부 파일이 없을 때 파일을 업로드하는 경우 등)
 - formdata 객체는 서버 전송에 필요한 데이터를 저장할 수 있다. 하지만 해당 객체는 보안상의 이유로 console.log(formdata);을 사용하여 객체 정보를 확인할 수 없다. formdata 객체의 정보를 확인하는 방법은 다음과 같다.
 
