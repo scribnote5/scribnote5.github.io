@@ -25,7 +25,9 @@ last_modified_at: 2020-05-05
 $ _includes/sidebar.html
 ```
 
-- 해당 코드는 jekyll 문법으로 인하여 소스코드가 github page 화면에 출력되지 않는다. 따라서 이미지 파일로 대신하고 코드는 하단 댓글로 첨부한다.
+- github page는 해당 소스 코드의 jekyll 문법을 인식하여, 일부 소스 코드가 제대로 출력되지 않는다. 따라서 gitgub URI와 이미지 파일로 대체한다. ~~코드는 하단 댓글로 첨부한다.~~
+
+github page URI: <https://github.com/scribnote5/scribnote5.github.io/blob/master/_includes/sidebar.html>
 
 ![image](/assets/images/2020-05-05-GithubPage1/image0.png)
 
