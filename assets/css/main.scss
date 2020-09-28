@@ -6,3 +6,15 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+.h1 {
+    margin: 3em 0 0 .5em;
+}
+
+.h2 {
+    margin: 2em 0 0 .5em;
+}
+
+.h3 {
+    margin: 1em 0 0 .5em;
+}
