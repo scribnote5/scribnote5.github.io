@@ -75,7 +75,7 @@
 .sidebar__right {
   margin-bottom: 1em;
 
-  @include breakpoint(105em) {
+  @include breakpoint($large) {
     position: absolute;
     top: 0;
     right: 0;
@@ -87,15 +87,17 @@
     &.sticky {
       @include clearfix();
       position: -webkit-sticky;
-      position: sticky;
+      // sdy
+      position: block;
       top: 2em;
       float: right;
     }
   }
 
-  @include breakpoint(120em) {
-    width: $right-sidebar-width;
-    margin-right: -1 * $right-sidebar-width;
+  @include breakpoint($x-large) {
+    // sdy
+    width: $right-sidebar-width-wide;
+    margin-right: -1 * $right-sidebar-width-wide;
   }
 }
 
