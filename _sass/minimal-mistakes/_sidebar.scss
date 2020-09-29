@@ -75,7 +75,7 @@
 .sidebar__right {
   margin-bottom: 1em;
 
-  @include breakpoint($large) {
+  @include breakpoint(105em !default;) {
     position: absolute;
     top: 0;
     right: 0;
@@ -93,7 +93,7 @@
     }
   }
 
-  @include breakpoint($x-large) {
+  @include breakpoint(120em !default;) {
     width: $right-sidebar-width;
     margin-right: -1 * $right-sidebar-width;
   }
