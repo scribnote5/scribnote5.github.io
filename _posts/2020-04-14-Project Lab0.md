@@ -19,8 +19,19 @@ last_modified_at: 2021-04-01
 
 
 
+## 기존 홈페이지
+- 기존 PHP로 개발된 홈페이지 화면이다. 
+
+![image](/assets/images/2020-04-14-Project Lab0/image2.png)
+
+![image](/assets/images/2020-04-14-Project Lab0/image3.png)
+
+![image](/assets/images/2020-04-14-Project Lab0/image4.png)
+
+
+
 ## 목표
-- 기존 PHP로 개발된 노후화된 연구실 홈페이지를 Spring boot를 사용하여 새로 개발한다.
+- 노후화된 연구실 홈페이지를 Spring boot를 사용하여 새로 개발한다.
 - <span style="color:red; font-weight: bold">가장 최적화되고 효율적인 방법을 찾아서 개발하며, 새로운 기술 스택을 사용한다.(Maven 대신 Gradle 등)</span>
 - 체계적인 프로젝트 구조를 가진 상태에서 개발한다.(패키지 구조, 폴더 구조, 사용하는 의존 라이브러리 등)
 - 기존 연구실 홈페이지의 데이터 마이그레이션을 수행한다. 단, 일부 불가능한 데이터의 경우 마이그레이션에서 제외한다. 
@@ -74,8 +85,8 @@ last_modified_at: 2021-04-01
 
 
 
-## 개발 환경 및 기술 스택 
-- 개발 환경 및 기술 스택은 다음과 같다. 상황에 따라서 추후 변경될 수 있다. 
+## 개발 환경 및 주요 사용 기술 스택 
+- 개발 환경 및 주요 사용 기술 스택은 다음과 같다. 상황에 따라서 추후 변경될 수 있다. 
 - Java를 처음 접하였을 때 부터 전자정부프레임워크를 지나 20.06까지 eclipse를 Java IDE로 사용하였다. 하지만 eclipse의 부족한 안정성, 성능 그리고 편의성으로 인하여 Spring boot 개발에 Visual Studio Code를 사용하기로 결심하였다.
 - 현재 IDE로 eclipse를 사용하여 개발하고 이를 기반으로 블로그 게시글을 작성하였지만, 앞으로 eclipse 대신 IntelliJ를 사용할 예정이다. eclipse의 자잘한 버그, 성능 그리고 불편한 편의성에 한계를 느꼈기 때문이다.
 
