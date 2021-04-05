@@ -24,10 +24,6 @@ last_modified_at: 2021-04-01
 
 ![image](/assets/images/2020-04-14-Project Lab0/image2.png)
 
-![image](/assets/images/2020-04-14-Project Lab0/image3.png)
-
-![image](/assets/images/2020-04-14-Project Lab0/image4.png)
-
 
 
 ## 목표
