@@ -7,6 +7,9 @@
    ========================================================================== */
 
 .sidebar {
+  // sdy
+  margin-left: 1rem;
+
   @include clearfix();
   @include breakpoint(max-width $large) {
     /* fix z-index order of follow links */
@@ -15,8 +18,6 @@
     padding: 0px 15px 0px 15px;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-    // sdy
-    margin-left: 1rem;
   }
 
   @include breakpoint($large) {
