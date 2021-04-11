@@ -106,4 +106,10 @@ last_modified_at: 2021-04-01
 - Bootstrap 4.5.1
 - jquery 3.5.1
 - 템플릿 엔진: Thymeleaf 3.0.11
-- WYSIWYG editor: ckeditor 5
+- WYSIWYG editor: Summerntoe -> CKeditor 5로 변경
+
+
+### 참고한 템플릿
+- Vesperr: <https://bootstrapmade.com/vesperr-free-bootstrap-template/><br>
+- Simple Sidebar: <https://startbootstrap.com/template/simple-sidebar><br>
+- Login Form: <https://www.bootstrapdash.com/product/free-bootstrap-login/#product-demo-section>
