@@ -235,11 +235,10 @@ project('module-app-api') {
 ```
 
 <br>
-- 모듈의 역할에 따라 실행 가능한 자바 파일(*.jar)이 생성되지 않도록 한다.
-- 이외 사용하지 않는 다른 모듈의 build.gradle 파일 내용은 삭제한다.
+- module-app-* 모듈은 실행 가능한 자바 파일(*.jar) 파일이 필요하다. 하지만 실행 가능한 자바 파일(*.jar)이 필요없는 모듈의 경우 build.gradle 파일 내용을 삭제한다.
 
 ```
-module-domain-core/build.gradle, module-system-common/build.gradle
+module-domain-core/build.gradle, module-system-common/build.gradle, module-web-core/build.gradle
 ```
 
 ```
