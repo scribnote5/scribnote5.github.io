@@ -126,9 +126,9 @@ OS:           Windows 10 10.0 amd64
 - Project 우클릭 -> New -> Module... -> Gradle 선택 후 모듈 정보를 입력한 다음 모듈을 생성한다.
 - 위와 같은 절차로 하나의 프로젝트 내에서 'module-system-common', 'module-domain-core', 'module-app-api', 'module-app-web', 'module-app-admin' 모듈을 생성한다. 
 
-![image](/assets/images/2020-05-10-Project Lab3/image1.png)
-
 ![image](/assets/images/2020-05-10-Project Lab3/image2.png)
+
+![image](/assets/images/2020-05-10-Project Lab3/image1.png)
 
 ![image](/assets/images/2020-05-10-Project Lab3/image3.png)
 
