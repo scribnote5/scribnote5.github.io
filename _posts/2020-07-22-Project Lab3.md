@@ -95,6 +95,8 @@ A 수정시 B 까지 재빌드
 - 먼저 Gradle Project를 생성해야 하며, 방법은 다음과 같다.
 - File -> New -> Project... -> Gradle 선택 -> 프로젝트 정보 입력 후 생성 -> 앞으로 사용하지 않는 src 디렉터리를 삭제
 
+![image](/assets/images/2020-05-10-Project Lab3/image0.png)
+
 ![image](/assets/images/2020-05-10-Project Lab3/image4.png)
 
 
