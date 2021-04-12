@@ -58,8 +58,6 @@ lab: 루트 프로젝트<br>
 - 일반 사용자 계층을 다루는 모듈이 위치한다.
 - Controller 클래스, Web Resources(html, css, javascript 등) 파일이 위치한다.
 
-![image](/assets/images/2020-05-10-Project Lab3/image4.png)
-
 출처: <https://woowabros.github.io/study/2019/07/01/multi-module.html>
 
 
@@ -97,7 +95,7 @@ A 수정시 B 까지 재빌드
 - 먼저 Gradle Project를 생성해야 하며, 방법은 다음과 같다.
 - File -> New -> Project... -> Gradle 선택 -> 프로젝트 정보 입력 후 생성 -> 앞으로 사용하지 않는 src 디렉터리를 삭제
 
-![image](/assets/images/2020-05-10-Project Lab3/image1.png)
+![image](/assets/images/2020-05-10-Project Lab3/image4.png)
 
 
 ### Gradle 버전 변경
@@ -128,17 +126,18 @@ OS:           Windows 10 10.0 amd64
 - Project 우클릭 -> New -> Module... -> Gradle 선택 후 모듈 정보를 입력한 다음 모듈을 생성한다.
 - 위와 같은 절차로 하나의 프로젝트 내에서 'module-system-common', 'module-domain-core', 'module-app-api', 'module-app-web', 'module-app-admin' 모듈을 생성한다. 
 
+![image](/assets/images/2020-05-10-Project Lab3/image1.png)
+
 ![image](/assets/images/2020-05-10-Project Lab3/image2.png)
 
 ![image](/assets/images/2020-05-10-Project Lab3/image3.png)
 
-![image](/assets/images/2020-05-10-Project Lab3/image4.png)
 
 <br>
-- 다음과 같이 모듈의 의존성을 설정한다.
+- 다음과 같이 모듈 간의 의존성을 설정한다.
 
 ```
-lab/setting.gradle
+lab/settings.gradle
 ```
 
 ```
