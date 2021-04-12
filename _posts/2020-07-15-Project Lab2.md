@@ -16,7 +16,7 @@ last_modified_at: 2020-07-15
 
 
 ## Window 10에 우분투 bash 쉘 설치
-- 하단 출처를 참고하여 우분투 bash 쉘을 설치한다.
+- 하단 출처를 참고하여 Window에 우분투 bash 쉘을 설치한다.
 
 출처: <https://harryp.tistory.com/730>
 
@@ -62,7 +62,7 @@ $ Disallow root login remotely? [Y/n]
 - n: 원격 접속을 허용한다. 
 
 $ Remove test database and access to it? [Y/n] 
-- n: 테스트 DB를 생성하지 않는다. 
+- Y: 테스트 DB를 생성하지 않는다. 
 
 $ Reload privilege tables now? [Y/n] 
 - Y: 권한 테이블을 reload 하여 지금까지 입력한 내용을 반영한다.
@@ -88,8 +88,8 @@ $ GRANT ALL PRIVILEGES ON *.* TO 'scribnote5'@'%' IDENTIFIED BY '123123123';
 # 생성된 계정 조회 후 확인
 $ SELECT host, user, password FROM mysql.user;
 
-# 테스트 DB 생성 
-$ CREATE DATABASE test;
+# lab DB 생성 
+$ CREATE DATABASE lab;
 ```
 
 
@@ -99,17 +99,15 @@ $ CREATE DATABASE test;
 
 ```
 # 계정 삭제
-$ DROP USER 'scribnote5'@%;
+$ DROP USER 'scribnote5'@'%';
 
-# 권한 삭제
-$ REVOKE ALL ON *.* FROM scribnote5@'%';
 
 # 생성된 계정 조회 후 확인
 $ SELECT host, user, password FROM mysql.user;
 
 # 테스트 DB 제거 
-$ DROP DATABASE test;
+$ DROP DATABASE lab;
 ```
 
-출처: <https://jimnong.tistory.com/744>
+출처: <https://jimnong.tistory.com/744><br>
 <https://zetawiki.com/wiki/MySQL_%EC%9B%90%EA%B2%A9_%EC%A0%91%EC%86%8D_%ED%97%88%EC%9A%A9>
