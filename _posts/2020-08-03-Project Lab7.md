@@ -27,8 +27,8 @@ last_modified_at: 2020-09-07
 
 ## Util
 - Java: 게시글이 등록된 날짜와 현재 날짜를 비교한다.
-- 해당 메소드는 비교 단위가 시간이 아닌 날짜의 일로 계산하기에, 시간에 따른 오차가 발생한다.
-- '게시글이 등록된 날짜'가 '현재 날짜 + 2일'보다 이전인 경우(최근에 등록된 게시글) true를 반환하며, 아닌 경우 false를 반환한다.
+- 해당 메소드는 비교 단위가 시간(hour)으로 계산하기에, 시간에 따른 오차가 발생한다.
+- '게시글이 등록된 날짜'가 '현재 시간 + 24시간'보다 이전인 경우(최근에 등록된 게시글) true를 반환하며, 아닌 경우 false를 반환한다.
 
 ```
 module-system-common/src/main/java/kr/ac/univ/util/NewIconCheck.java
@@ -38,29 +38,29 @@ module-system-common/src/main/java/kr/ac/univ/util/NewIconCheck.java
 package kr.ac.univ.util;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class NewIconCheck {
-    public static Boolean isNew(LocalDateTime noticeBoardTime ) {
-        LocalDateTime currentTime = LocalDateTime.now();
-        // 현재 시간과 비교하여 2일 이내에는 newIcon 생성
-        long days = 2;
-        boolean result;
+   public static Boolean isNew(LocalDateTime pastLocalDateTime ) {
+       LocalDateTime currentTime = LocalDateTime.now();
+       // 현재 시간과 비교하여 24시간 이내인 경우 newIcon 생성
+       boolean result;
 
-        if(noticeBoardTime.isAfter(currentTime.minusDays(days))) {
-            result = true;
-        } else {
-            result = false;
-        }
+       if(ChronoUnit.HOURS.between(currentTime , pastLocalDateTime)  >= -24 ) {
+           result = true;
+       } else {
+           result = false;
+       }
 
-        return result;
-    }
+       return result;
+   }
 }
 ```
 
 
 
-## Test
-- '게시글이 등록된 날짜'와 '현재 날짜 + 2일'을 비교하여 최근에 등록된 게시글인지 판별하는 과정을 테스트하였다.
+## JUnit Test
+- '게시글이 등록된 날짜'와 '현재 시간 + 24시간'을 비교하여 최근에 등록된 게시글인지 판별하는 과정을 테스트하였다.
 - 테스트를 수행하려면 비교하고 싶은 날짜와 시간 수정이 필요하다.
 
 ```
@@ -104,7 +104,7 @@ public class NewIconCheckTest {
         // 비교하고 싶은 날짜와 시간을 입력한다.
         LocalDateTime pastDateTime = LocalDateTime.of(2020, 7, 30, 0, 0, 0, 0);
 
-        // 현재 날짜와 비교하고 싶은 날짜의 차이가 2인 경우 Test가 통과된다.
+        // 현재 날짜와 비교하고 싶은 날짜의 차이가 24시간인 경우 Test가 통과된다.
         Assert.assertEquals(NewIconCheck.isNew(pastDateTime),true);
     }
 }
@@ -114,7 +114,7 @@ public class NewIconCheckTest {
 
 ## Domain 및 DTO
 - NoticeBoard에서 사용하는 DTO다.
-- 새로 등록한 댓글인지 확인하는 boolean 자료형의 isNewIcon 멤버 필드가 존재한다.
+- 새로 등록한 게시글인지 확인하는 boolean 자료형 isNewIcon 멤버 필드를 추가하였다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto.java
@@ -156,7 +156,7 @@ public class NoticeBoardDto extends CommonDto {
 
 ## Service
 - NoticeBoard의 비즈니스 로직이다. 
-- findNoticeBoardList(모든 게시글 리스트 검색): 최근 등록된 게시글을 판별하는 로직을 해당  메소드에서 판별한다. 'noticeBoardDto.setNewIcon(NewIconCheck.isNew(LocalDateTime.now()));' 해당 소스 코드는 이후 JPA Audit을 적용한 다음 createdDated(게시글 등록 날짜)로 변경할 예정이다. 수정이 필요하다면 메소드의 파라미터로 게시글의 등록 날짜로 변경하면 된다.
+- findNoticeBoardList(모든 게시글 리스트 검색): 최근 등록된 게시글을 판별하는 로직을 해당  메소드에서 판별한다. 'noticeBoardDto.setNewIcon(NewIconCheck.isNew(LocalDateTime.now()));' 해당 소스 코드는 JPA Audit을 적용한 다음 createdDated(게시글 등록 날짜)로 변경할 예정이다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService.java
@@ -188,7 +188,7 @@ module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardServi
 ## View
 - NoticeBoard 관련 데이터를 화면에 출력한다.
 - 최근 등록된 게시글은 NoticeBoard list.html에서 newIcon의 조건을 판별 후 true인 경우 N 아이콘을 출력한다.
-- 참고로 자바 DTO에서는 isNewIcon 변수를 사용하지만, 이와 다르게 thymeleaf에서는 is가 생략된 newIcon으로 사용한다.
+- 참고로 자바 DTO에서는 isNewIcon 변수를 사용하지만, thymeleaf에서는 이와 다르게 is가 생략된 newIcon 변수를 사용한다.
 
 ```
 module-app-web/src/main/resources/templates/noticeBoard/list.html
