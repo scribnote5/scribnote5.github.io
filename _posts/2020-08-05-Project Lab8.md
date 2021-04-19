@@ -6,7 +6,7 @@ categories:
   - Web
   - Project Lab
 
-last_modified_at: 2020-09-08
+last_modified_at: 2021-04-19
 ---
 래그 앤 드랍 기능을 지원하는 다중 파일 업로드 및 파일 다운로드를 ajax로 개발한 과정을 소개한다.
 - github: <https://github.com/scribnote5/lab>
@@ -49,8 +49,8 @@ $ CREATE TABLE notice_board_attached_file (
 
 
 ## Config
-- max-swallow-size 설정은 업로드 되는 파일 크기 제한을 초과하여 예외가 발생하는 경우, 예외를 내장 톰켓에서 처리하도록 한다. 
-- 해당 설정은 제한된 파일 업로드 크기보다 큰 파일이 업로드되는 경우, 사용자 정의 예외 처리 방식으로 수행된다. 현재 github commit된 코드는 server.tomcat.max-swallow-size의 들여쓰기를 잘못 사용한 상태로 하단 소스 코드로 변경해야 한다. 예외 처리는 추후 다루도록 하겠다.
+- max-swallow-size: 요청 body의 크기를 설정한다. 업로드되는 파일 크기가 제한(20MB)을 초과하여 예외가 발생하는 경우, 사용자 정의 예외처리 방식으로 수행되도록 구현하였다.
+- max-file-size과 max-request-size: 업로드되는 파일 크기를 제한한다. 만약 제한된 파일 업로드 크기보다 큰 파일이 업로드되는 경우 예외가 발생한다. 
 - <span style="color:red; font-weight: bold">파일 업로드 되는 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.(root 프로젝트에 upload 폴더를 생성하면 된다.)</span>
  
 ```
@@ -200,7 +200,7 @@ public class NoticeBoardDto extends CommonDto {
 
 <br>
 - NoticeBoard DTO <-> Entity간 객체 mapping 소스 코드가 Mapstruct에 의해 생성되도록 메소드를 선언 및 정의하는 클래스다.
-- default 메소드는 사용자가 정의한 메소드로, Entity 파일 리스트를 DTO의 파일 리스트로 매핑한다.
+- default 메소드는 사용자가 정의한 메소드로, NoticeBoardAttachedFile 파일 리스트를 NoticeBoardDto의 파일 리스트로 매핑한다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/mapper/NoticeBoardMapper.java
@@ -305,7 +305,7 @@ public class NoticeBoardAttachedFileRepositoryImpl extends QuerydslRepositorySup
 - 자바에서는 입출력 방법으로 IO 라이브러리와  NIO(New IO) 라이브러리를 사용할 수 있다. 
 - NIO 라이브러리는 연결 클라이언트 수가 많고 하나의 입출력 처리 작업이 오래 걸리지 않는 경우에 사용하는 것이 좋다.
 - IO 라이브러리는 연결 클라이언트 수가 적고 전송되는 데이터가 대용량이면서 순차적으로 처리될 필요성이 있는 경우 사용하는 것이 좋다.
-- 프로젝트에서는 업로드하는 파일 크기를 20 MB로 제한할 예정이므로, NIO 라이브러리가 IO 라이브러리 보다 성능상 더 유리하다고 생각였기에 NIO 라이브러리를 사용하여 파일 업로드 및 다운로드를 구현하였다.
+- 프로젝트에서는 업로드하는 파일 크기를 20 MB로 제한할 예정이므로, 적은 시간이 소요되는 입출력 처리 작업이 많은 프로젝트의 특성상 NIO 라이브러리가 IO 라이브러리 보다 성능상 더 유리하다고 생각하였다. 따라서 NIO 라이브러리를 사용하여 파일 업로드 및 다운로드를 구현하였다.
 
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=rain483&logNo=220636709530&proxyReferer=https:%2F%2Fwww.google.com%2F><br>
 <http://eincs.com/2009/08/java-nio-bytebuffer-performance/>
@@ -510,7 +510,7 @@ public class NoticeBoardController {
 
 
 ## RestController
-- NoticeBoard attachedfile 관련 클라이언트의 요청을 json 타입으로 응답한다.
+- NoticeBoard attachedfile 관련 클라이언트의 요청을 처리 후 json 타입으로 응답한다.
 
 ```
 module-app-api/src/main/java/kr/ac/univ/controller/NoticeBoardRestController.java

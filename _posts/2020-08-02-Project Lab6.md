@@ -441,14 +441,13 @@ module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController
 ```
 
 ```java
-model.addAttribute("noticeBoardDto", noticeBoardService.findNoticeBoardByIdx(idx));
+model.addAttribute("noticeBoardDtoList", noticeBoardService.findNoticeBoardByIdx(idx));
 ```
 
 
 
 ## View
 - NoticeBoard 관련 데이터를 화면에 출력한다.
-- Controller에서 전달받은 noticeBoard 변수명을 noticeBoardDto로 변경하였다.
 
 ```
 module-app-web/src/main/resources/templates/noticeBoard/list, form, read
