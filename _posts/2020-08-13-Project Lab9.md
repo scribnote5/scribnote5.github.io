@@ -17,7 +17,7 @@ last_modified_at: 2020-08-05
 ## 페이징 처리 방법: JPA vs DataTables?
 - 게시판의 페이징 처리 방법으로 Spring JPA 또는 Javascript DataTables 라이브러리를 사용할 수 있다.
 - Spring JPA는 페이징 처리 기능을 제공한다. 반면 Javascript DataTables 라이브러리는 페이징 처리 뿐만 아니라 다양한 기능(복잡한 검색 기능, ajax를 사용한 페이징 처리, 모바일 지원 등)들을 간단한 설정과 최소한의 소스 코드 추가를 통하여 사용할 수 있다. 
-- 게시판의 다양한 기능들을 직접 구현하지 않고 빠르게 사용하기를 원한다면, Javascript DataTables 라이브러리를 사용하는 것을 적극 추천한다. 
+- 게시판의 다양한 기능들을 직접 구현하지 않고 빠르게 사용하기를 원한다면, Javascript DataTables 라이브러리를 사용하는 것을 적극 추천한다. 본 프로젝트에서는Spring JPA로 페이징 처리를 구현하였다.(DataTables 라이브러리를 너무 늦게 알게됨)
 
 출처: <https://datatables.net/><br>
 <https://medium.com/@gustavo.ponce.ch/spring-boot-jquery-datatables-a2e816e2b5e9>
@@ -26,7 +26,7 @@ last_modified_at: 2020-08-05
 
 ## 검색 기능 설계
 - 본 프로젝트에서는 Spring JPA의 메소드 이름으로 쿼리 작성하는 방법으로 기본적인 검색 기능을 구현하였다.
-- 검색 기능은 검색 유형(searchType)과 검색어(keyword)로 구성되며, 검색 조건이 여러개인 복잡한 검색 기능은 다루지 않는다. 복잡한 검색 기능은 추후 기회가 되면 개발할 예정이다. 
+- 검색 기능은 검색 유형(searchType)과 검색어(keyword)로 구성되며, 검색 조건이 여러 개인 복잡한 검색 기능은 다루지 않는다. 복잡한 검색 기능은 추후 기회가 되면 개발할 예정이다. 
 
 
 
