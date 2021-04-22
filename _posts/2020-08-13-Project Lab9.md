@@ -167,23 +167,8 @@ module-app-web/src/main/resources/templates/noticeBoard/list.html
 ```
 
 ```html
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-   <!-- css -->
-   <th:block th:replace="layout/css.html"></th:block>
-
-   <title>NoticeBoard List</title>
-</head>
-<body>
-<!-- header -->
-<div th:replace="layout/header::header"></div>
-
-<div class="container">
-   <div class="page-header">
-       <h1>NoticeBoard List</h1>
-   </div>
-
+...
+...
    <form name="form" id="form" th:object="${searchDto}" action="#">
        <div class="pull-right">
            <div class="pull-left" style="width: 100px; margin: 10px 10px;">
@@ -203,84 +188,11 @@ module-app-web/src/main/resources/templates/noticeBoard/list.html
                <button id="search" type="button" class="btn btn-primary btn-block">Search</button>
            </div>
        </div>
-
-       <br/> <br/> <br/>
-       <div id="mainHide">
-           <table class="table table-hover">
-               <thead>
-               <tr>
-                   <th class="col-md-1">No.</th>
-                   <th class="col-md-3">Title</th>
-                   <th class="col-md-1">ID</th>
-                   <th class="col-md-2">Created Date</th>
-                   <th class="col-md-2">Modified Date</th>
-                   <th class="col-md-2">Active Status</th>
-                   <th class="col-md-1">View Count</th>
-               </tr>
-               </thead>
-               <tbody>
-               <tr th:each="noticeBoardDto : ${noticeBoardDtoList}">
-                   <td th:text="${noticeBoardDto.idx}"></td>
-                   <td>
-                       <a th:href="'/notice-board?idx='+${noticeBoardDto.idx}" th:text="${noticeBoardDto.title}"></a>
-                       <img th:if="${noticeBoardDto.newIcon}" th:attr="src=@{|/images/new_icon.png|}"
-                            th:style="'width: 15px; height: 15px'"/>
-                   </td>
-                   <td th:text="${noticeBoardDto.createdBy}">></td>
-                   <td th:text="${#temporals.format(noticeBoardDto.createdDate,'yyyy-MM-dd HH:mm')}"></td>
-                   <td th:text="${#temporals.format(noticeBoardDto.lastModifiedDate,'yyyy-MM-dd HH:mm')}"></td>
-
-                   <td th:if="${noticeBoardDto.activeStatus?.name() == 'ACTIVE'}" th:text="Active"></td>
-                   <td th:if="${noticeBoardDto.activeStatus?.name() == 'INACTIVE'}" th:text="Inactive"></td>
-
-                   <td th:text="${noticeBoardDto.viewCount}"></td>
-               </tr>
-               </tbody>
-           </table>
-       </div>
-       <br>
-
-       <div class="pull-right" style="width: 100px; margin: 10px 0;">
-           <a href="/notice-board/form" class="btn btn-primary btn-block">Register</a>
-       </div>
-
-       <!-- Pagination -->
-       <nav aria-label="Page navigation" style="text-align: center;">
-           <ul class="pagination"
-               th:with="startNumber=${T(Math).floor(noticeBoardDtoList.number/10)}*10+1, endNumber=(${noticeBoardDtoList.totalPages} > ${startNumber}+9) ? ${startNumber}+9 : (${noticeBoardDtoList.totalPages} == 0 ? 1 : ${noticeBoardDtoList.totalPages})">
-               <li>
-                   <a aria-label="Previous"
-                      th:href="@{/notice-board/list(page=1,searchType=*{searchType},keyword=*{keyword})}">&laquo;</a>
-               </li>
-               <li th:style="${noticeBoardDtoList.first} ? 'display:none'">
-                   <a th:href="@{/notice-board/list(page=${noticeBoardDtoList.number},searchType=*{searchType},keyword=*{keyword})}">&lsaquo;</a>
-               </li>
-
-               <li th:each="page :${#numbers.sequence(startNumber, endNumber)}"
-                   th:class="(${page} == ${noticeBoardDtoList.number}+1) ? 'active'">
-                   <a th:href="@{/notice-board/list(page=${page},searchType=*{searchType},keyword=*{keyword})}"
-                      th:text="${page}"><span class="sr-only"></span></a>
-               </li>
-
-               <li th:style="${noticeBoardDtoList.last} ? 'display:none'">
-                   <a th:href="@{/notice-board/list(page=${noticeBoardDtoList.number}+2,searchType=*{searchType},keyword=*{keyword})}">&rsaquo;</a>
-               </li>
-               <li>
-                   <a aria-label="Next"
-                      th:href="@{/notice-board/list(page=${noticeBoardDtoList.totalPages},searchType=*{searchType},keyword=*{keyword})}">&raquo;</a>
-               </li>
-           </ul>
-       </nav>
-       <!-- /Pagination -->
-
+...   
    </form>
 </div>
 
-<!-- footer -->
-<div th:replace="layout/footer::footer"></div>
-
-<!-- script file -->
-<th:block th:replace="layout/script.html"></th:block>
+...
 
 <script>
    $('#search').click(function () {
@@ -289,18 +201,16 @@ module-app-web/src/main/resources/templates/noticeBoard/list.html
        document.form.submit();
    });
 </script>
-
-</body>
-</html>
 ```
 
 
 
 ## 프로젝트 실행 결과
-- 검색 유형에 "TITLE" 검색어에 "12"를 입력하고 페이징 번호를 클릭한 경우, 다음 이미지와 같이 페이징 번호, searchType 그리고 keyword가 포함된 쿼리 스트링을 확인할 수 있다. 
+- 검색 유형에 "TITLE" 검색어에 "12"를 입력하고 페이징 번호를 클릭한 경우 다음 이미지와 같이 페이징 번호, searchType 그리고 keyword가 포함된 쿼리 스트링을 확인할 수 있다. 
 
 ![image](/assets/images/2020-08-13-Project Lab9/image2.png)
 
+<br>
 - 검색 결과, 제목에 "12"가 포함된 게시글 리스트가 출력된다.
 
 ![image](/assets/images/2020-08-13-Project Lab9/image3.png)
