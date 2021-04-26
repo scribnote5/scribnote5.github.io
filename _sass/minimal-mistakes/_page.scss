@@ -532,6 +532,8 @@ body {
   margin-top: 2em;
   padding-top: 1em;
   border-top: 1px solid $border-color;
+  // sdy
+  padding: 0px 35px 0px 35px
 
   @include breakpoint($large) {
     float: right;
