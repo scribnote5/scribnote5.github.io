@@ -71,7 +71,7 @@ _layouts/single.html
 
 ```html
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
-<article class="page" itemscope itemtype="https://schema.org/CreativeWork" style="padding: 0px 25px 0px 25px;">
+<article class="page" itemscope itemtype="https://schema.org/CreativeWork" style="padding: 0px 35px 0px 35px;">
 ```
 
 ```
@@ -80,7 +80,7 @@ _layouts/taxonomy.html
 
 ```html
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
-<div class="archive" style="padding: 0px 25px 0px 25px;">
+<div class="archive" style="padding: 0px 35px 0px 35px;">
 ```
 
 ```
@@ -89,7 +89,7 @@ _layouts/archive.html
 
 ```html
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
-<div class="archive" style="padding: 0px 25px 0px 25px;">
+<div class="archive" style="padding: 0px 35px 0px 35px;">
 ```
 
 ```
@@ -98,7 +98,7 @@ _layouts/search.html
 
 ```html
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
-<div class="archive" style="padding: 0px 25px 0px 25px;">
+<div class="archive" style="padding: 0px 35px 0px 35px;">
 ```
 
 ```
