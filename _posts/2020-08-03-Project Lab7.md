@@ -12,7 +12,7 @@ last_modified_at: 2020-09-07
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/51751f0a9c6b8a7b2fc75e39f449697588f38026>
 
-
+- 최신 프로젝트 코드와 형상이 다를 수 있습니다. 게시글 코드는 참고만 하시되, 최신 코드는 github에서 확인 부탁드립니다.
 
 ## 새로운 글 표시
 - 하단 이미지는 네이버 카페에서 새로운 게시글을 등록하였을 때, N 아이콘을 사용하여 사용자에게 최근 등록된 게시글임을 알려주고 있다.

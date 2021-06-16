@@ -12,7 +12,7 @@ last_modified_at: 2021-04-19
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/c7dd944785ff76133498ff6e95df748b140c717b>
 
-
+- 최신 프로젝트 코드와 형상이 다를 수 있습니다. 게시글 코드는 참고만 하시되, 최신 코드는 github에서 확인 부탁드립니다.
 
 ## 파일 업로드 및 다운로드 설계
 - Spirng은 MultipartResolver 인터페이스와 Servlet Multipart Request 그리고 Apache Commons FileUpload API 두 개의 구현체로 파일 업로드를 지원한다. 본 프로젝트에서는 Servlet Multipart Request를 사용하여 파일 업로드를 구현한다.
@@ -34,7 +34,7 @@ last_modified_at: 2021-04-19
 - 프로젝트에서 사용할 게시판 첨부 파일 table을 생성한다.
 
 ```sql
-# notice_board_attached_file 테이블 생성
+# notice_board_attached_file
 $ CREATE TABLE notice_board_attached_file (
  idx               bigint auto_increment    primary key,
  created_by        varchar(255)    null,
@@ -74,7 +74,7 @@ server:
 
 
 ## Domain 및 DTO 설계
-- 모든 Attachedfile에서 공통적으로 사용하는 Domain이다.
+- 모든 Attachedfile에서 공통적으로 사용하는 Domain다.
 
 ```
 module-domain-core/src/main/java/kr/ac/univ/common/domain/AttachedFileAudit.java

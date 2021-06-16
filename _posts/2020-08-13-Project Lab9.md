@@ -12,7 +12,7 @@ last_modified_at: 2020-08-05
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/b806ca1160cca021c5e1abdc2ad012686965dee8>
 
-
+- 최신 프로젝트 코드와 형상이 다를 수 있습니다. 게시글 코드는 참고만 하시되, 최신 코드는 github에서 확인 부탁드립니다.
 
 ## 페이징 처리 방법: JPA vs DataTables?
 - 게시판의 페이징 처리 방법으로 Spring JPA 또는 Javascript DataTables 라이브러리를 사용할 수 있다.

@@ -12,7 +12,7 @@ last_modified_at: 2021-04-19
 - github: <https://github.com/scribnote5/lab>
 - github commit: <https://github.com/scribnote5/lab/commit/f4397007c39e0844c2c05822a640561636b14631>
 
-
+- 최신 프로젝트 코드와 형상이 다를 수 있습니다. 게시글 코드는 참고만 하시되, 최신 코드는 github에서 확인 부탁드립니다.
 
 ## QueryDsl를 사용하는 이유
 - 1. QueryDsl을 사용하는 가장 큰 이유는 JPA 에서 제공하지 않는 동적 쿼리를 수행할 수 있기 때문이다.
