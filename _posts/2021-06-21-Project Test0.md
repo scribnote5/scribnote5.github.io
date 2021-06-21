@@ -1,6 +1,6 @@
 ---
-title: "Project Lab 27. 추가 개발 및 유지보수 - 1"
-excerpt: "- 추가 개발 및 유지보수 과정을 소개한다."
+title: "Project Test 0. 신뢰성 시험 설명 페이지 소개"
+excerpt: "신뢰성 시험 설명 페이지 개발 프로젝트를 소개한다."
 categories:
   - Web
   - Project Test
