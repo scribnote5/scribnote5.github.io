@@ -88,10 +88,14 @@ build.gradle
 ```
 
 ```
-implementation "org.mapstruct:mapstruct:1.3.1.Final" implementation "org.projectlombok:lombok:1.18.16" implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+implementation "org.mapstruct:mapstruct:1.3.1.Final" 
+implementation "org.projectlombok:lombok:1.18.16" 
+implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 
  // 순서에 영향을 받지 않는다.
-annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0" annotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final" annotationProcessor "org.projectlombok:lombok:1.18.16"
+annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0" 
+annotationProcessor "org.mapstruct:mapstruct-processor:1.3.1.Final" 
+annotationProcessor "org.projectlombok:lombok:1.18.16"
 ```
 
 출처: <https://huisam.tistory.com/entry/mapStruct><br>
