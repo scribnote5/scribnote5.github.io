@@ -1,6 +1,6 @@
 ---
-title: "Project Test 0. 신뢰성 시험 설명 페이지 소개"
-excerpt: "신뢰성 시험 설명 페이지 개발 프로젝트를 소개한다."
+title: "Project Test 0. 소프트웨어 테스트 포럼 소개"
+excerpt: "소프트웨어 테스트 포럼 개발 프로젝트를 소개한다."
 categories:
   - Web
   - Project Test
