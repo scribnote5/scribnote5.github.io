@@ -22,4 +22,4 @@ layout: single
 - 진행 기간: 2021.06.16 ~ 2021.08.31
 
 - 프로젝트 게시글 리스트: <https://scribnote5.github.io/categories/#project-test>
-- 개발 프로젝트 소개: <https://scribnote5.github.io/web/project%20test/Project-Test0//>
+- 개발 프로젝트 소개: <https://scribnote5.github.io/web/project%20test/Project-Test0/>
