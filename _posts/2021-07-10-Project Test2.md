@@ -12,7 +12,7 @@ layout: post
 
 
 ## Vue.js란?
-- Vue.js는 프론트엔드 프레임워크로서, 컴포넌트(Component) 기반의 SPA(Single Page Application)를 구축할 수 있게 하는 프레임워크다. 
+- Vue.js는 프론트엔드 프레임워크로서, 컴포넌트(Component) 기반의 SPA(Single Page Application)를 구축할 수 있게 하는 프레임워크다.
 
 
 ### 컴포넌트(Component)
@@ -23,7 +23,7 @@ layout: post
 ### SPA(Single Page Application)
 - 단일 페이지 애플리케이션으로, 하나의 페이지 안에서 필요한 영역 부분만 로딩되는 형태
 - 빠른 페이지 변환
-- 적은 트래픽 양 
+- 적은 트래픽 양
 
 
 
@@ -32,7 +32,7 @@ layout: post
 - 최신 릴리즈된 Vue.js 3는 기존 버전의 한계점을 해결하고자 노력하였다. 특히 기존 버전의 코드 복잡성을 해결하기 위한 Composition API 도입은 새로운 버전을 선택한 가장 큰 계기다. 새로운 버전인 만큼 구글링을 통하여 얻는 자료에 한계가 있지만, 처음 배우는 만큼 새로운 버전을 선택하였다.
 - 최신 Vue.js 3 개발 가이드라인을 준수하여 개발할 것을 목표로 한다.
 
-출처: 
+출처:
 <https://joshua1988.github.io/web-development/vuejs/vue3-coming/#vuejs%EC%9D%98-%EA%B8%B0%EC%A1%B4-%ED%95%9C%EA%B3%84%EC%A0%90---%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%9E%AC%EC%82%AC%EC%9A%A9><br>
 <https://www.s-core.co.kr/insight/view/vue-js-3-0-%EB%AC%B4%EC%97%87%EC%9D%B4-%EB%8B%AC%EB%9D%BC%EC%A1%8C%EB%8A%94%EA%B0%80/>
 
@@ -70,16 +70,16 @@ $ vue create front
 
 # Manually select features 클릭
 
-# Choose Vue version, Babel, Router, Vuex, CSS Pre-procesor 선택 
+# Choose Vue version, Babel, Router, Vuex, CSS Pre-procesor 선택
 # Linter / Formatter는 선택하지 않는 것을 권고(코드 포맷을 검사하는 설정으로 자잘한 버그가 많으며, 수정하기 곤란한 부분도 존재)
 
 # 다음과 같이 선택 후 클릭
-# ? Please pick a preset: Manually select features 
-# ? Check the features needed for your project: Choose Vue version, Babel, Router, Vuex, CSS Pre-processors 
-# ? Choose a version of Vue.js that you want to start the project with 3.x 
-# ? Use history mode for router? (Requires proper server setup for index fallback in production) Yes 
-# ? Pick a CSS pre-processor (Postcss, Autoprefixer and CSS Modules are supported by default): Sass/SCSS (with node-sass) 
-# ? Where do you prefer placing config for Babel, ESLint, etc.? In package.json 
+# ? Please pick a preset: Manually select features
+# ? Check the features needed for your project: Choose Vue version, Babel, Router, Vuex, CSS Pre-processors
+# ? Choose a version of Vue.js that you want to start the project with 3.x
+# ? Use history mode for router? (Requires proper server setup for index fallback in production) Yes
+# ? Pick a CSS pre-processor (Postcss, Autoprefixer and CSS Modules are supported by default): Sass/SCSS (with node-sass)
+# ? Where do you prefer placing config for Babel, ESLint, etc.? In package.json
 # ? Save this as a preset for future projects? No
 
 # 서버 실행 후, http://localhost:8080 에서 Vue.js 서버 페이지를 확인 가능
@@ -90,7 +90,7 @@ $ npm run serve
 
 
 ## Vue.js에서 사용하는 핵심 모듈
-- Vue.js에서 사용하는 핵심 모듈은 다음과 같다. 
+- Vue.js에서 사용하는 핵심 모듈은 다음과 같다.
 
 - vuex: Vue.js의 store 관리를 위한 모듈
 - vee-validate: Form 검증을 위한 모듈
@@ -101,10 +101,10 @@ $ npm run serve
 
 ### Vue.js 프로젝트 구조
 - Vue.js 프로젝트를 어떤 방식으로 구성할지 고민을 많이 하였는데, 하단 출처의 'vue-enterprise-boilerplate’ 프로젝트를 참고하여 구성하였다.
-- 해당 프로젝트 구조는 Vue의 기본 규칙을 가장 잘 따른 프로젝트 라고 하며, 현재 프로젝트 규모에 적용하기 알맞은 구조라고 생각한다. 
-- 여담으로 vuesion 프로젝트를 참고하여 프로젝트 구조를 구성하려고 하였지만 프로젝트 규모가 대규모가 아니므로 적합하지 않다고 판단하였다. 
-- Vue.js 프로젝트는 Spring Boot 프로젝트 module-app-web 모듈의 front 폴더에 위치하도록 하였다. 
+- 해당 프로젝트 구조는 Vue의 기본 규칙을 가장 잘 따른 프로젝트 라고 하며, 현재 프로젝트 규모에 적용하기 알맞은 구조라고 생각한다.
+- 여담으로 vuesion 프로젝트를 참고하여 프로젝트 구조를 구성하려고 하였지만 프로젝트 규모가 대규모가 아니므로 적합하지 않다고 판단하였다.
+- Vue.js 프로젝트는 Spring Boot 프로젝트 module-app-web 모듈의 front 폴더에 위치하도록 하였다.
 
-![image](/assets/images/2021-07-10-Project Test2/image1.png)
+![image](/assets/img/2021-07-10-Project Test2/image1.png)
 
 출처: <https://velog.io/@cindy-choi/VUE-%EC%9A%B0%EC%95%84%ED%95%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%A1%B0-%EC%A7%9C%EA%B8%B0>

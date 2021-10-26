@@ -23,7 +23,7 @@ layout: post
 - 네이버 카페처럼 새로운 게시글을 등록하였을 때, 사용자가 이를 확인할 수 있는 기능을 개발하려고 한다.
 - 새로운 글인지를 판별하기 위해서는 등록될 때 날짜와 현재 날짜를 비교해야 한다.
 
-![image](/assets/images/2020-08-03-Project Lab7/image1.png)
+![image](/assets/img/2020-08-03-Project Lab7/image1.png)
 
 출처: <https://cafe.naver.com/thisisjava>
 
@@ -159,7 +159,7 @@ public class NoticeBoardDto extends CommonDto {
 
 
 ## Service
-- NoticeBoard의 비즈니스 로직이다. 
+- NoticeBoard의 비즈니스 로직이다.
 - findNoticeBoardList(모든 게시글 리스트 검색): 최근 등록된 게시글을 판별하는 로직을 해당  메소드에서 판별한다. 'noticeBoardDto.setNewIcon(NewIconCheck.isNew(LocalDateTime.now()));' 해당 소스 코드는 JPA Audit을 적용한 다음 createdDated(게시글 등록 날짜)로 변경할 예정이다.
 
 ```
@@ -210,4 +210,4 @@ module-app-web/src/main/resources/templates/noticeBoard/list.html
 ## 프로젝트 실행 및 결과
 - 다음과 같이 새로 등록된 게시글에 N 아이콘이 표시되는 것을 확인할 수 있다.
 
-![image](/assets/images/2020-08-03-Project Lab7/image2.png)
+![image](/assets/img/2020-08-03-Project Lab7/image2.png)

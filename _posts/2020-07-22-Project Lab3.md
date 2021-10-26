@@ -28,7 +28,7 @@ URI와 URL 차이: <https://velog.io/@pa324/%EA%B0%9C%EB%B0%9C%EC%83%81%EC%8B%9D
 ### Gradle Multi Module
 - 멀티 모듈 프로젝트는 기존의 단일 프로젝트 내에 여러 모듈을 가질 수 있는 구조를 제공한다.
 - 이로 인해서, 개발자는 하나의 프로젝트를 여러 모듈로 분리하여 RESTful 시스템 개발에서 발생하는 소스 코드 중복 처리 및 동일성 문제를 해결할 수 있다.
-- 본 프로젝트는 하단의 우아한형제 기술 블로그를 참고하여 프로젝트의 모듈을 구성하였고, 각 모듈의 역할을 설계하여 그 역할을 따르고자 하였다. 
+- 본 프로젝트는 하단의 우아한형제 기술 블로그를 참고하여 프로젝트의 모듈을 구성하였고, 각 모듈의 역할을 설계하여 그 역할을 따르고자 하였다.
 - 우아한형제 기술 블로그에서 다루는 프로젝트와 다르게 비교적 작은 시스템을 개발하기에, 본 프로젝트 구조를 고려하여 필요한 모듈과 그에 따른 역할을 변경하였으며, 다음과 같이 프로젝트 내 모듈 구조를 가진다.
 
 lab: 루트 프로젝트<br>
@@ -68,12 +68,12 @@ lab: 루트 프로젝트<br>
 
 
 ### Gradle api, implementation 키워드 차이
-- Gradle 버전이 업데이트 되면서 compile 키워드는 deprecated(앞으로 사라지게 됨) 되었다. 대신 이를 대체할 수 있는 api와 implementation을 키워드가 새로 생겨났다. 
-- api 키워드는 기존 compile 키워드와 동일하며, 연관된 모든 의존성 라이브러리를 재빌드하고 모든 상위 의존성 라이브러리에 접근할 수 있다. 
-- implementation 키워드는 연관된 단일 의존성 라이브러리만 재빌드하고 해당 의존성 라이브러리만 접근할 수 있다. 
+- Gradle 버전이 업데이트 되면서 compile 키워드는 deprecated(앞으로 사라지게 됨) 되었다. 대신 이를 대체할 수 있는 api와 implementation을 키워드가 새로 생겨났다.
+- api 키워드는 기존 compile 키워드와 동일하며, 연관된 모든 의존성 라이브러리를 재빌드하고 모든 상위 의존성 라이브러리에 접근할 수 있다.
+- implementation 키워드는 연관된 단일 의존성 라이브러리만 재빌드하고 해당 의존성 라이브러리만 접근할 수 있다.
 - 프로젝트 내 구조를 고려하여, api 키워드 대신 implementation 키워드를 사용하면 프로젝트의 빌드 시간을 감소시킬 수 있다.
 
-ex) <br> 
+ex) <br>
 api: 의존성 라이브러리 수정시 해당 모듈을 의존하고 있는 모듈들 또한 재빌드<br>
 A(api) <- B <- C 일 때, C에서 A 접근 가능<br>
 A 수정시 B 와 C 모두 재빌드
@@ -94,9 +94,9 @@ A 수정시 B 까지 재빌드
 - 먼저 Gradle Project를 생성해야 하며, 방법은 다음과 같다.
 - File -> New -> Project... -> Gradle 선택 -> 프로젝트 정보 입력 후 생성 -> 앞으로 사용하지 않는 src 디렉터리를 삭제
 
-![image](/assets/images/2020-05-10-Project Lab3/image0.png)
+![image](/assets/img/2020-05-10-Project Lab3/image0.png)
 
-![image](/assets/images/2020-05-10-Project Lab3/image4.png)
+![image](/assets/img/2020-05-10-Project Lab3/image4.png)
 
 
 ### Gradle 버전 변경
@@ -123,15 +123,15 @@ OS:           Windows 10 10.0 amd64
 ```
 
 
-### Gradle Multi Module 생성 
+### Gradle Multi Module 생성
 - Project 우클릭 -> New -> Module... -> Gradle 선택 후 모듈 정보를 입력한 다음 모듈을 생성한다.
-- 위와 같은 절차로 하나의 프로젝트 내에서 'module-system-common', 'module-domain-core', 'module-app-api', 'module-app-web', 'module-app-admin' 모듈을 생성한다. 
+- 위와 같은 절차로 하나의 프로젝트 내에서 'module-system-common', 'module-domain-core', 'module-app-api', 'module-app-web', 'module-app-admin' 모듈을 생성한다.
 
-![image](/assets/images/2020-05-10-Project Lab3/image2.png)
+![image](/assets/img/2020-05-10-Project Lab3/image2.png)
 
-![image](/assets/images/2020-05-10-Project Lab3/image1.png)
+![image](/assets/img/2020-05-10-Project Lab3/image1.png)
 
-![image](/assets/images/2020-05-10-Project Lab3/image3.png)
+![image](/assets/img/2020-05-10-Project Lab3/image3.png)
 
 
 <br>
@@ -154,7 +154,7 @@ include 'module-app-admin'
 - root 프로젝트에서 Spring Boot를 사용하기 위한 필수 의존성 라이브러리를 선언한다.
 
 ```
-lab/build.gradle 
+lab/build.gradle
 ```
 
 ```

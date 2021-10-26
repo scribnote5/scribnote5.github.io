@@ -29,18 +29,18 @@ layout: post
 
 
 ## QueryDsl 적용
-- QueryDsl을 적용하는 방법은 크게 두 가지가 있다. 
+- QueryDsl을 적용하는 방법은 크게 두 가지가 있다.
 
 
 ### 1. QueryDsl plugins 사용
 - 'com.ewerk.gradle.plugins.querydsl' 플러그인을 사용하는 방법으로, <span style="color:red; font-weight: bold"> 여러 문제가 발생하기에 '2. Gradle annotationProcessor' 방법을 사용해야 한다.</span>
-- Gradle 버전 4.6 이전과 이후일 때 적용 방법이 다르고, 2018년 이후 플러그인이 더이상 업데이트 되지 않고 있으며, Q Domain을 IntelliJ가 자동으로 인식하지 못하여 프로젝트에서 수동으로 Q Domain 경로를 지정해야 하는 번거로움이 있다. 
+- Gradle 버전 4.6 이전과 이후일 때 적용 방법이 다르고, 2018년 이후 플러그인이 더이상 업데이트 되지 않고 있으며, Q Domain을 IntelliJ가 자동으로 인식하지 못하여 프로젝트에서 수동으로 Q Domain 경로를 지정해야 하는 번거로움이 있다.
 - 해당 에러는 프로젝트 빌드할 때 중간에 멈추게 만들어 devtools를 통한 auto 빌드에 큰 불폄함을 초래한다. 하지만 에러 해결 방법을 찾지 못했다.
 
 출처: <https://www.inflearn.com/questions/23530>
 
 
-### 2. Gradle annotationProcessor 사용 
+### 2. Gradle annotationProcessor 사용
 - 기존 QueryDsl plugins 사용으로 발생하는 불편함과 에러를 해결하기 위한 방법을 찾던 도중 Gradle annotationProcessor로 QueryDsl을 사용하는 방법을 적용하였다.
 - 해당 방법은 Gradle build 에러도 발생하지 않고 Q Domain 경로를 자동으로 인식하므로, <span style="color:red; font-weight: bold">해당 방법을 사용해야 한다.</span>
 
@@ -86,9 +86,9 @@ configure(queryDslProjects) {
 - Gradle build를 수행하면 다음 이미지와 같이 프로젝트에서 Q Domain을 자동으로 생성하고, Q Domain 경로를 자동으로 인식한다.
 - 다음은 Gradle build 할 때 Q Domain을 자동으로 생성한 코드다.
 
-![image](/assets/images/2020-07-30-Project Lab5/image1.png)
+![image](/assets/img/2020-07-30-Project Lab5/image1.png)
 
-![image](/assets/images/2020-07-30-Project Lab5/image2.png)
+![image](/assets/img/2020-07-30-Project Lab5/image2.png)
 
 출처: <http://honeymon.io/tech/2020/07/09/gradle-annotation-processor-with-querydsl.html>
 
@@ -303,13 +303,13 @@ public class NoticeBoardService {
 
         return NoticeBoardMapper.INSTANCE.toDto(noticeBoardRepository.findById(idx).orElse(new NoticeBoard()));
     }
-    
+
     ...
 ```
 
 
 
 ## 프로젝트 실행 및 결과
-- 다음 이미지와 같이 게시글을 조회하는 경우 조회수가 1 증가하는 것을 확인할 수 있다. 
+- 다음 이미지와 같이 게시글을 조회하는 경우 조회수가 1 증가하는 것을 확인할 수 있다.
 
-![image](/assets/images/2020-07-30-Project Lab5/image3.png)
+![image](/assets/img/2020-07-30-Project Lab5/image3.png)

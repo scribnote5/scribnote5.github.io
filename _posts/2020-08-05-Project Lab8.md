@@ -54,9 +54,9 @@ $ CREATE TABLE notice_board_attached_file (
 
 ## Config
 - max-swallow-size: 요청 body의 크기를 설정한다. 업로드되는 파일 크기가 제한(20MB)을 초과하여 예외가 발생하는 경우, 사용자 정의 예외처리 방식으로 수행되도록 구현하였다.
-- max-file-size과 max-request-size: 업로드되는 파일 크기를 제한한다. 만약 제한된 파일 업로드 크기보다 큰 파일이 업로드되는 경우 예외가 발생한다. 
+- max-file-size과 max-request-size: 업로드되는 파일 크기를 제한한다. 만약 제한된 파일 업로드 크기보다 큰 파일이 업로드되는 경우 예외가 발생한다.
 - <span style="color:red; font-weight: bold">파일 업로드 되는 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.(root 프로젝트에 upload 폴더를 생성하면 된다.)</span>
- 
+
 ```
 module-app-api/src/main/resources/application.yml
 ```
@@ -303,10 +303,10 @@ public class NoticeBoardAttachedFileRepositoryImpl extends QuerydslRepositorySup
 
 
 ## Service
-- NoticeBoard attachedfile의 비즈니스 로직이다. 
-- uploadAttachedFile: view에서 전달받은 파일을 저장하는 로직이다. 
+- NoticeBoard attachedfile의 비즈니스 로직이다.
+- uploadAttachedFile: view에서 전달받은 파일을 저장하는 로직이다.
 - 파일명 앞에 고유한 식별문자를 생성하는 UUID를 사용하여 파일명 중복이 발생하지 않도록 하였다.
-- 자바에서는 입출력 방법으로 IO 라이브러리와  NIO(New IO) 라이브러리를 사용할 수 있다. 
+- 자바에서는 입출력 방법으로 IO 라이브러리와  NIO(New IO) 라이브러리를 사용할 수 있다.
 - NIO 라이브러리는 연결 클라이언트 수가 많고 하나의 입출력 처리 작업이 오래 걸리지 않는 경우에 사용하는 것이 좋다.
 - IO 라이브러리는 연결 클라이언트 수가 적고 전송되는 데이터가 대용량이면서 순차적으로 처리될 필요성이 있는 경우 사용하는 것이 좋다.
 - 프로젝트에서는 업로드하는 파일 크기를 20 MB로 제한할 예정이므로, 적은 시간이 소요되는 입출력 처리 작업이 많은 프로젝트의 특성상 NIO 라이브러리가 IO 라이브러리 보다 성능상 더 유리하다고 생각하였다. 따라서 NIO 라이브러리를 사용하여 파일 업로드 및 다운로드를 구현하였다.
@@ -646,8 +646,8 @@ public class AttachedFileRestController {
 ## View
 - NoticeBoard attachedfiled 관련 데이터를 화면에 출력한다.
 - input tag를 사용하거나, 파일 업로드 영역으로 파일을 드래그앤드랍 하면 파일을 업로드 할 수 있다.
-- 파일을 업로드 하면 파일 데이터가 insertFileArray 배열에 추가되고 attachedFileList div 태그 내에 파일 데이터가 출력된다. 파일 데이터 오른쪽에 있는 X 아이콘을 클릭하면 해당되는 insertFileArray 배열의 요소와 attachedFileList div 태그내에 파일 데이터가 삭제되어 업로드 하는 파일을 취소할 수 있다. 
-- 게시글을 수정하는 경우 업로드된 파일 데이터가 uploadedAttachedFileList div 태그내에 파일 데이터가 출력된다. 파일 데이터 오른쪽에 있는 X 아이콘을 클릭하면 해당되는 파일 idx(pk)가 deleteFileArray 배열의 요소에 추가되고 uploadedAttachedFileList div 태그내에 파일 데이터가 삭제되어 업로드된 파일을 삭제할 수 있다. 
+- 파일을 업로드 하면 파일 데이터가 insertFileArray 배열에 추가되고 attachedFileList div 태그 내에 파일 데이터가 출력된다. 파일 데이터 오른쪽에 있는 X 아이콘을 클릭하면 해당되는 insertFileArray 배열의 요소와 attachedFileList div 태그내에 파일 데이터가 삭제되어 업로드 하는 파일을 취소할 수 있다.
+- 게시글을 수정하는 경우 업로드된 파일 데이터가 uploadedAttachedFileList div 태그내에 파일 데이터가 출력된다. 파일 데이터 오른쪽에 있는 X 아이콘을 클릭하면 해당되는 파일 idx(pk)가 deleteFileArray 배열의 요소에 추가되고 uploadedAttachedFileList div 태그내에 파일 데이터가 삭제되어 업로드된 파일을 삭제할 수 있다.
 - 게시글이 먼저 업로드된 다음 파일을 업로드가 진행되도록 구현하였다.(파일 업로드 수행시 게시글의 idx가 필요하기 때문이다.) 또한 파일을 수정하는 모든 경우를 고려하여 알고리즘 로직을 구현하였으며, 자세한 알고리즘 로직은 주석을 참고하면 된다.(3개의 첨부 파일 중 2개를 삭제하고 1개를 새로 업로드 하는 경우, 3개의 첨부 파일을 모두 삭제하는 경우, 첨부 파일이 없을 때 파일을 업로드하는 경우 등)
 - formdata 객체는 서버 전송에 필요한 데이터를 저장할 수 있다. 하지만 해당 객체는 보안상의 이유로 console.log(formdata);을 사용하여 객체 정보를 확인할 수 없다. formdata 객체의 정보를 확인하는 방법은 다음과 같다.
 
@@ -1019,7 +1019,7 @@ function convertFileSize(fileSize) {
 ```
 
 <br>
-- Javascript: fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시킨다. 
+- Javascript: fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시킨다.
 
 ```
 module-app-web/src/main/resources/templates/layout/script.html
@@ -1036,14 +1036,14 @@ module-app-web/src/main/resources/templates/layout/script.html
 ## 프로젝트 실행 결과
 - NoticeBoard form 페이지에서 파일을 업로드 하면 다음 이미지 처럼 프로젝트의 upload 폴더에 파일이 업로드 된다.
 
-![image](/assets/images/2020-08-05-Project Lab8/image1.png)
+![image](/assets/img/2020-08-05-Project Lab8/image1.png)
 
-![image](/assets/images/2020-08-05-Project Lab8/image2.png)
+![image](/assets/img/2020-08-05-Project Lab8/image2.png)
 
 <br>
 - 드래그앤드랍으로 파일을 이동시키는 경우 파일 업로드가 된다.
 - 첨부 파일의 삭제(X 버튼 클릭) 클릭한 경우 업로드 하는 파일이 취소되며, 해당 상태에서 Update 버튼을 클릭하면 upload 폴더에 실제 파일이 삭제된다.
 
-![image](/assets/images/2020-08-05-Project Lab8/image3.png)
+![image](/assets/img/2020-08-05-Project Lab8/image3.png)
 
-![image](/assets/images/2020-08-05-Project Lab8/image4.png)
+![image](/assets/img/2020-08-05-Project Lab8/image4.png)

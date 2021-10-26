@@ -12,9 +12,9 @@ layout: post
 
 
 ## CKEditor란?
-- 일반적으로 게시판에 글을 작성할 때 다양한 편집 기능을 제공하는 WYSIWYG 중 하나다. 
+- 일반적으로 게시판에 글을 작성할 때 다양한 편집 기능을 제공하는 WYSIWYG 중 하나다.
 - CKEditor 이외에도 Summernote, TinyMCE, Froala Editor 등 다양한 WYSIWYG가 존재한다.
-- CKEditor를 선택한 계기는 기존에는 summernote를 사용하였지만, 애니메이션 효과가 적용되지 않아서 변경하게 되었다. 또한 summernote에 비하여 다양한 기능을 제공하고, 디자인도 조금 더 깔끔한 것 같아서 최신 버전인 CKEditor5를 선택하였다. 
+- CKEditor를 선택한 계기는 기존에는 summernote를 사용하였지만, 애니메이션 효과가 적용되지 않아서 변경하게 되었다. 또한 summernote에 비하여 다양한 기능을 제공하고, 디자인도 조금 더 깔끔한 것 같아서 최신 버전인 CKEditor5를 선택하였다.
 
 
 
@@ -39,7 +39,7 @@ npm install --save \
     raw-loader@0.5.1
 ```
 
-- CKEditor 관련 모듈(템플릿, plugins)를 설치한다. 
+- CKEditor 관련 모듈(템플릿, plugins)를 설치한다.
 - CKEditor 플러그인을 알아보면서 편집에 필요한 기본 플러그인, 편의성을 제공하는 플러그인, 응용 플러그인을 모두 추가하였다. 해당 설정대로 진행하면 어느정도 보장된 수준의 플러그인을 제공한다.
 - 개발자가 구현하려는 시스템에 따라서 CKEditor에서 사용할 모듈을 추가 및 제거하면 된다.
 
@@ -513,7 +513,7 @@ module.exports = {
 }
 ```
 
-- CKEditor 플러그인, 메뉴바를 초기화하는 파일이다. 
+- CKEditor 플러그인, 메뉴바를 초기화하는 파일이다.
 - CKEditor 플러그인을 알아보면서 편집에 필요한 기본 플러그인, 편의성을 제공하는 플러그인, 응용 플러그인을 모두 추가하였다. 해당 설정대로 진행하면 어느정도 보장된 수준의 플러그인을 제공한다.
 - 워드를 바탕으로 메뉴바 기능을 정렬하여, 익숙한 사용성을 제공하려고 하였다.
 - 개발자가 구현하려는 시스템에 따라서 수정하면 된다.
@@ -768,7 +768,7 @@ export { editor, editorData, editorConfig };
 
 - CKEditor Content 영역에 파일을 드래그앤드랍 하는 경우 발생하는 이벤트를 처리하는 파일이다. 드래그앤드랍 기능을 구현할 수 있다.
 - API 서버를 구현되어 있을 때, 파일 드래그앤드랍 이벤트가 발생하는 경우 비동기 방식으로 파일이 API 서버로 전송되어 업로드 된다.
-- xhr.open('POST', 'localhost' + '/api/attachedFiles/upload', true); 에 파일 업로드를 처리하는 API 서버 URI를 입력하면 된다. 
+- xhr.open('POST', 'localhost' + '/api/attachedFiles/upload', true); 에 파일 업로드를 처리하는 API 서버 URI를 입력하면 된다.
 
 ```
 /src/assets/plugins/ckeditor/ckeditor-upload-adapter.js
@@ -811,7 +811,7 @@ class CustomUploadAdapter {
             }
 
             resolve({
-                default: response.url 
+                default: response.url
             })
         })
     }
@@ -875,12 +875,12 @@ export default {
 };
 ```
 
-![image](/assets/images/2021-07-17-Project Test3/image1.png)
+![image](/assets/img/2021-07-17-Project Test3/image1.png)
 <br>
 
 - DB에 저장된 CKEditor 5에서 데이터를 프론트엔드로 전달하는 경우 HTML escape로 인하여 vue.js의 v-html(HTML 코드를 HTML 태그로 변환)을 사용하여도 HTML 태그로 변환되지 않는다.
 - HTML 코드를 unescape 하는 함수를 사용해야 HTML 코드가 HTML 태그로 변환된다.
-- 벡엔드에서 HtmlUtils.htmlUnescape 메소드를 사용하여 HTML unescape된 CKEditor 데이터를 전달하려고 하였다. 
+- 벡엔드에서 HtmlUtils.htmlUnescape 메소드를 사용하여 HTML unescape된 CKEditor 데이터를 전달하려고 하였다.
 - 그러나 벡엔드에서 XSS 공격을 대비하기 위해서 HTML unescape 필터를 등록하여, 대신 프론트엔드에서 HTML unescape 함수를 사용하여 HTML 태그로 변환하였다
 
 > HTML escape: HTML 문자를 이스케이프(escape) 처리하면 스크립트나 HTML 태그의 기능은 제거되지만 입력한 내용은 그대로 브라우저에서 확인할 수 있다. 예를들어 태그의 시작을 의미하는 < 문자를 이스케이프 처리하면 &lt;라는 문자로 바뀐다.
@@ -921,8 +921,8 @@ onBeforeMount(async () => {
       .then(function (response) {
         notice.value = response.data;
         notice.value.content = unescapeHtml(notice.value.content);
-        
-        // 생략... 
+
+        // 생략...
       })
       .catch(function (error) {
 

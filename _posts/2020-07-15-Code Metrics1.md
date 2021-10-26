@@ -12,16 +12,16 @@ layout: post
 
 
 - 소프트웨어의 복잡도 감소, 유지보수 용이성 증대 등 소프트웨어 품질향상을 위한 소스 코드의 품질 측정지표다.
-- 다음 메트릭들은 방위사업청에서 배포한 '방위사업청 매뉴얼 제2020-8호 부록(무기체계 소프트웨어 개발 및 관리 매뉴얼)'에서 지정한 메트릭 기준표다. 
+- 다음 메트릭들은 방위사업청에서 배포한 '방위사업청 매뉴얼 제2020-8호 부록(무기체계 소프트웨어 개발 및 관리 매뉴얼)'에서 지정한 메트릭 기준표다.
 
-![image](/assets/images/2020-07-15-Code Metrics1/image1.png)
+![image](/assets/img/2020-07-15-Code Metrics1/image1.png)
 
 
 
 ## Cyclomatic Complexity
 - 의미: 함수 내 분기문의 개수
 - 계산 방법: 함수 내 분기문의 개수 + 1
-- 해결 방법: 복잡한 모듈 안의 속성, 함수들을 다른 모듈로 분리함으로서 복잡도를 하락시킨다. 
+- 해결 방법: 복잡한 모듈 안의 속성, 함수들을 다른 모듈로 분리함으로서 복잡도를 하락시킨다.
 
 ex) 다음 예제 코드의 'Cyclomatic Complexity'는 3이 된다.<br>
 'switch 문' 복잡도 1 + 'case S_sleep 내의 if 문' 복잡도 1 + '기본 복잡도' 1 = 3이 된다.
@@ -61,7 +61,7 @@ void foo(state process_state) {
 
 ex) 다음 예제 코드의 'Number of Call Levels'는 4가 된다.<br>
 처음 if문의 중첩 깊이가 4 그리고 다음 if문의 중첩 깊이가 2지만, if문의 최대 중첩 깊이가 4이기 때문이다. <br>
-'Cyclomatic Complexity'는 'if문의 개수' 복잡도 6 + 기본 복잡도 1 = 7이 된다. 
+'Cyclomatic Complexity'는 'if문의 개수' 복잡도 6 + 기본 복잡도 1 = 7이 된다.
 
 ```c
 void foo(void) {
@@ -88,23 +88,23 @@ void foo(void) {
 ## Number of Function Parameters
 - 의미: 함수의 매개변수 개수
 - 계산 방법: 함수 호출 시 사용되는 인자의 개수
-- 해결 방법: 너무 많은 인자를 사용하는 경우 자료구조를 사용하고 사용하지 않는 인자는 삭제한다. 
+- 해결 방법: 너무 많은 인자를 사용하는 경우 자료구조를 사용하고 사용하지 않는 인자는 삭제한다.
 
 ex) 다음 예제 코드의 'Number of Function Parameters'는 10이 된다. <br>
-사용하는 매개변수의 개수가 많아 지면 자료 구조를 사용하여 매개변수 개수를 감소시켜야 한다. 
+사용하는 매개변수의 개수가 많아 지면 자료 구조를 사용하여 매개변수 개수를 감소시켜야 한다.
 
 ```c
-void foo(int arg1, 
-         int arg2, 
-         int arg3, 
-         int arg4, 
-         int arg5, 
-         int arg6, 
+void foo(int arg1,
+         int arg2,
+         int arg3,
+         int arg4,
+         int arg5,
+         int arg6,
          int arg7,
-         int arg8, 
-         int arg9, 
+         int arg8,
+         int arg9,
          int arg10) {
-	
+
 }
 ```
 
@@ -113,9 +113,9 @@ void foo(int arg1,
 ## Number of Calling Functions
 - 의미: 함수 외부에서 함수를 호출하는 횟수
 - 계산 방법: 함수 외부에서 해당 함수를 호출한 횟수
-- 해결 방법: 자주 호출되는 함수는 상위 모듈의 코드 일부로 합쳐야 한다. 
+- 해결 방법: 자주 호출되는 함수는 상위 모듈의 코드 일부로 합쳐야 한다.
 
-ex) 다음 예제 코드의 'Number of Calling Function'은 foo: 3, boo: 2, poo: 1이 된다. 
+ex) 다음 예제 코드의 'Number of Calling Function'은 foo: 3, boo: 2, poo: 1이 된다.
 
 ```c
 void foo(void) {

@@ -7,7 +7,7 @@ categories:
 last_modified_at: 2021-04-17
 layout: post
 ---
-- Spring Boot CRUD 게시판 개발 과정을 소개한다. 
+- Spring Boot CRUD 게시판 개발 과정을 소개한다.
 
 
 
@@ -17,8 +17,8 @@ layout: post
 
 
 ## 프로젝트 설계 및 리펙토링 내용
-- 프로젝트의 기본 프레임(CRUD 게시판, 디자인 등)은 '처음 배우는 스프링 부트 2' 도서를 참고하였다. 
-- CRUD 게시판은 프로젝트의 기본이 되는 기능으로 '이런 부분에서는 어떻게 하면 코드 가독성과 속도를 향상시킬 수 있을까?'라는 생각을 가지고 다음과 같이 소스 코드를 리펙토링 하였다. 
+- 프로젝트의 기본 프레임(CRUD 게시판, 디자인 등)은 '처음 배우는 스프링 부트 2' 도서를 참고하였다.
+- CRUD 게시판은 프로젝트의 기본이 되는 기능으로 '이런 부분에서는 어떻게 하면 코드 가독성과 속도를 향상시킬 수 있을까?'라는 생각을 가지고 다음과 같이 소스 코드를 리펙토링 하였다.
 
 <br>
 - '처음 배우는 스프링 부트 2' 도서 자세히 보기: <http://www.hanbit.co.kr/store/books/look.php?p_code=B4458049183>
@@ -31,12 +31,12 @@ layout: post
 
 
 ### properties 파일을 yml 파일로 변경
-- yml 파일은 설정 및 기타 정적 값을 키 값 형식으로 관리하므로, properties 파일보다 가독성이 좋다. 따라서 기존 application.properties 파일을 application.yml 파일로 변경하였다. 
+- yml 파일은 설정 및 기타 정적 값을 키 값 형식으로 관리하므로, properties 파일보다 가독성이 좋다. 따라서 기존 application.properties 파일을 application.yml 파일로 변경하였다.
 
 
 ### RESTful
-- 도서에서는 RESTful 조건을 지키기 위해서 두 개의 서버로 분리하였다. 
-- View를 담당하는 서버와 REST API를 제공하는 서버 총 2개가 동시에 실행된다. 즉, module-app-web(@Controller, view를 담당) 서버와 module-app-api(@RestController, api를 담당) 서버 2개가 동시에 실행된다. 
+- 도서에서는 RESTful 조건을 지키기 위해서 두 개의 서버로 분리하였다.
+- View를 담당하는 서버와 REST API를 제공하는 서버 총 2개가 동시에 실행된다. 즉, module-app-web(@Controller, view를 담당) 서버와 module-app-api(@RestController, api를 담당) 서버 2개가 동시에 실행된다.
 
 
 ### JPA 영속성 컨텍스트 에러
@@ -46,7 +46,7 @@ layout: post
 Failed to lazily initialize a collection of role could not initialize proxy – no Session
 ```
 
-- JPA는 매번 데이터베이스에 접근하는 비효율적인 계산을 방지하기 위해 영속성 컨텍스트에  엔티티를 관리한다. 
+- JPA는 매번 데이터베이스에 접근하는 비효율적인 계산을 방지하기 위해 영속성 컨텍스트에  엔티티를 관리한다.
 - findOne은 엔티티의 데이터를 가져오지만, getOne은 엔티티의 참조를 가져온다. JPA는 Lazy Evaluation는 엔티티의 참조가 필요한 경우 해당 트렌젝션에서만 사용되며 프록시(중계 역할)를 반환한다.
 - 기존 소스 코드는 getOne으로 레퍼런스를 가져왔지만, 서로 다른 트랜잭션에서 사용하였기에 위와 같은 에러가 발생한다. 따라서 getOne으로 반환된 레퍼런스가 같은 트랜잭션에서 사용되도록 @Transactional 애노테이션을 Service 계층에서 사용하는 메소드에 명시하였다.
 
@@ -75,15 +75,15 @@ public Long updateNoticeBoard(Long idx, NoticeBoard noticeBoard) {
 
 ### HTML id, name, class 속성 구분
 - HTML id, name, class 속성은 각 목적에 따라 사용이 다르다. 도서에서는 이를 구분하지 않고 id 속성만 사용한다. 서버로 데이터를 전송하는 태그는 id 대신 name 속성을 사용하였다.
-- id 속성은 Element를 구분하는 고유한 식별자로서 태그를 변경하기 위해서 사용된다. 
-- name 속성은 form 이벤트 발생 시 서버로 데이터를 전송하기 위한 식별자로 사용된다. 다음 설명하는 serializeObject 함수를 사용하기 위해서는 input 태그의 식별자로 name 속성을 사용해야 한다. 
+- id 속성은 Element를 구분하는 고유한 식별자로서 태그를 변경하기 위해서 사용된다.
+- name 속성은 form 이벤트 발생 시 서버로 데이터를 전송하기 위한 식별자로 사용된다. 다음 설명하는 serializeObject 함수를 사용하기 위해서는 input 태그의 식별자로 name 속성을 사용해야 한다.
 
 출처: <https://hashcode.co.kr/questions/7049/id-name-class-%EC%86%8D%EC%84%B1%EC%97%90-%EB%8C%80%ED%95%9C-%EC%82%AC%EC%9A%A9%EB%B2%95%EC%9D%B4-%EA%B6%81%EA%B8%88%ED%95%A9%EB%8B%88%EB%8B%A4>
 
 
 ### serializeObject 라이브러리 사용
 - ajax 통신을 위한 JSON 객체를 생성할 때 필요한 반복되는 변수 초기화 코드는 작성하기 번거롭고 비효율적이다. 이런 문제점을 해결하기 위해서 form 태그를 사용하는 경우 input tag의 value를 자동으로 JSON으로 변환하는 serializeObject 라이브러리를 사용하였다.
-- form 태그를와 같이 serializeObject 라이브러리를 사용하면, 하단 예제와 같이 반복되는 변수 초기화 소스 코드를 제거할 수 있다. 
+- form 태그를와 같이 serializeObject 라이브러리를 사용하면, 하단 예제와 같이 반복되는 변수 초기화 소스 코드를 제거할 수 있다.
 
 ```
 기존 소스 코드: JSON 객체에 변수 직접 초기화
@@ -116,7 +116,7 @@ var jsonData = $("#form").serializeObject();
 -  serializeObject 라이브러리를 사용하기 위해서는 자바 멤버 필드명과 자바스크립트 변수명이 같아야 하므로, HTML id와 name 속성 명명규칙으로 camel case을 적용하였다.
 
 
-### 'list.html' 게시글 생성일자로 내림차순 
+### 'list.html' 게시글 생성일자로 내림차순
 - 게시글 idx(PK) 순서대로 내림 차순으로 정렬되도록 변경하였다.
 
 ```java
@@ -156,9 +156,9 @@ Thymeleaf 레이아웃 적용 방법 출처: <https://eblo.tistory.com/57>
 
 ### WYSIWYG editor 적용
 - 오픈 소스 WYSIWYG editor(웹 에디터)인 summernote를 게시판에 사용하였다.
-- 프로젝트 게시판에서는 summernote 기본 기능만 제공하며, 이에 필요한 summernote font 파일, bootstrap.css, bootstrap.js를 추가하였다. 
+- 프로젝트 게시판에서는 summernote 기본 기능만 제공하며, 이에 필요한 summernote font 파일, bootstrap.css, bootstrap.js를 추가하였다.
 
-![image](/assets/images/2020-07-29-Project Lab4/image1.png)
+![image](/assets/img/2020-07-29-Project Lab4/image1.png)
 
 ```html
 <body>
@@ -184,7 +184,7 @@ Thymeleaf 레이아웃 적용 방법 출처: <https://eblo.tistory.com/57>
 </script>
 ```
 
-![image](/assets/images/2020-07-29-Project Lab4/image2.png)
+![image](/assets/img/2020-07-29-Project Lab4/image2.png)
 
 summernote 사용법 및 적용 방법: <https://summernote.org/getting-started/><br>
 <https://programmer93.tistory.com/27>
@@ -194,10 +194,10 @@ summernote 사용법 및 적용 방법: <https://summernote.org/getting-started/
 ## 프로젝트 실행 및 결과
 - Run -> Edit Configureations... -> module-app-api과 module-app-web 모듈의 Profile을 'local'로 변경 후 두 모듈을 동시에 실행한다. 이후 '<http://localhost:8080/notice-board/list>'에 접속하면 하단 그림과 같이 CRUD 게시판을 확인하였다.
 
-![image](/assets/images/2020-07-29-Project Lab4/image3.png)
+![image](/assets/img/2020-07-29-Project Lab4/image3.png)
 
-![image](/assets/images/2020-07-29-Project Lab4/image4.png)
+![image](/assets/img/2020-07-29-Project Lab4/image4.png)
 
-![image](/assets/images/2020-07-29-Project Lab4/image5.png)
+![image](/assets/img/2020-07-29-Project Lab4/image5.png)
 
-![image](/assets/images/2020-07-29-Project Lab4/image6.png)
+![image](/assets/img/2020-07-29-Project Lab4/image6.png)
