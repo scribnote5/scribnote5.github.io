@@ -40,7 +40,8 @@ body {
   background: var(--body-bg);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
+  /* modified, Arial added */
+  font-family: Arial, 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
 }
 
 /* --- Scrollbar --- */
@@ -1053,7 +1054,8 @@ $sidebar-display: "sidebar-display";
   display: none;
   font-size: 1.1rem;
   font-weight: 600;
-  font-family: sans-serif;
+  /* modified, Arial added */
+  font-family: Arial, sans-serif;
   color: var(--topbar-text-color);
   text-align: center;
   width: 70%;
@@ -1533,7 +1535,8 @@ $sidebar-display: "sidebar-display";
     padding-left: calc((100% - #{$main-content-max-width}) / 2);
 
     > div.col-xl-8 {
-      max-width: 850px;
+      // modified, 850px -> 1050px
+      max-width: 1050px;
     }
   }
 
@@ -1752,7 +1755,8 @@ $sidebar-display: "sidebar-display";
 
 @media (min-width: 1920px) {
   #main > div.row {
-    padding-left: 190px;
+    // modified, 190px -> 170px
+    padding-left: 170px;
   }
 
   #search-result-wrapper {
