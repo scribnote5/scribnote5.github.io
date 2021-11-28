@@ -47,13 +47,15 @@
 %section {
   #post-wrapper & {
     line-height: 1.2;
-    margin-bottom: 1rem;
+    // modified, margin-bottom changed
+    margin-bottom: .8rem;
   }
 }
 
 %anchor {
   padding-top: 3.5rem;
-  margin-top: -2.5rem;
+  // modified, margin-top changed
+  margin-top: -3rem;
 }
 
 %cursor-pointer {

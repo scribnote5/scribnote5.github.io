@@ -88,7 +88,10 @@ $scrollbar-size: 7px;
 h1 {
   @extend %heading;
 
-  font-size: 1.8rem;
+  // modified, font-weight add
+  font-weight: 700;
+  // modified, font-size changed
+  font-size: 1.7rem;
 }
 
 h2 {
@@ -99,9 +102,9 @@ h2 {
   // modified, font-weight add
   font-weight: 700;
   // modified, margin-top add
-  margin-top: .85rem;
+  margin-top: .8rem !important;
   // modified, font-size changed
-  font-size: 1.5rem;
+  font-size: 1.45rem;
 }
 
 h3 {
@@ -112,8 +115,8 @@ h3 {
   // modified, font-weight add
   font-weight: 700;
   // modified, font-size changed
-  font-size: 1.2rem;
-   // modified, color add
+  font-size: 1.25rem;
+  // modified, color add
   color: #5a5a5ae5;
 }
 
