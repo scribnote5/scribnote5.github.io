@@ -1,14 +1,14 @@
 ---
-title: "Project Test 4. Vue.js와 Spring boot에서 JWT 기반 로그인 구현 - 1"
+title: "Project SW Test Forum Forum 4. Vue.js와 Spring boot에서 JWT 기반 로그인 구현 - 1"
 excerpt: "Vue.js와 Spring boot에서 JWT 기반 로그인을 구현한 과정을 소개한다. "
 categories:
   - Web
-  - Project Test
+  - Project SW Test Forum Forum
 last_modified_at: 2021-08-08
 layout: post
 ---
-- Vue.js와 Spring boot에서 JWT 기반 로그인을 구현한 과정을 소개한다. 
-- 본 게시글은 인프런 Spring Boot JWT Tutorial을 기반으로 작성하였으며, Project Test 또한 인강을 참고하여 개발하였다. 
+- Vue.js와 Spring boot에서 JWT 기반 로그인을 구현한 과정을 소개한다.
+- 본 게시글은 인프런 Spring Boot JWT Tutorial을 기반으로 작성하였으며, Project SW Test Forum Forum 또한 인강을 참고하여 개발하였다.
 
 출처: <https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-jwt>
 
@@ -16,7 +16,7 @@ layout: post
 
 ## JWT(JSON Web Token)란?
 - JSON 포맷에 사용자 인증정보를 저장하는 토큰이다. JWT를 사용하여 토큰 기반 사용자 인증 시스템 즉 로그인을 구현할 수 있다.
-JWT과 세션 인증 방법과 비교 
+JWT과 세션 인증 방법과 비교
 - 로그인 중인 사용자의 수가 많아지면 시스템에 과부하가 발생한다. 로그인한 사용자가 많아지면 메모리를 많이 사용하게 되기 때문이다.
 - 서버 확장에 유리하다. 분산 시스템을 설계하는 경우, 세션 정보를 다른 프로세스간 동기화 하는 과정이 어렵다.
 
@@ -25,31 +25,31 @@ JWT과 세션 인증 방법과 비교
 
 
 ## JWT는 어디에 저장해야 하는가?
-- 두 방식 모두 보안에 완벽한 것은 없다. 
-- 취약점을 보완한다고 하면 cookie에 저장하는 방식이 local storage에 저장하는 방식보다 더 안전하다고 생각한다. 
+- 두 방식 모두 보안에 완벽한 것은 없다.
+- 취약점을 보완한다고 하면 cookie에 저장하는 방식이 local storage에 저장하는 방식보다 더 안전하다고 생각한다.
 - 많은 개발자들이 JWT 토큰을 cookie에 저장하는 방식을 사용하고 있다.
 - 클라이언트 뿐만 아니라 서버에서 추가적으로 XSS 취약점을 보완해야 한다.
 
 
 ### HTML Web Storage(Local Storage)
-- 브라우저에 데이터를 저장하는 방법이다. 
+- 브라우저에 데이터를 저장하는 방법이다.
 
 - XSS 취약점이 존재한다.
-  -> 프론트엔드 프레임워크에서 XSS 취약점을 예방하기 위한 방법을 제공한다. 그러나 완벽하지 않다. 
+  -> 프론트엔드 프레임워크에서 XSS 취약점을 예방하기 위한 방법을 제공한다. 그러나 완벽하지 않다.
 
 
 ### Cookie
-- 브라우저에 쿠키로 저장하는 방법으로, HTTP 요청을 보낼 때 마다 자동으로 쿠키가 서버에 전송된다. 
+- 브라우저에 쿠키로 저장하는 방법으로, HTTP 요청을 보낼 때 마다 자동으로 쿠키가 서버에 전송된다.
 
-- XSS 취약점이 존재한다. 
-  -> httpOnly 옵션을 추가하여 서버에 쿠키를 저장하면, 클라이언트는 쿠키에 접근할 수 없다. 또한 secure 옵션을 추가하면 https를 통해서만 접근 가능하다. 해당 옵션들은 클라이언트가 아닌 서버에서 설정한다. 그러나 완벽하지 않다. 
-- CSRF 취약점이 존재한다. 
-  -> CSRF 위조를 검사하는 토큰을 사용한다. 
+- XSS 취약점이 존재한다.
+  -> httpOnly 옵션을 추가하여 서버에 쿠키를 저장하면, 클라이언트는 쿠키에 접근할 수 없다. 또한 secure 옵션을 추가하면 https를 통해서만 접근 가능하다. 해당 옵션들은 클라이언트가 아닌 서버에서 설정한다. 그러나 완벽하지 않다.
+- CSRF 취약점이 존재한다.
+  -> CSRF 위조를 검사하는 토큰을 사용한다.
 
 
 ### 나의 결론?
 - Local Storage는 Cookie 보다 사용하기 편하지만 결국 Cookie를 선택하게 되었다.
-- Cookie의 경우 CSRF 토큰을 사용하면 CSRF 취약점을 보완할 수 있다. 
+- Cookie의 경우 CSRF 토큰을 사용하면 CSRF 취약점을 보완할 수 있다.
 - Cookie에 httpOnly 옵션과 secure 옵션을 추가하여도 XSS 공격을 보완할 수 없다. 그러나 Local Storage 보다 조금 더 보안에 유리하기 때문에 Cookie를 선택하였다. 자세한 내용은 하단 출처를 참고하였다.
 
 > Conclusion
@@ -91,7 +91,7 @@ JWT과 세션 인증 방법과 비교
 
 
 ## Spring boot에서 JWT 구현
-- Spring boot에서 JWT를 발급하는 코드는 하단 출처를 참고하였다. 
+- Spring boot에서 JWT를 발급하는 코드는 하단 출처를 참고하였다.
 
 출처: <https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-jwt>
 
@@ -127,8 +127,8 @@ CSRF 시나리오: <https://codevang.tistory.com/282>
 출처: <https://cheese10yun.github.io/spring-csrf/>
 
 
-### CORS preflight 
-- 클라이언트(요청하는 쪽)이 서버(요청 받는 쪽)과 본격적인 통신을 수행하기 전에 OPTIONS 메소드로 preflight를 전송한다. 실제 요청과 응답을 주고 받기 전 클라이언트에 CORS 권한이 있는지 '사전검사'를 한 후에 클라이언트에서 실제 요청을 보낸다. 
+### CORS preflight
+- 클라이언트(요청하는 쪽)이 서버(요청 받는 쪽)과 본격적인 통신을 수행하기 전에 OPTIONS 메소드로 preflight를 전송한다. 실제 요청과 응답을 주고 받기 전 클라이언트에 CORS 권한이 있는지 '사전검사'를 한 후에 클라이언트에서 실제 요청을 보낸다.
 - 하지만 preflight를 보내는 경우에도 JWT가 있는지 검사하여 에러가 발생한다. 따라서 preflight(request method가 OPTIONS)를 전송할 때를 JWT 유효성 검사에서 제외하였다.
 
 출처: <https://velog.io/@ojwman/spring-boot-cors-header-preflight>

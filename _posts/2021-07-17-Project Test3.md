@@ -1,9 +1,9 @@
 ---
-title: "Project Test 3. Vue.js CKEditor 5 - 1"
+title: "Project SW Test Forum 3. Vue.js CKEditor 5 - 1"
 excerpt: "Vue.js 3에서 CKEditor5를 적용하는 과정을 소개한다."
 categories:
   - Web
-  - Project Test
+  - Project SW Test Forum
 last_modified_at: 2021-07-10
 layout: post
 ---
@@ -875,7 +875,7 @@ export default {
 };
 ```
 
-![image](/assets/img/2021-07-17-Project Test3/image1.png)
+![image](/assets/img/2021-07-17-Project SW Test Forum3/image1.png)
 <br>
 
 - DB에 저장된 CKEditor 5에서 데이터를 프론트엔드로 전달하는 경우 HTML escape로 인하여 vue.js의 v-html(HTML 코드를 HTML 태그로 변환)을 사용하여도 HTML 태그로 변환되지 않는다.

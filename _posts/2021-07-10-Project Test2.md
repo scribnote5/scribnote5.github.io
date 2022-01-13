@@ -1,9 +1,9 @@
 ---
-title: "Project Test 2. Vue.js 환경 구축 및 프로젝트 구성 - 1"
+title: "Project SW Test Forum 2. Vue.js 환경 구축 및 프로젝트 구성 - 1"
 excerpt: "Vue.js 환경 구축 및 프로젝트 구성 과정을 소개한다."
 categories:
   - Web
-  - Project Test
+  - Project SW Test Forum
 last_modified_at: 2021-07-10
 layout: post
 ---
@@ -105,6 +105,6 @@ $ npm run serve
 - 여담으로 vuesion 프로젝트를 참고하여 프로젝트 구조를 구성하려고 하였지만 프로젝트 규모가 대규모가 아니므로 적합하지 않다고 판단하였다.
 - Vue.js 프로젝트는 Spring Boot 프로젝트 module-app-web 모듈의 front 폴더에 위치하도록 하였다.
 
-![image](/assets/img/2021-07-10-Project Test2/image1.png)
+![image](/assets/img/2021-07-10-Project SW Test Forum2/image1.png)
 
 출처: <https://velog.io/@cindy-choi/VUE-%EC%9A%B0%EC%95%84%ED%95%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%A1%B0-%EC%A7%9C%EA%B8%B0>
