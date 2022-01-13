@@ -48,15 +48,15 @@ JWT과 세션 인증 방법과 비교
 
 
 ### 나의 결론?
-- Local Storage는 Cookie 보다 사용하기 편하지만 결국 Cookie를 선택하게 되었다.
-- Cookie의 경우 CSRF 토큰을 사용하면 CSRF 취약점을 보완할 수 있다.
-- Cookie에 httpOnly 옵션과 secure 옵션을 추가하여도 XSS 공격을 보완할 수 없다. 그러나 Local Storage 보다 조금 더 보안에 유리하기 때문에 Cookie를 선택하였다. 자세한 내용은 하단 출처를 참고하였다.
+- Local Storage는 Cookie 보다 사용하기 편하지만, 결국 Cookie를 선택하게 되었다.
+- Cookie의 경우 CSRF 토큰을 사용하면 CSRF 취약점을 보완 할 수 있다.
+- Cookie에 httpOnly 옵션과 secure 옵션을 추가하여도 XSS 공격을 보완 할 수 없다. 그러나 Local Storage 보다 조금 더 보안에 유리하기 때문에 Cookie를 선택하였다. 자세한 내용은 하단 출처를 참고하였다.
 
-> Conclusion
->Although cookies still have some vulnerabilities, it's preferable compared to localStorage whenever possible. Why?
->Both localStorage and cookies are vulnerable to XSS attacks but it's harder for the attacker to do the attack when you're using httpOnly cookies.
->Cookies are vulnerable to CSRF attacks but it can be mitigated using sameSite flag and anti-CSRF tokens.
->You can still make it work even if you need to use the Authorization: Bearer header or if your JWT is larger than 4KB. This is also consistent with the recommendation from the OWASP community:
+>- Conclusion
+>- Although cookies still have some vulnerabilities, it's preferable compared to localStorage whenever possible. Why?
+>- Both localStorage and cookies are vulnerable to XSS attacks but it's harder for the attacker to do the attack when you're using httpOnly cookies.
+>- Cookies are vulnerable to CSRF attacks but it can be mitigated using sameSite flag and anti-CSRF tokens.
+>- You can still make it work even if you need to use the Authorization: Bearer header or if your JWT is larger than 4KB. This is also consistent with the recommendation from the OWASP community:
 
 
 출처:
@@ -91,7 +91,7 @@ JWT과 세션 인증 방법과 비교
 
 
 ## Spring boot에서 JWT 구현
-- Spring boot에서 JWT를 발급하는 코드는 하단 출처를 참고하였다.
+- Spring boot에서 JWT를 발급하는 기본 로직은 하단 출처를 참고하여 개발하였다.
 
 출처: <https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-jwt>
 
@@ -104,19 +104,64 @@ JWT과 세션 인증 방법과 비교
 ### Cookie httpOnly
 - httpOnly 옵션을 추가하여 서버에서 쿠키를 저장하면, 클라이언트는 쿠키에 접근할 수 없다.
 - 처음 인증할 때 Access Token를 쿠키에 저장하여 응답한다면, HTTP 통신을 할 때 자동으로  Set-Cookie 헤더에 Access Token이 저장된다.
-- Spring boot에서 Cookie에 httpOnly 옵션 설정 방법은 하단 출처를 참고하였다.
+- 쿠키 보안 문제를 해결하기 위해 만들어진 Samsite 쿠키는 None, Lax, Strict 정책이 있다. Samsite 쿠키는 서로 다른 도메인 간 쿠카룰 전송하는 옵션으로, 개발한 SW Test Forum과 같이 도메인을 사용하는 웹 페이지는 고려 대상이 아니다.
+- Spring boot에서 Cookie에 httpOnly 옵션 등 기타 설정 방법은 하단 출처를 참고하였다.
 
-출처: <https://dncjf64.tistory.com/292>
+출처: <https://dncjf64.tistory.com/292><br>
+<https://seob.dev/posts/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%BF%A0%ED%82%A4%EC%99%80-SameSite-%EC%86%8D%EC%84%B1/><br>
+<https://www.hahwul.com/2020/01/18/samesite-lax/>
 
+```
+module-app-api\src\main\java\com\suresoft\sw_test_forum\controller\common\AuthorityController.java
+```
+
+```java
+    @PostMapping("/authenticate")
+    public ResponseEntity authenticate(@Valid @RequestBody LoginDto loginDto, HttpServletResponse response) {
+        // authenticationToken 생성, username + moduleName
+        //...
+
+        // authenticate 메소드가 실행될 때 loadUserByUsername 메소드 호출
+        // ...
+
+        // JWT token 생성, token subject는 userIdx와 username으로 구성
+        User user = userService.findUserIdxByUsername(loginDto.getUsername());
+        String jwt = tokenProvider.createToken(user.getIdx(), authentication);
+
+        ResponseCookie resCookie = ResponseCookie.from("accessToken", jwt)
+                .httpOnly(true)
+//                .domain("") //  해당 도메인에서만 유효한 쿠키
+                .sameSite("Strict") // None, Strict, Lax
+//                .secure(true) // HTTPS가 적용된 요청에만 전송되는 쿠키
+                .path("/")
+                .maxAge(Math.toIntExact(1 * 24 * 60 * 60))
+                .build();
+        response.addHeader("Set-Cookie", resCookie.toString());
+
+        return new ResponseEntity(user, HttpStatus.OK);
+    }
+```
 
 ### CSRF(Cross Site Request Forgery)
 - 웹 사이트의 취약점을 이용하여 이용자가 의도하지 하지 않은 요청을 통한 공격이다.
 
-CSRF 시나리오: <https://codevang.tistory.com/282>
+CSRF 시나리오 출처: <https://codevang.tistory.com/282>
 <br>
 
 - 가장 간단한 해결책으로는 CSRF Token을 Header 정보에 포함하여 서버에 요청하는 것이다.
-- 클라이언트에서 비동기 통신으로 통신할 때 CSRF 토큰을 송신해야 한다. axios를 사용하는 경우 CSRF 토큰을 전송하는 방법은 하단 출처를 참고하였다.
+- 클라이언트에서 비동기 통신할 때 CSRF 토큰을 같이 송신하면 된다. axios를 사용하는 경우 CSRF 토큰을 전송하는 방법은 하단 출처를 참고하였다.
+- axios 에서는 csrf 토큰 설정이 기본으로 되어 있다.
+
+```
+module-app-web\front\src\main.js
+```
+
+```javascript
+// axios 설정
+axios.defaults.xsrfCookieName = 'XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
+axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
+axios.defaults.withCredentials = true;
+```
 
 출처: <https://zetawiki.com/wiki/Vue.js_%2B_axios_%2B_django_CSRF_%ED%86%A0%ED%81%B0_%EC%84%A4%EC%A0%95_%EB%A7%9E%EC%B6%94%EA%B8%B0>
 <br>
@@ -124,18 +169,76 @@ CSRF 시나리오: <https://codevang.tistory.com/282>
 - 서버에서는 클라이언트에서 송신한 CSRF Token이 유효한지 검사해야 한다.
 - Spring boot에서 CSRF 설정을 방법은 하단 출처를 참고하였다.
 
+```
+module-app-api\src\main\java\com\suresoft\sw_test_forum\config\SecurityConfig.java
+```
+
+```java
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    // ...
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                // csrf 설정
+                .csrf()
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .ignoringAntMatchers("/api/auths/authenticate")
+        // ...
+```
+
 출처: <https://cheese10yun.github.io/spring-csrf/>
 
 
-### CORS preflight
+### CORS preflight 요청은 권한 확인 제외
 - 클라이언트(요청하는 쪽)이 서버(요청 받는 쪽)과 본격적인 통신을 수행하기 전에 OPTIONS 메소드로 preflight를 전송한다. 실제 요청과 응답을 주고 받기 전 클라이언트에 CORS 권한이 있는지 '사전검사'를 한 후에 클라이언트에서 실제 요청을 보낸다.
 - 하지만 preflight를 보내는 경우에도 JWT가 있는지 검사하여 에러가 발생한다. 따라서 preflight(request method가 OPTIONS)를 전송할 때를 JWT 유효성 검사에서 제외하였다.
+
+```
+module-app-api\java\com\suresoft\sw_test_forum\jwt\JwtFilter.java
+```
+
+```java
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        String requestURI = httpServletRequest.getRequestURI();
+        Cookie cookie = WebUtils.getCookie(httpServletRequest, "accessToken");
+        String jwt = "";
+
+        if (!EmptyUtil.isEmpty(cookie)) {
+            jwt = cookie.getValue();
+        }
+
+        log.info("jwt: " + jwt);
+        log.info("requestURI: " + requestURI);
+
+        if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+            Authentication authentication = tokenProvider.getAuthentication(jwt);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            log.info("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
+        } else if ("OPTIONS".equals(httpServletRequest.getMethod())) {
+            log.info("preflight: OPTIONS 요청");
+        } else if ("/api/auths/authenticate".equals(requestURI)) {
+            log.info("/api/auths/authenticate 요청");
+        } else {
+            log.error("유효한 JWT 토큰이 없습니다, uri: {}", requestURI);
+        }
+
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+```
 
 출처: <https://velog.io/@ojwman/spring-boot-cors-header-preflight>
 
 
 
 ## Spring boot에서 XSS(Cross-site Scripting) 취약점 방어
-- Spring boot에서 XSS 취약점을 방어하기 위해서 하단 출처를 참고하였다.
+- Spring boot에서 XSS 취약점을 방어 수단으로 lucy-xss-servlet-filter를 사용할 수 있다. 그러나 Form Data에 대해서 적용되기에, 프론트엔드 서버와 백엔드 서버 간의 통신에서 사용하는 Request Payload에 대해서는 적용되지 않는다.
+- 따라서 MessageConverter를 사용하여 JSON 문자열을 생성할 때 XSS 취약점을 방어하도록 처리하였다.
 
 출처: <https://exhibitlove.tistory.com/3>
