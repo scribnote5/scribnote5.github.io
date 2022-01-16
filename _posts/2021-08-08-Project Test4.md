@@ -158,6 +158,9 @@ module-app-web\front\src\main.js
 axios.defaults.withCredentials = true; // 다른 origin에 JWT를 전달하기 위한 설정
 ```
 
+출처: <https://dncjf64.tistory.com/292><br>
+<https://cherish-it.tistory.com/11>
+
 
 
 ### CSRF(Cross Site Request Forgery)
@@ -167,7 +170,7 @@ CSRF 시나리오 출처: <https://codevang.tistory.com/282>
 <br>
 
 - 가장 간단한 해결책으로는 CSRF 토큰을 헤더 정보에 포함하여 서버에 요청하는 것이다.
-- 클라이언트에서 axios를 사용하는 경우 CSRF 토큰을 전송하는 방법은 다음과 같다.
+- 클라이언트에서 axios를 사용하는 경우 CSRF 토큰을 전송 설정은 기본 값으로 되어 있다.
 
 ```
 module-app-web\front\src\main.js
