@@ -8,6 +8,7 @@ last_modified_at: 2021-06-21
 layout: post
 ---
 - 소프트웨어 테스트 포럼 페이지 개발 프로젝트를 소개한다.
+- github: <https://github.com/scribnote5/sw_test_forum>
 
 
 

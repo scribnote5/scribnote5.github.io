@@ -8,17 +8,21 @@ last_modified_at: 2021-08-08
 layout: post
 ---
 - Vue.js와 Spring boot에서 JWT 기반 로그인을 구현한 과정을 소개한다.
-- 본 게시글은 인프런 Spring Boot JWT Tutorial을 기반으로 작성하였으며, Project SW Test Forum Forum 또한 인강을 참고하여 개발하였다.
-
-출처: <https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-jwt>
+- github: <https://github.com/scribnote5/sw_test_forum>
 
 
 
 ## JWT(JSON Web Token)란?
 - JSON 포맷에 사용자 인증정보를 저장하는 토큰이다. JWT를 사용하여 토큰 기반 사용자 인증 시스템 즉 로그인을 구현할 수 있다.
-JWT과 세션 인증 방법과 비교
+- 인프런 Spring Boot JWT Tutorial 인강을 기반으로 개발하였다.
+
+출처: <https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-jwt>
+
+
+### JWT과 세션 인증 방법과 비교
 - 로그인 중인 사용자의 수가 많아지면 시스템에 과부하가 발생한다. 로그인한 사용자가 많아지면 메모리를 많이 사용하게 되기 때문이다.
-- 서버 확장에 유리하다. 분산 시스템을 설계하는 경우, 세션 정보를 다른 프로세스간 동기화 하는 과정이 어렵다.
+- 서버 확장에 유리하다. 분산 시스템을 설계하는 경우, 세션 정보를 다른 프로세스간 동기화
+하는 과정이 어렵다.
 
 출처: <https://backend-intro.vlpt.us/4/>
 
@@ -104,7 +108,7 @@ JWT과 세션 인증 방법과 비교
 ### Cookie httpOnly
 - httpOnly 옵션을 추가하여 서버에서 쿠키를 저장하면, 클라이언트는 쿠키에 접근할 수 없다.
 - 처음 인증할 때 Access Token를 쿠키에 저장하여 응답한다면, HTTP 통신을 할 때 자동으로  Set-Cookie 헤더에 Access Token이 저장된다.
-- 쿠키 보안 문제를 해결하기 위해 만들어진 Samsite 쿠키는 None, Lax, Strict 정책이 있다. Samsite 쿠키는 서로 다른 도메인 간 쿠카룰 전송하는 옵션으로, 개발한 SW Test Forum과 같이 도메인을 사용하는 웹 페이지는 고려 대상이 아니다.
+- 쿠키 보안 문제를 해결하기 위해 만들어진 Samsite 쿠키는 None, Lax, Strict 정책이 있다. Samsite 쿠키는 서로 다른 도메인 간 쿠키를 전송하는 옵션으로, 같은 도메인을 사용하는 웹 페이지는 고려 대상이 아니다. 따라서 가장 높은 보안 단계인 Strict 정책을 적용하였다.
 - Spring boot에서 Cookie에 httpOnly 옵션 등 기타 설정 방법은 하단 출처를 참고하였다.
 
 출처: <https://dncjf64.tistory.com/292><br>
@@ -142,15 +146,28 @@ module-app-api\src\main\java\com\suresoft\sw_test_forum\controller\common\Author
     }
 ```
 
+- 인증된 JWT는 쿠키에 저장되어 클라이언트에 전송된다. 이후 클라이언트에서는 서버로 JWT를 전달해야 하는데,  axios에서는 하단 설정을 추가하면 JWT를 쿠키에 저장하여 전송 한다. 서버는 클라이언트 쿠키에 저장된 JWT를 사용하여 인증을 수행한다.
+
+```
+module-app-web\front\src\main.js
+```
+
+```javascript
+// axios 설정
+// ...
+axios.defaults.withCredentials = true; // 다른 origin에 JWT를 전달하기 위한 설정
+```
+
+
+
 ### CSRF(Cross Site Request Forgery)
 - 웹 사이트의 취약점을 이용하여 이용자가 의도하지 하지 않은 요청을 통한 공격이다.
 
 CSRF 시나리오 출처: <https://codevang.tistory.com/282>
 <br>
 
-- 가장 간단한 해결책으로는 CSRF Token을 Header 정보에 포함하여 서버에 요청하는 것이다.
-- 클라이언트에서 비동기 통신할 때 CSRF 토큰을 같이 송신하면 된다. axios를 사용하는 경우 CSRF 토큰을 전송하는 방법은 하단 출처를 참고하였다.
-- axios 에서는 csrf 토큰 설정이 기본으로 되어 있다.
+- 가장 간단한 해결책으로는 CSRF 토큰을 헤더 정보에 포함하여 서버에 요청하는 것이다.
+- 클라이언트에서 axios를 사용하는 경우 CSRF 토큰을 전송하는 방법은 다음과 같다.
 
 ```
 module-app-web\front\src\main.js
@@ -160,7 +177,6 @@ module-app-web\front\src\main.js
 // axios 설정
 axios.defaults.xsrfCookieName = 'XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
 axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
-axios.defaults.withCredentials = true;
 ```
 
 출처: <https://zetawiki.com/wiki/Vue.js_%2B_axios_%2B_django_CSRF_%ED%86%A0%ED%81%B0_%EC%84%A4%EC%A0%95_%EB%A7%9E%EC%B6%94%EA%B8%B0>
