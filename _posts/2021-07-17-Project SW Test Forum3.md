@@ -837,7 +837,8 @@ export { CustomUploadAdapterPlugin }
 ## CKEditor 5 적용 및 예시
 - 지금까지 설정한 CKEditor를 적용한 예시다.
 - CKEditor 5 메뉴얼에서는 main.js에 CKEditor 모듈을 import 하여 전역 변수로 사용하도록 가이드 하지만, 다음과 같이 지역 변수로 선언하여 사용 할 수 있다.
-- CKEditor에 입력된 데이터는 vueEditorData 변수에 저장된다. 서버와의 비동기 통신시 vueEditorData 변수를 사용하면 된다.
+- CKEditor에 입력된 데이터는 vueEditorData 변수에 저장된다. writePost 함수와 같이 이벤트 함수의 인자로 vueEditorData를 전달하면 writePost 매개변수로 에디터 데이터를 읽어 올 수 있다.
+- CKEditor @blur 이벤트를 사용하여 validation을 적용하였다. 만약 입력되는 데이터의 크키가 너무 큰 상태에서 blur 이벤트(CKEditor에서 포커스를 잃는 경우)가 발생하면 validateEditor 함수가 수행된다. validateEditor 함수는 약 16MB 이상의 데이터가 입력되는 경우 경고창을 띄우며, CKEditor로 강제 포커스가 된다.
 
 ```
 /src/views/Board.vue
@@ -845,34 +846,66 @@ export { CustomUploadAdapterPlugin }
 
 ```javascript
 <template>
- <div class="board">
-   <h1>This is an board page</h1>
-   <ckeditor :editor="vueEditor" v-model="vueEditorData" :config="vueEditorConfig"></ckeditor>
- <div>
+    <div class="board" >
+        <h1>This is an board page < /h1>
+        <ckeditor : editor = "vueEditor" v - model="vueEditorData" : config = "vueEditorConfig"  @blur="validateEditor”> </ckeditor>
+    </div>
+
+    <button @click="writePost(vueEditorData)">작성</button>
 </template>
 
-<style lang="scss">
+ < style lang = "scss" >
 @import '/assets/css/ckeditor.css';
 </style>
 
-<script>
-import {editor, editorData, editorConfig} from '@/assets/plugins/ckeditor/ckeditor-init.js'
+< script >
+import { editor, editorData, editorConfig } from '@/assets/plugins/ckeditor/ckeditor-init.js'
 import CKEditor from '@ckeditor/ckeditor5-vue'
 import axios from "axios";
 
 export default {
- components: {
-   ckeditor: CKEditor.component
- },
- setup() {
-   const vueEditor = editor;
-   const vueEditorData = editorData;
-   const vueEditorConfig = editorConfig;
+    components: {
+        ckeditor: CKEditor.component
+    },
+    setup() {
+        const vueEditor = editor;
+        const vueEditorData = editorData;
+        const vueEditorConfig = editorConfig;
 
-   return {
-     vueEditor, vueEditorData, vueEditorConfig
-   }
- }
+        // 비동기 통신을 위한 event 함수가 등록되어 있는 경우
+        const writePost = async (vueEditorData) => {
+            await axios.post("/api/board",
+                {
+                    content: vueEditorData,
+                },
+            )
+                .then((response) => {
+
+                })
+                .catch((error) => {
+
+                })
+                .then(() => {
+
+                });
+        }
+
+        const validateEditor = (event, editor) => {
+            let size = getSize(editor.getData());
+
+            // 16777215Bytes(16MB)
+            if (size > 16777215) {
+                alert(“size error!”);
+                editor.editing.view.focus();
+            }
+         }
+
+
+        return {
+            vueEditor, vueEditorData, vueEditorConfig,
+            writePost, validateEditor
+        }
+    }
 };
 ```
 
