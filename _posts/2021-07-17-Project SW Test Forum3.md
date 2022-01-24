@@ -15,7 +15,7 @@ layout: post
 ## CKEditor란?
 - 일반적으로 게시판에 글을 작성할 때 다양한 편집 기능을 제공하는 WYSIWYG 중 하나다.
 - CKEditor 이외에도 Summernote, TinyMCE, Froala Editor 등 다양한 WYSIWYG가 존재한다.
-- CKEditor를 선택한 계기는 기존에는 summernote를 사용하였지만, 애니메이션 효과가 적용되지 않아서 변경하게 되었다. 또한 summernote에 비하여 다양한 기능을 제공하고, 디자인도 조금 더 깔끔한 것 같아서 최신 버전인 CKEditor5를 선택하였다.
+- CKEditor를 선택한 계기는 기존에는 summernote를 사용하였지만, 애니메이션 효과가 적용되지 않아서 변경하게 되었다. 또한 summernote에 비하여 다양한 플러그인(기능)을 제공하고 디자인도 더 깔끔하고 세련되었다고 생각하여, 최신 버전인 CKEditor5를 선택하게 되었다.
 
 
 
