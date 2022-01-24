@@ -15,7 +15,7 @@ layout: post
 ## 사이드바 설계
 - 다음과 같이 사이드바를 구성하였으며, 이에 따른 기능들을 구현하였다.
 
-![image](/assets/img/2022-01-25-Project SW Test Forum5/image1.jpg)
+![image](/assets/img/2022-01-25-Project SW Test Forum5/image1.png)
 
 
 ## 웹 페이지 요구사항에 따른 설계
@@ -27,17 +27,17 @@ layout: post
 - ‘MISRA C 정리’ 항목을 예를 들면,
 - ‘MISRA C 규칙’은 ‘MISRA C 규칙에 대한 상세 설명과 해당 규칙에 대한 예제 코드와 가이드라인 리스트 일부를 출력한다. 또한, 해당 규칙 페이지를 통해서만 예제 코드와 가이드라인 사례를 작성할 수 있다.(‘MISRA C 예제 코드’, ‘MISRA C 가이드라인 사례’ 페이지에는 작성 기능이 없다.)
 
-![image](/assets/img/2022-01-25-Project SW Test Forum5/image2.jpg)
+![image](/assets/img/2022-01-25-Project SW Test Forum5/image2.png)
 
 <br>
 - ‘MISRA C 예제 코드’는 모든 규칙에 대한 예제 코드 리스트를 출력한다. ‘MISRA C 규칙’ 페이지에서 예제 코드가 출력되며 선택하면 읽기 페이지로 이동하여 자세한 내용을 확인 할 수 있다. 하단 이미지는 ‘MISRA C 예제 코드’ 등록 페이지다.
 
-![image](/assets/img/2022-01-25-Project SW Test Forum5/image3.jpg)
+![image](/assets/img/2022-01-25-Project SW Test Forum5/image3.png)
 
 <br>
 - ‘MISRA C 가이드라인 사례’는 모든 규칙에 대한 가이드라인 사례 리스트를 출력한다. ‘MISRA C 규칙’ 페이지에서 가이드라인 항목을 선택하면 읽기 페이지로 이동하여 자세한 내용을 확인 할 수 있다. 하단 이미지는 ‘MISRA C 가이드라인 사례’ 등록 페이지다.
 
-![image](/assets/img/2022-01-25-Project SW Test Forum5/image4.jpg)
+![image](/assets/img/2022-01-25-Project SW Test Forum5/image4.png)
 
 
 ### 도구 트러블 슈팅
@@ -107,7 +107,7 @@ layout: post
 ### 기능 별 컴포넌트 분리
 - 각 기능 별로 컴포넌트들을 분리하여 재활용과 유지보수에 용이하게 설계 하였다.
 
-![image](/assets/img/2022-01-25-Project SW Test Forum5/image5.jpg)
+![image](/assets/img/2022-01-25-Project SW Test Forum5/image5.png)
 
 ### 컴포넌트 간의 데이터 전달 방법
 - 부모에서 자식 컴포넌트에 데이터 전달하는 방법은 props를 사용하였고, 자식에서 부모 컴포넌트에 데이터를 전달하는 방법은 name 속성에 접근하여 값을 얻어오는 방식(바닐라 스크립트)를 사용하였다. vuex를 사용하였다면 코드가 좀 더 깔끔했을 거라 생각하지만, 아쉬움이 남는다.
@@ -117,4 +117,4 @@ layout: post
 - Spring boot JPA findAll 메소드명으로 쿼리를 수행하면, 테이블의 모든 컬럼을 가져온다. 이는 API 서버와 Web 서버 간의 통신에 오버헤드가 발생한다고 생각하였다. 따라서 QueryDsl을 사용하여 Web 서버에서 출력하는 데이터만 조회하도록 구현하였다.
 - 다음 이미지는 공지사항 게시판 리스트 조회를 QueryDsl로 구현한 소스 코드다.
 
-![image](/assets/img/2022-01-25-Project SW Test Forum5/image6.jpg)
+![image](/assets/img/2022-01-25-Project SW Test Forum5/image6.png)
