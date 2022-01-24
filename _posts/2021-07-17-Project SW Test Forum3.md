@@ -4,7 +4,7 @@ excerpt: "Vue.js 3에서 CKEditor5를 적용하는 과정을 소개한다."
 categories:
   - Web
   - Project SW Test Forum
-last_modified_at: 2021-07-10
+last_modified_at: 2022-01-25
 layout: post
 ---
 - Vue.js 3에서 CKEditor5를 적용하는 과정을 소개한다.
