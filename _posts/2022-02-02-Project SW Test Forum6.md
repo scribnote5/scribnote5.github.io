@@ -4,7 +4,7 @@ excerpt: "- Vue.js 3와 Spring boot로 CRUD 게시판을 구현 및 오류 해�
 categories:
   - Web
   - Project SW Test Forum Forum
-last_modified_at: 2022-01-25
+last_modified_at: 2022-02-02
 layout: post
 ---
 - Vue.js 3와 Spring boot로 CRUD 게시판을 구현 및 오류 해결 과정을 소개한다.
