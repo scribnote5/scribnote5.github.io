@@ -24,6 +24,7 @@ layout: post
 - 실행될 때 호출되는 벡엔드 서버 주소를 다르게 호출하기 위해서는 Vue.js 환경 변수를 사용해야 한다.
 
 - 각 환경에 따른 .env 파일을 생성한다.
+
 ```
 module-app-web\front\.env.local
 ```
@@ -45,6 +46,7 @@ VUE_APP_MODULE_APP_API_URL=http://서버주소:8082
 ```
 
 - 터미널에서 프론트엔드 서버를 환경에 맞게 실행한다.
+
 ```console
 # local 환경에서 수행
 $ npm run local
