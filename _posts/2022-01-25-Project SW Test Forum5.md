@@ -1,14 +1,20 @@
 ---
 title: "Project SW Test Forum 5. 프로젝트 구조 설계 - 1"
-excerpt: "- 본격적인 개발에서 앞서  프로젝트 구조를 설계 과정을 소개한다. "
+excerpt: "- 본격적인 개발에서 앞서 프로젝트 구조를 설계 과정을 소개한다. "
 categories:
   - Web
   - Project SW Test Forum Forum
 last_modified_at: 2022-01-25
 layout: post
 ---
-- 본격적인 개발에서 앞서  프로젝트 구조를 설계 과정을 소개한다.
+- 본격적인 개발에서 앞서 프로젝트 구조를 설계 과정을 소개한다.
 - github: <https://github.com/scribnote5/sw_test_forum>
+
+
+
+## Project Lab CRUD 게시판 마이그레이션
+- Project Lab에서 개발한 Spring boot + Thymeleaf CRUD 게시판을 기반으로 Project Test 환경(Vue.js)에 맞게 마이그레이션 한다.
+- Project SW Test Forum 웹 페이지의 기본 언어는 영어 대신 한글을 사용한다.
 
 
 
@@ -75,6 +81,10 @@ layout: post
 
 ### 파일 업로드(드래그 앤 드랍)
 - 여러 개의 파일을 일반적인 방법(경로 지정)과 드래그 앤 드랍으로 업로드 할수 있다.
+
+
+### 경고창
+- 자바스크립트 경고창(alert) 대신 sweetalert2로 대체한다.
 
 
 ### WYSIWYG(CKEditor) 지원
