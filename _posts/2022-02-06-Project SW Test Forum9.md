@@ -534,7 +534,7 @@ public List<MisraCDto> findAllByHighPriorityAscCheckPriority() {
 
 ## 자동완성(autoComplete.js) 구현
 - 이미 등록된 게시글의 데이터를 바탕으로 자동으로 입력값을 제안하는 기능을 구현하였다.
-- 비슷한 유형의 자바스크립트 라이브러리가 많이 존재하는데, 이중 autoComplete.js 라이브러리를 사용하여 구현하였다.
+- 비슷한 유형의 자바스크립트 라이브러리가 많이 존재하는데, 이중 바닐라 자바스크립트로 구현된 autoComplete.js 라이브러리가 장점으로 생각하여 선택하게 되었다.
 
 ![image](/assets/img/2022-02-06-Project SW Test Forum9/image8.png)
 
