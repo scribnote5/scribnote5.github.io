@@ -5,7 +5,7 @@ excerpt: "- Vue.js 3와 Spring boot로 개발한 프로젝트 배포 과정을 �
 categories:
   - Web
   - Project SW Test Forum Forum
-last_modified_at: 2022-02-06
+last_modified_at: 2022-02-07
 layout: post
 ---
 - Vue.js 3와 Spring boot로 개발한 프로젝트 배포 과정을 소개한다.
@@ -21,7 +21,7 @@ layout: post
 $ npm run build -- --mode prod
 ```
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image1.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image1.png)
 
 - 빌드하면 생성되는 ‘프로젝트명-dist’ 디렉터리 경로는 다음과 같이 설정하면 변경할 수 있다.
 
@@ -49,7 +49,7 @@ module.exports = {
 $ ./gradlew clean bootJar
 ```
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image2.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image2.png)
 
 ## 서버 설치 및 설정
 - 서버 운영체제는 Ubuntu 20.04 이며, 서버 구축에 필요한 패키지 설치 과정은 ‘Project Lab 23, 26. 개발 및 운영 서버 배포 - 1’ 게시글을 참고하였다.
@@ -88,11 +88,11 @@ $ ./gradlew clean bootJar
 - 운영서버에 접속하면 다음 하단 이미지와 같은 DevTools failed to load SourceMap  경고 메시지가 출력되었다.
 - 오류가 발생하여 출력되는 메시지는 아니지만, 은근히 신경쓰여서? 다음과 같이 코드를 수정하여 해결하였다.
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image3.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image3.png)
 
 - 오류가 출력되는 파일로 이동하여, // # sourceMappingURL=ckeditor.js.map 코드를 다음과 같이 주석 처리하거나 삭제하면 된다.
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image4.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image4.png)
 
 출처: <https://sens.tistory.com/566>
 
@@ -114,40 +114,40 @@ $ ./gradlew clean bootJar
 
 ### 로그인 페이지
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image5.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image5.png)
 
 
 ### 메인 페이지(대시 보드)
 - 전체적인 통계 및 게시글 리스트를 확인 할 수 있다.
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image6.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image6.png)
 
 
 ### 정적시험 규칙 읽기 페이지
 - 정적시험 규칙을 선택하면, 읽기 페이지로 이동한다. 해당 페이지에서 규칙에 대한 설명, 예제 코드, 가이드라인을 확인 할 수 있다.
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image7.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image7.png)
 
 
 ### 도구 트러블 슈팅 작성 페이지
 - 도구 트러블 슈팅을 해결한 방법을 작성하는 페이지다. 어떠한 형식으로 작성해야 하는지에 대한 템플릿을 제공한다. 또한 에디터에서 # 특수문자로 문자를 입력하면, 오류 로그가 발생한 도구 경로를 자동으로 제안한다.(CKEditor mention 기능)
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image8.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image8.png)
 
 
 ### 지식 저장소 작성 페이지
 - 테스트에 대한 다양한 지식을 작성하는 페이지다. 실사, 교육자료, 공부하면서 정리한 내용 등을 작성할 계획이다.
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image9.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image9.png)
 
 
 ### 로그인 기록
 - 사용자들의 로그인 기록을 확인 할 수 있다.
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image10.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image10.png)
 
 
 ### 설정 페이지
 - 메인 페이지에서 출력하는 정적시험 규칙 및 개발자에게 메일 보내기를 설정하는 페이지다.
 
-![image](/assets/img/2022-02-06-Project SW Test Forum10/image11.png)
+![image](/assets/img/2022-02-07-Project SW Test Forum10/image11.png)
