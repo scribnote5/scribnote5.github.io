@@ -36,7 +36,7 @@ layout: post
 ![image](/assets/img/2022-02-22-Project SW Test Forum12/image4.png)
 
 <br>
-- 읽기 페이지에서만 ‘pdf 출력’ 버튼이 존재한다. 다음 이미지와 같이 리스트 페이지에서는 버튼이 없다.
+- 읽기 페이지에서만 ‘pdf 출력’ 버튼이 존재한다. 다음 이미지와 같이 리스트 페이지에서는 버튼이 없다. ‘pdf 출력’ 버튼을 읽기 페이지에서만 출력하도록 구현하고, 버튼 유무에 따라 레이아웃이 깨지지 않도록 수정하는데 생각보다 많은 시간이 소요되었다.
 
 ![image](/assets/img/2022-02-22-Project SW Test Forum12/image5.png)
 
