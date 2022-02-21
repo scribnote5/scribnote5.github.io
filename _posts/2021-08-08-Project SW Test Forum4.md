@@ -1,9 +1,9 @@
 ---
-title: "Project SW Test Forum Forum 4. Vue.js와 Spring boot에서 JWT 기반 로그인 구현 - 1"
+title: "Project SW Test Forum 4. Vue.js와 Spring boot에서 JWT 기반 로그인 구현 - 1"
 excerpt: "Vue.js와 Spring boot에서 JWT 기반 로그인을 구현한 과정을 소개한다. "
 categories:
   - Web
-  - Project SW Test Forum Forum
+  - Project SW Test Forum
 last_modified_at: 2021-08-08
 layout: post
 ---

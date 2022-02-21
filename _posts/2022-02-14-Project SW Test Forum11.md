@@ -4,7 +4,7 @@ excerpt: "- Vue.js 3에서 CodeMirror 하이라이트 기능 개발 과정을 �
 
 categories:
   - Web
-  - Project SW Test Forum Forum
+  - Project SW Test Forum
 last_modified_at: 2022-02-08
 layout: post
 ---

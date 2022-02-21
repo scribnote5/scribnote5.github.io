@@ -3,7 +3,7 @@ title: "Project SW Test Forum 5. 프로젝트 구조 설계 - 1"
 excerpt: "- 본격적인 개발에서 앞서 프로젝트 구조를 설계 과정을 소개한다. "
 categories:
   - Web
-  - Project SW Test Forum Forum
+  - Project SW Test Forum
 last_modified_at: 2022-01-25
 layout: post
 ---

@@ -4,7 +4,7 @@ excerpt: "- Vue.js 3와 Spring boot로 개발한 프로젝트 배포 과정을 �
 
 categories:
   - Web
-  - Project SW Test Forum Forum
+  - Project SW Test Forum
 last_modified_at: 2022-02-08
 layout: post
 ---

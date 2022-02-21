@@ -3,7 +3,7 @@ title: "Project SW Test Forum 8. Vue.js CKEditor 5(Custom Pugin 개발) - 2"
 excerpt: "- Vue.js 3와 커스텀 플러그인(에디터 크기 변경) 구현 과정을 소개한다."
 categories:
   - Web
-  - Project SW Test Forum Forum
+  - Project SW Test Forum
 last_modified_at: 2022-02-02
 layout: post
 ---

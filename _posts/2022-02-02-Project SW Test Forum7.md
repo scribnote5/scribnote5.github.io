@@ -3,7 +3,7 @@ title: "Project SW Test Forum 7. CRUD 게시판 구현 및 오류 해결(벡엔�
 excerpt: "- Vue.js 3와 Spring boot로 CRUD 게시판 구현 및 오류 해결 과정을 소개한다.  "
 categories:
   - Web
-  - Project SW Test Forum Forum
+  - Project SW Test Forum
 last_modified_at: 2022-02-02
 layout: post
 ---

@@ -3,7 +3,7 @@ title: "Project SW Test Forum 9. 기타 기능 구현 - 1"
 excerpt: "- Vue.js 3와 Spring boot로 다양한 기능 구현 과정을 소개한다. "
 categories:
   - Web
-  - Project SW Test Forum Forum
+  - Project SW Test Forum
 last_modified_at: 2022-02-06
 layout: post
 ---
