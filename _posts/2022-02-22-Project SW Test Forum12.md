@@ -31,7 +31,7 @@ layout: post
 ![image](/assets/img/2022-02-22-Project SW Test Forum12/image3.png)
 
 <br>
-- pdf 파일 페이지 변경시 이미지가 잘리는 부분은 라이브러리의 한계로 해결이 어렵다. html 태그 id 별로 출력하는 페이지를 지정한다면, 해당 문제를 해결 할 수 있다.
+- pdf 파일 페이지 변경시 이미지가 잘리는 부분은 라이브러리의 한계로 해결이 어렵다. html 태그 식별자(일반적으로 id) 마다 출력하는 페이지를 지정한다면, 해당 문제를 해결 할 수 있다.
 
 ![image](/assets/img/2022-02-22-Project SW Test Forum12/image4.png)
 
