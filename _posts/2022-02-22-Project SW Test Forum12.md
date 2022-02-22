@@ -8,7 +8,7 @@ categories:
 last_modified_at: 2022-02-22
 layout: post
 ---
-- - Vue.js 3에서 pdf 파일 출력 기능 개발 과정을 소개한다.
+- Vue.js 3에서 pdf 파일 출력 기능 개발 과정을 소개한다.
 - github: <https://github.com/scribnote5/sw_test_forum>
 
 
