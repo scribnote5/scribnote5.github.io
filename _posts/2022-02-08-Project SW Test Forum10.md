@@ -1,6 +1,6 @@
 ---
-title: "Project SW Test Forum 10. 운영 서버 배포 - 1"
-excerpt: "- Vue.js 3와 Spring boot로 개발한 프로젝트 배포 과정을 소개한다."
+title: "Project SW Test Forum 10. 운영 서버 배포 및 후기 - 1"
+excerpt: "- Vue.js 3와 Spring boot로 개발한 프로젝트 배포 과정과 후기를 소개한다."
 
 categories:
   - Web
