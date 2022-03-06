@@ -28,7 +28,9 @@ layout: post
 
 ### 분기(Branch) 커버리지
 - 시험대상 소프트웨어 소스 코드내의 분기문 중 동적시험간 참(True), 거짓(False)이 적어도 한 번 이상 시험된 비율(%)을 의미한다.
-MC/DC(Modified Condition/Decision Coverage) 커버리지
+
+
+### MC/DC(Modified Condition/Decision Coverage) 커버리지
 - 가장 높은 수준의 코드 실행률로써 시험대상 소프트웨어 소스 코드내 분기문에 있는 모든 조건식 중 개별 조건식의 독립적인 변화가 분기문의 참, 거짓에 영향을 미치는 모든 조합에 대해 동적시험간 적어도 한 번 이상 시험된 비율(%)을 의미한다.
 
 ![image](/assets/img/2020-07-25-Dynamic Test1/image1.png)
