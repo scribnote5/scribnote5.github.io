@@ -27,7 +27,7 @@ layout: post
 ## mariaDB 설치
 - 'Ubuntu' 앱을 실행한다.
 
-```
+```bash
 $ sudo apt update -y
 $ sudo apt upgrade -y
 
@@ -41,7 +41,7 @@ $ sudo service mysql start
 
 
 ## mariaDB 보안 설정
-```sh
+```bash
 # mysql 보안 설정
 $ sudo mysql_secure_installation
 ```
@@ -50,7 +50,7 @@ $ sudo mysql_secure_installation
 
 ![image](/assets/img/2020-05-02-Project Lab2/image1.png)
 
-```
+```bash
 $ Enter current password for root (enter or none)
 - OS의 root 계정의 비밀번호를 입력한다. root 권한으로 실행하였기 때문에 엔터키를 입력하여 넘어간다.
 
@@ -75,7 +75,7 @@ $ Reload privilege tables now? [Y/n]
 ## mariaDB 새로운 계정을 외부에서 접속하도록 허용하기
 - mariaDB를 DB 관리 도구인 DBeaver에서 접속 가능하도록 설정한다.
 
-```
+```bash
 # mariaDB root 계정 접속
 $ sudo mysql -u root -p
 
@@ -99,7 +99,7 @@ $ CREATE DATABASE lab;
 ## mariaDB 계정 삭제
 - 계정 및 DB 삭제 명령어다.
 
-```
+```bash
 # 계정 삭제
 $ DROP USER 'scribnote5'@'%';
 

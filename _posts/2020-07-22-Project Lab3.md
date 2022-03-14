@@ -102,7 +102,7 @@ A 수정시 B 까지 재빌드
 ### Gradle 버전 변경
 - 프로젝트에서 사용하는 gradle의 버전을 최신 버전으로 변경한다.
 
-```
+```bash
 # 프로젝트 경로로 이동한 다음, gradle 버전을 변경
 $ ./gradlew.bat wrapper --gradle-version 6.5.1
 
@@ -138,10 +138,8 @@ OS:           Windows 10 10.0 amd64
 - 다음과 같이 모듈 간의 의존성을 설정한다.
 
 ```
-lab/settings.gradle
-```
+<lab/settings.gradle>
 
-```
 rootProject.name = 'lab'
 include 'module-system-common'
 include 'module-domain-core'
@@ -154,10 +152,8 @@ include 'module-app-admin'
 - root 프로젝트에서 Spring Boot를 사용하기 위한 필수 의존성 라이브러리를 선언한다.
 
 ```
-lab/build.gradle
-```
+<lab/build.gradle>
 
-```
 // 외부 의존성 라이브러리를 클래스 패스에 추가한다.
 buildscript {
    ext {
@@ -239,10 +235,8 @@ project('module-app-api') {
 - module-app-* 모듈은 실행 가능한 자바 파일(*.jar) 파일이 필요하다. 하지만 실행 가능한 자바 파일(*.jar)이 필요없는 모듈의 경우 build.gradle 파일 내용을 삭제한다.
 
 ```
-module-domain-core/build.gradle, module-system-common/build.gradle, module-web-core/build.gradle
-```
+<module-domain-core/build.gradle, module-system-common/build.gradle, module-web-core/build.gradle>
 
-```
 // 해당 모듈은 실제 실행되는 모듈에 종속되므로, 실행 가능한 자바 파일을 생성하지 않는다.
 bootJar { enabled = false }
 jar { enabled = true }

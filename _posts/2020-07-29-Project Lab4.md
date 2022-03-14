@@ -84,10 +84,7 @@ public Long updateNoticeBoard(Long idx, NoticeBoard noticeBoard) {
 ### serializeObject 라이브러리 사용
 - ajax 통신을 위한 JSON 객체를 생성할 때 필요한 반복되는 변수 초기화 코드는 작성하기 번거롭고 비효율적이다. 이런 문제점을 해결하기 위해서 form 태그를 사용하는 경우 input tag의 value를 자동으로 JSON으로 변환하는 serializeObject 라이브러리를 사용하였다.
 - form 태그를와 같이 serializeObject 라이브러리를 사용하면, 하단 예제와 같이 반복되는 변수 초기화 소스 코드를 제거할 수 있다.
-
-```
-기존 소스 코드: JSON 객체에 변수 직접 초기화
-```
+- 기존 소스 코드: JSON 객체에 변수 직접 초기화
 
 ```javascript
 var jsonData = JSON.stringify({
@@ -98,9 +95,8 @@ var jsonData = JSON.stringify({
 ```
 
 <br>
-```
-변경된 소스 코드: serializeObject를 사용하여 JSON 객체 생성
-```
+
+- 변경된 소스 코드: serializeObject를 사용하여 JSON 객체 생성
 
 ```javascript
 var jsonData = $("#form").serializeObject();

@@ -51,10 +51,8 @@ layout: post
 - Querydsl 의존성과 Q Domain를 생성하는 annotationProcessor를 추가한다.
 
 ```
-build.gradle
-```
+<build.gradle>
 
-```
 project(":module-domain-core") {
    dependencies {
        compile project(":module-system-common")
@@ -97,11 +95,9 @@ configure(queryDslProjects) {
 ## Config
 - QueryDsl을 프로젝트 내에서 사용할 수 있도록 필요한 부분을 설정한다.
 
-```
-module-domain-core/kr/ac/univ/common/config/QueryDslConfig
-```
-
 ```java
+<module-domain-core/kr/ac/univ/common/config/QueryDslConfig>
+
 package kr.ac.univ.common.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -130,11 +126,9 @@ public class QueryDslConfig {
 - findByTitle: 제목으로 게시글을 검색한다.(테스트 용도로 구현)
 - updateViewCountById: 게시글 조회수를 1 증가시킨다.
 
-```
-module-domain-core/kr/ac/univ/noticeBoard/repository/NoticeBoardRepositoryImpl
-```
-
 ```java
+<module-domain-core/kr/ac/univ/noticeBoard/repository/NoticeBoardRepositoryImpl>
+
 package kr.ac.univ.noticeBoard.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -191,11 +185,9 @@ public class NoticeBoardRepositoryImpl extends QuerydslRepositorySupport {
 ## JUnit Test
 - 200개의 데이터를 등록한 다음, QueryDsl 작성한 findByTitle과 updateViewCountById 쿼리가 정상적으로 동작하는지 테스트 하였다.
 
-```
-module-app-web/src/test/java/kr/ac/univ/QueryDslTest
-```
-
 ```java
+<module-app-web/src/test/java/kr/ac/univ/QueryDslTest>
+
 package kr.ac.univ;
 
 import kr.ac.univ.common.domain.enums.ActiveStatus;
@@ -281,11 +273,9 @@ public class QueryDslTest {
 - NoticeBoard의 비즈니스 로직이다.
 - findNoticeBoardByIdx: 게시글을 조회할 때 NoticeBoardReposityImpl의 updateViewCountById 메소드를 호출하여 게시글 조회수를 1 증가시킨다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService>
+
 @Service
 public class NoticeBoardService {
     private final NoticeBoardRepository noticeBoardRepository;

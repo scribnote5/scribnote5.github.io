@@ -21,8 +21,8 @@ layout: post
 
 ![image](/assets/img/2020-05-05-GithubPage1/image1.png)
 
-```
-$ _includes/sidebar.html
+```bash
+<_includes/sidebar.html>
 ```
 
 - github page는 해당 소스 코드의 jekyll 문법을 인식하여, 일부 소스 코드가 제대로 출력되지 않는다. 따라서 gitgub URI와 이미지 파일로 대체한다. ~~코드는 하단 댓글로 첨부한다.~~
@@ -34,20 +34,16 @@ github page Link: <https://github.com/scribnote5/scribnote5.github.io/blob/maste
 
 - _includes/sidebar.html 파일에 코드를 추가하면 카테고리 리스트가 성공적으로 나온다. 만약 카테고리 리스트의 개수가 많아진다면 scroll bar가 생겨 sidebar 일부를 가릴 수 있다. 이는 전체적인 뷰의 아름다움?을 해친다고 생각하여, 카테고리 리스트에 scroll bar가 생기지 않도록 코드를 추가하였다.
 
-```
-$ _includes/sidebar.html
-```
-
 ```html
+<_includes/sidebar.html>
+
 <!-- 새로운 클래스 및 style 태그 추가 -->
 <div class="sidebar sticky scrollbar__hide" style="-ms-overflow-style: none;">
 ```
 
-```
-$ _sass/minimal-mistakes/_page.scss
-```
-
 ```html
+<_sass/minimal-mistakes/_page.scss>
+
 <!-- 파일 제일 하단에 추가 -->
 .scrollbar__hide::-webkit-scrollbar {
   display:none;
@@ -65,47 +61,37 @@ $ _sass/minimal-mistakes/_page.scss
 
 ![image](/assets/img/2020-05-05-GithubPage1/image3.png)
 
-```
-_layouts/single.html
-```
-
 ```html
+<_layouts/single.html>
+
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
 <article class="page" itemscope itemtype="https://schema.org/CreativeWork" style="padding: 0px 35px 0px 35px;">
 ```
 
-```
-_layouts/taxonomy.html
-```
-
 ```html
+<_layouts/taxonomy.html>
+
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
 <div class="archive" style="padding: 0px 35px 0px 35px;">
 ```
 
-```
-_layouts/archive.html
-```
-
 ```html
+<_layouts/archive.html>
+
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
 <div class="archive" style="padding: 0px 35px 0px 35px;">
 ```
 
-```
-_layouts/search.html
-```
-
 ```html
+<_layouts/search.html>
+
 <!-- style 태그 추가하여 padding 조절(좌우 25px 여백 추가) -->
 <div class="archive" style="padding: 0px 35px 0px 35px;">
-```
-
-```
-$ _sass/minimal-mistakes/_page.scss
 ```
 
 ```css
+<_sass/minimal-mistakes/_page.scss>
+
 #main {
   @include clearfix;
   margin-left: auto;
@@ -132,11 +118,9 @@ $ _sass/minimal-mistakes/_page.scss
 
 ![image](/assets/img/2020-05-05-GithubPage1/image4.png)
 
-```
-$ _sass\minimal-mistakes\_sidebar.scss
-```
-
 ```css
+<_sass\minimal-mistakes\_sidebar.scss>
+
 .sidebar {
   @include clearfix();
   @include breakpoint(max-width $large) {

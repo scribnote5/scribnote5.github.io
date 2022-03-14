@@ -38,7 +38,8 @@ layout: post
 - 프로젝트에서 사용할 게시판 첨부 파일 table을 생성한다.
 
 ```sql
-# notice_board_attached_file
+<notice_board_attached_file>
+
 $ CREATE TABLE notice_board_attached_file (
  idx               bigint auto_increment    primary key,
  created_by        varchar(255)    null,

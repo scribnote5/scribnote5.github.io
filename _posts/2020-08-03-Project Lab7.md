@@ -34,11 +34,9 @@ layout: post
 - 해당 메소드는 비교 단위가 시간(hour)으로 계산하기에, 시간에 따른 오차가 발생한다.
 - '게시글이 등록된 날짜'가 '현재 시간 + 24시간'보다 이전인 경우(최근에 등록된 게시글) true를 반환하며, 아닌 경우 false를 반환한다.
 
-```
-module-system-common/src/main/java/kr/ac/univ/util/NewIconCheck.java
-```
-
 ```java
+<module-system-common/src/main/java/kr/ac/univ/util/NewIconCheck.java>
+
 package kr.ac.univ.util;
 
 import java.time.LocalDateTime;
@@ -67,11 +65,9 @@ public class NewIconCheck {
 - '게시글이 등록된 날짜'와 '현재 시간 + 24시간'을 비교하여 최근에 등록된 게시글인지 판별하는 과정을 테스트하였다.
 - 테스트를 수행하려면 비교하고 싶은 날짜와 시간 수정이 필요하다.
 
-```
-module-app-web/src/test/java/kr/ac/univ/NewIconCheckTest.java
-```
-
 ```java
+<module-app-web/src/test/java/kr/ac/univ/NewIconCheckTest.java>
+
 package kr.ac.univ;
 
 import kr.ac.univ.noticeBoard.repository.NoticeBoardRepository;
@@ -120,11 +116,9 @@ public class NewIconCheckTest {
 - NoticeBoard에서 사용하는 DTO다.
 - 새로 등록한 게시글인지 확인하는 boolean 자료형 isNewIcon 멤버 필드를 추가하였다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto.java>
+
 package kr.ac.univ.noticeBoard.dto;
 
 import kr.ac.univ.common.domain.enums.ActiveStatus;
@@ -162,11 +156,9 @@ public class NoticeBoardDto extends CommonDto {
 - NoticeBoard의 비즈니스 로직이다.
 - findNoticeBoardList(모든 게시글 리스트 검색): 최근 등록된 게시글을 판별하는 로직을 해당  메소드에서 판별한다. 'noticeBoardDto.setNewIcon(NewIconCheck.isNew(LocalDateTime.now()));' 해당 소스 코드는 JPA Audit을 적용한 다음 createdDated(게시글 등록 날짜)로 변경할 예정이다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService.java>
+
 ...
 
     public Page<NoticeBoardDto> findNoticeBoardList(Pageable pageable) {
@@ -194,11 +186,9 @@ module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardServi
 - 최근 등록된 게시글은 NoticeBoard list.html에서 newIcon의 조건을 판별 후 true인 경우 N 아이콘을 출력한다.
 - 참고로 자바 DTO에서는 isNewIcon 변수를 사용하지만, thymeleaf에서는 이와 다르게 is가 생략된 newIcon 변수를 사용한다.
 
-```
-module-app-web/src/main/resources/templates/noticeBoard/list.html
-```
-
 ```html
+<module-app-web/src/main/resources/templates/noticeBoard/list.html>
+
 ...
 &nbsp;
 <img th:if="${noticeBoardDto.newIcon}" th:attr="src=@{|/images/new_icon.png|}" th:style="'width: 15px; height: 15px'" />

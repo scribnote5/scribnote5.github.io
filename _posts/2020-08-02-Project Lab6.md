@@ -67,12 +67,9 @@ layout: post
 - 해당 프로젝트에서 사용하는 mapstruct 버전은 1.3.1이며, lombok 버전은 1.18.12다.
 - <span style="color:red; font-weight: bold">Mapstruct의 의존성이 lombok 보다 먼저 선언되어야 한다.</span> 원인은 모르겠지만 의존성 순서가 변경되면 JUnit 테스트시 Mapper 인터페이스의 구현체인 MapperImpl 클래스를 인식하지 못하는 문제가 발생한다.
 
+```
+<build.gradle>
 
-```
-build.gradle
-```
-
-```
 ...
 // mapstruct, lombok 의존성보다 먼저 선언되어야 한다.
 implementation "org.mapstruct:mapstruct:1.3.1.Final"
@@ -88,10 +85,8 @@ annotationProcessor "org.projectlombok:lombok"
 - 만약 lombok 버전이 1.18.16 이후인 경우 mapstruct 이슈로 매핑 코드가 생성되지 않으므로 다음과 같이 의존성 라이브러리를 선언해야 한다.
 
 ```
-build.gradle
-```
+<build.gradle>
 
-```
 // Mapstruct
 implementation "org.mapstruct:mapstruct:1.4.2.Final"
 annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
@@ -112,11 +107,9 @@ annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
 - DTO <-> Entity간 객체 mapping을 담당하는 MapperImpl 클래스는 EntityMapper 인터페이스를 구현받으며, EntityMapper 인터페이스의 메소드는 Mapstruct에 의해 자동으로 DTO <-> Entity간 객체 mapping 소스 코드가 생성된다.
 - Gradle build 할 때 MapStruct는 자동으로 MapeprImpl 소스 코드를 생성한다. MapperImpl 소스 코드는 Domain 그리고 DTO에 선언된 setter 또는 builder 패턴에 의하여 매핑 코드를 생성한다. setter와 builder 패턴이 동시에 존재하는 경우 setter을 우선적으로 사용한다. 본 프로젝트에서는 Domain에서는 builder 패턴을 사용하였으며, DTO에서는 setter를 사용하여 매핑 코드를 생성gks다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/common/dto/mapper/EntityMapper
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/common/dto/mapper/EntityMapper>
+
 package kr.ac.univ.common.dto.mapper;
 
 import java.util.List;
@@ -132,11 +125,9 @@ public interface EntityMapper <Dto, Entity> {
 <br>
 - NoticeBoard Entity<->DTO간 객체 mapping 소스 코드가 Mapstruct에 의해 생성되도록 메소드를 선언 및 하는 클래스다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/NoticeBoardMapper
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/NoticeBoardMapper>
+
 package kr.ac.univ.noticeBoard.dto.mapper;
 
 import kr.ac.univ.common.dto.mapper.EntityMapper;
@@ -155,11 +146,9 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 <br>
 - Domain 클래스가 공통적으로 사용하는 데이터를 담은 클래스다. 모든 Domain 클래스는 CommonAudit 클래스를 상속 받는다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/common/domain/CommonAudit
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/common/domain/CommonAudit>
+
 package kr.ac.univ.common.domain;
 
 import kr.ac.univ.common.domain.enums.ActiveStatus;
@@ -204,11 +193,9 @@ public abstract class CommonAudit {
 <br>
 - NoticeBoard에서 사용하는 Domain다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoard
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoard>
+
 package kr.ac.univ.noticeBoard.domain;
 
 import kr.ac.univ.common.domain.CommonAudit;
@@ -259,11 +246,9 @@ public class NoticeBoard extends CommonAudit {
 <br>
 - DTO 클래스가 공통적으로 사용하는 데이터를 담은 클래스다. 모든 DTO 클래스는 CommonDto 클래스를 상속 받는다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/common/dto/CommonDto
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/common/dto/CommonDto>
+
 package kr.ac.univ.common.dto;
 
 import lombok.Getter;
@@ -290,11 +275,9 @@ public class CommonDto {
 <br>
 - NoticeBoard에서 사용하는 DTO다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto>
+
 import kr.ac.univ.common.domain.enums.ActiveStatus;
 import kr.ac.univ.common.dto.CommonDto;
 import lombok.Getter;
@@ -329,11 +312,9 @@ public class NoticeBoardDto extends CommonDto {
 ## JUnit Test
 - MapperImpl 클래스의 DTO <-> Entity간 객체 mapping을 테스트 하였다.
 
-```
-module-app-web/src/test/java/kr/ac/univ/MapStructTest
-```
-
 ```java
+<module-app-web/src/test/java/kr/ac/univ/MapStructTest>
+
 package kr.ac.univ;
 
 import kr.ac.univ.noticeBoard.domain.NoticeBoard;
@@ -379,11 +360,9 @@ public class MapStructTest {
 
 출처: <https://effectivecode.tistory.com/1220>
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService>
+
 package kr.ac.univ.noticeBoard.service;
 
 import kr.ac.univ.noticeBoard.domain.NoticeBoard;
@@ -445,11 +424,9 @@ public class NoticeBoardService {
 - NoticeBoard 관련 클라이언트의 요청을 view로 매핑한다.
 - Controller에서 view로 전달하는 noticeBoard 변수명을 noticeBoardDto로 변경하였다.
 
-```
-module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController
-```
-
 ```java
+<module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController>
+
 model.addAttribute("noticeBoardDtoList", noticeBoardService.findNoticeBoardByIdx(idx));
 ```
 
@@ -458,10 +435,8 @@ model.addAttribute("noticeBoardDtoList", noticeBoardService.findNoticeBoardByIdx
 ## View
 - NoticeBoard 관련 데이터를 화면에 출력한다.
 
-```
-module-app-web/src/main/resources/templates/noticeBoard/list, form, read
-```
-
 ```java
+<module-app-web/src/main/resources/templates/noticeBoard/list, form, read>
+
 <tr th:each="noticeBoardDto : ${noticeBoardDtoList}">
 ```
