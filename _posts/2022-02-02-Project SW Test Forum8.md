@@ -31,11 +31,9 @@ layout: post
 - 에디터를 ‘최대’ 크기로 늘리는 경우, ‘최소’ 크기로 줄이는 경우 기능과 일치하는 아이콘이 위치해야 한다. 아이콘 이미지를 public 폴더와 assets 폴더에 추가하여 읽어오려고 하였지만, CKEditor에서 해당 아이콘 이미지를 인식하지 못하여 오류가 발생하였다.
 - 따라서 CKEditor의 이미지가 라이브러리 이미지 파일이 위치한 경로에 아이콘 이미지를 추가하여 읽어오는 방식으로 구현하였다. CKEditor 라이브러리에 의존적이라는 단점이 발생하지만 이를 해결하는 방법을 찾지 못하였다. 이는 CKEditor 라이브러리에 의존적이며 버전이 변경되는 경우 아이콘 이미지를 다시 옮겨야 하는 단점이 있지만, 이를 해결하는 방법을 찾지 못하였다.
 
-```
-module-app-web\front\src\assets\plugins\ckeditor\ckeditor-editor-resize.js
-```
-
 ```javascript
+<module-app-web\front\src\assets\plugins\ckeditor\ckeditor-editor-resize.js>
+
 // ...
 
 // import extendIcon from '/public/extend-black.svg';
@@ -132,11 +130,9 @@ export {EditorResize}
 ### 에디터 초기화 시 커스텀 플러그인 호출
 - editorConfig 객체의 plugins 속성에 EditorResize를, toolbar 속성에 ‘editorResize’를 추가하면 된다.
 
-```
-module-app-web\front\src\assets\plugins\ckeditor\ckeditor-init.js
-```
-
 ```javascript
+<module-app-web\front\src\assets\plugins\ckeditor\ckeditor-init.js>
+
 // ...
 import {EditorResize} from "./ckeditor-editor-resize"
 

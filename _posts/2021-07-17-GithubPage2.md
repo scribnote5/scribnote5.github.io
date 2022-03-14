@@ -59,10 +59,8 @@ layout: post
 - 하단 출처를 참고하여, ‘Personal access tokens’를 발급 받은 다음 build-jekyll.yml 파일의 line 26에 발급 받은 토큰을 입력하면 된다.
 
 ```
-build-jekyll.yml
-```
+<build-jekyll.yml>
 
-```
       # Use GitHub Deploy Action to build and deploy to Github
       - uses: jeffreytse/jekyll-deploy-action@master
         with:

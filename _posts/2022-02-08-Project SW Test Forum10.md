@@ -17,7 +17,7 @@ layout: post
 - 운영서버 환경은 prod 실행모드에서 실행되도록 설정(환경변수가 prod 모드에 맞춰짐) 하였으며, 다음 명령어를 사용하여 프로젝트를 prod 실행모드로 빌드한다.
 - ‘프로젝트명-dist’라는 디렉터리(module-app-web-dist)가 생성되며, nginx를 사용하여 서버를 실행한다.
 
-```console
+```bash
 $ npm run build -- --mode prod
 ```
 
@@ -25,11 +25,9 @@ $ npm run build -- --mode prod
 
 - 빌드하면 생성되는 ‘프로젝트명-dist’ 디렉터리 경로는 다음과 같이 설정하면 변경할 수 있다.
 
-```
-module-app-web\front\vue.config.js
-```
-
 ```javascript
+<module-app-web\front\vue.config.js>
+
 // ...
 
 module.exports = {
@@ -45,7 +43,7 @@ module.exports = {
 ## 운영서버 배포를 위한 Spring boot 프로젝트 빌드
 - 다음 명령어를 사용하여 빌드한다.
 
-```
+```bash
 $ ./gradlew clean bootJar
 ```
 
@@ -56,10 +54,8 @@ $ ./gradlew clean bootJar
 - nginx에서 Vue.js 프로젝트를 실행하는 설정은 다음과 같다. loaction의 root에 Vue.js 프로젝트 빌드한 디렉터리 경로를 넣어주면 된다. 이후 nginx 설정을 다시 불러오는 nginx -s reload 명령어를 수행하면 된다.
 
 ```
-/etc/nginx/nginx.conf
-```
+</etc/nginx/nginx.conf>
 
-```
 # ...
 
         server {

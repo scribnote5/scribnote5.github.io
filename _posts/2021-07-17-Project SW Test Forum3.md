@@ -31,7 +31,7 @@ layout: post
 ## CKEditor 관련 모듈 설치
 - CKEidtor를 사용하기 위한 필수 모듈이다.
 
-```
+```bash
 npm install --save \
     @ckeditor/ckeditor5-vue \
     @ckeditor/ckeditor5-dev-webpack-plugin \
@@ -45,10 +45,8 @@ npm install --save \
 - 개발자가 구현하려는 시스템에 따라서 CKEditor에서 사용할 모듈을 추가 및 제거하면 된다.
 
 ```
-package.json
-```
+<package.json>
 
-```
 ...
   "dependencies": {
     "@ckeditor/ckeditor5-adapter-ckfinder": "^27.1.0",
@@ -85,10 +83,8 @@ package.json
 - vue.js ‘/’(root) 경로에 하단의 vue.js.config 파일을 생성한다.
 
 ```
-vue.js.config
-```
+<vue.js.config>
 
-```
 const path = require( 'path' );
 const CKEditorWebpackPlugin = require( '@ckeditor/ckeditor5-dev-webpack-plugin' );
 const { styles } = require( '@ckeditor/ckeditor5-dev-utils' );
@@ -167,11 +163,9 @@ module.exports = {
 ## CKEditor 설정
 - CKEditor에서 사용하는 css 파일로, CKEditor를 사용할 때 import 하지 않으면 css가 적용되지 않아 레이아웃이 깨진다.
 
-```
-/src/assets/css/ckeditor.css
-```
-
 ```css
+</src/assets/css/ckeditor.css>
+
 /*
  * CKEditor 5 (v27.0.0) content styles.
  * Generated on Wed, 24 Mar 2021 08:00:59 GMT.
@@ -519,11 +513,9 @@ module.exports = {
 - 워드를 바탕으로 메뉴바 기능을 정렬하여, 익숙한 사용성을 제공하려고 하였다.
 - 개발자가 구현하려는 시스템에 따라서 수정하면 된다.
 
-```
-/src/assets/plugins/ckeditor/ckeditor-init.js
-```
-
 ```javascript
+</src/assets/plugins/ckeditor/ckeditor-init.js>
+
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor'
 
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials'
@@ -771,11 +763,9 @@ export { editor, editorData, editorConfig };
 - API 서버를 구현되어 있을 때, 파일 드래그앤드랍 이벤트가 발생하는 경우 비동기 방식으로 파일이 API 서버로 전송되어 업로드 된다.
 - xhr.open('POST', 'localhost' + '/api/attachedFiles/upload', true); 에 파일 업로드를 처리하는 API 서버 URI를 입력하면 된다.
 
-```
-/src/assets/plugins/ckeditor/ckeditor-upload-adapter.js
-```
-
 ```javascript
+</src/assets/plugins/ckeditor/ckeditor-upload-adapter.js>
+
 /* ckeditor custom image upload */
 class CustomUploadAdapter {
     constructor(loader) {
@@ -840,11 +830,9 @@ export { CustomUploadAdapterPlugin }
 - CKEditor에 입력된 데이터는 vueEditorData 변수에 저장된다. writePost 함수와 같이 이벤트 함수의 인자로 vueEditorData를 전달하면 writePost 매개변수로 에디터 데이터를 읽어 올 수 있다.
 - CKEditor @blur 이벤트를 사용하여 validation을 적용하였다. 만약 입력되는 데이터의 크키가 너무 큰 상태에서 blur 이벤트(CKEditor에서 포커스를 잃는 경우)가 발생하면 validateEditor 함수가 수행된다. validateEditor 함수는 약 16MB 이상의 데이터가 입력되는 경우 경고창을 띄우며, CKEditor로 강제 포커스가 된다.
 
-```
-/src/views/Board.vue
-```
-
 ```javascript
+</src/views/Board.vue>
+
 <template>
     <div class="board" >
         <h1>This is an board page < /h1>
@@ -921,11 +909,9 @@ export default {
 
 출처: <https://wikidocs.net/127508>
 
-```
-/src/views/BoardRead.vue
-```
-
 ```javascript
+</src/views/BoardRead.vue>
+
 <template>
     <div v-html="notice.content"></div>
 </template>

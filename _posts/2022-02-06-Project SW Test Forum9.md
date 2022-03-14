@@ -29,11 +29,9 @@ layout: post
 - Vue에서 HashTags 컴포넌트로 props에 pageInformation(리스트 페이지인지, 등록 페이지인지, 수정 페이지인지에 대한 정보)와 hashTags(해시태그 데이터)를 전달하면 된다.
 - DB에는 ‘#해시태그#해시태그#해시태그’ 데이터 형태로 저장된다.
 
-```
-module-app-web\front\src\components\common\HashTags.vue
-```
-
 ```html
+<module-app-web\front\src\components\common\HashTags.vue>
+
 <template>
    <span v-if="pageInformation === 'list'">
      <span v-if="isEmpty(hashTags)">
@@ -287,11 +285,9 @@ export default {
 
 - 우선순위가 높은 리스트 조회, 우선순위가 낮은 리스트 조회 api가 2개로 분류된다.
 
-```
-module-app-web\front\src\components\misra_c\misra_c\MisraCList.vue
-```
-
 ```html
+<module-app-web\front\src\components\misra_c\misra_c\MisraCList.vue>
+
 <!-- ... -->
          <!-- misraCListByPriority -->
          <tr v-for="(misraC, i) in misraCListByPriority" :key="i">
@@ -416,11 +412,9 @@ module-app-web\front\src\components\misra_c\misra_c\MisraCList.vue
 </script>
 ```
 
-```
-module-app-web\front\src\components\common\Priority.vue
-```
-
 ```html
+<module-app-web\front\src\components\common\Priority.vue>
+
 <template>
  <span v-if="pageInformation === 'read'">
    <span v-if="priority < maxPriority">{{ priority }}</span>
@@ -457,11 +451,9 @@ export default {
 - 6의 크기를 가지는 우선순위 배열을 생성하며, 마지막 배열 요소는 우선순위를 설정하지 않는 경우다.
 - 우선순위가 설정된 게시글을 조회한 리스트를 반복문에서 순회하며, 우선순위가 설정되어 있는 요소이거나 현재 수정 중인 요소에 색인을 설정한다.
 
-```
-module-domain-core\src\main\java\com\suresoft\sw_test_forum\misra_c\misra_c\service\MisraCService.java
-```
+```java
+<module-domain-core\src\main\java\com\suresoft\sw_test_forum\misra_c\misra_c\service\MisraCService.java>
 
-``java
 // ...
 
 /**
@@ -506,11 +498,9 @@ public PriorityDto[] findAllByHighPriorityAscWhenUpdate(long idx) {
 }
 ```
 
-```
-module-domain-core\src\main\java\com\suresoft\sw_test_forum\misra_c\misra_c\repository\MisraCRepositoryImpl.java
-```
-
 ```java
+<module-domain-core\src\main\java\com\suresoft\sw_test_forum\misra_c\misra_c\repository\MisraCRepositoryImpl.java>
+
 /**
 * 우선순위 확인 할 때, 우선순위 높은 리스트 조회
 *
@@ -570,11 +560,9 @@ public List<MisraCDto> findAllByHighPriorityAscCheckPriority() {
 - 이는 동적으로 예제 코드를 출력하는 기능(즉, 리스트 크기에 따라서 CodeMirror가 동적으로 출력)으로, CodeMirror을 동적으로 생성하면 에러가 발생했기 때문이다. 이를 해결하기 위해서 비효율적이지만 CodeMirror을 미리 생성하고 리스트 크기에 맞게 숨김 처리하는 로직으로 구현하였다.
 - 간단한 코드 미러 코드는 다음과 같다.
 
-```
-module-app-web\front\src\components\common\ExampleList.vue
-```
-
 ```html
+<module-app-web\front\src\components\common\ExampleList.vue>
+
 <template>
  <div>
    <div v-if="pageInformation === 'write' || pageInformation === 'update'">

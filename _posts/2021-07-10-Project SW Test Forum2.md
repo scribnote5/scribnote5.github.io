@@ -52,7 +52,7 @@ layout: post
 - node.js 설치 후 npm을 설치한다.
 - 다음 하단과 같이 진행한다.
 
-```
+```bash
 # 최신 버전으로 업데이트
 $ npm install -g npm
 

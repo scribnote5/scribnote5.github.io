@@ -40,14 +40,14 @@ layout: post
 ```sql
 <notice_board_attached_file>
 
-$ CREATE TABLE notice_board_attached_file (
- idx               bigint auto_increment    primary key,
- created_by        varchar(255)    null,
- created_date      datetime(6)     null,
- file_name         varchar(255)    null,
- saved_file_name   varchar(255)    null,
- notice_board_idx  bigint          null,
- file_size         varchar(255)    null
+CREATE TABLE notice_board_attached_file (
+  idx               bigint auto_increment    primary key,
+  created_by        varchar(255)    null,
+  created_date      datetime(6)     null,
+  file_name         varchar(255)    null,
+  saved_file_name   varchar(255)    null,
+  notice_board_idx  bigint          null,
+  file_size         varchar(255)    null
 );
 ```
 
@@ -59,10 +59,8 @@ $ CREATE TABLE notice_board_attached_file (
 - <span style="color:red; font-weight: bold">파일 업로드 되는 경로는 /upload 폴더이므로, 해당 경로에 upload 폴더를 필수로 생성해야 한다.(root 프로젝트에 upload 폴더를 생성하면 된다.)</span>
 
 ```
-module-app-api/src/main/resources/application.yml
-```
+<module-app-api/src/main/resources/application.yml>
 
-```
 spring:
  servlet:
    multipart:
@@ -81,11 +79,9 @@ server:
 ## Domain 및 DTO 설계
 - 모든 Attachedfile에서 공통적으로 사용하는 Domain다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/common/domain/AttachedFileAudit.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/common/domain/AttachedFileAudit.java>
+
 import lombok.Getter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -109,11 +105,9 @@ public abstract class AttachedFileAudit {
 <br>
 - NoticeBoard attachedfile에서 사용하는 DTO다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/domain/NoticeBoardAttachedFile.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/domain/NoticeBoardAttachedFile.java>
+
 package kr.ac.univ.noticeBoard.domain;
 
 
@@ -163,11 +157,9 @@ public class NoticeBoardAttachedFile extends AttachedFileAudit {
 <br>
 - NoticeBoard 파일 업로드에 사용하는 DTO다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/NoticeBoardDto.java>
+
 package kr.ac.univ.noticeBoard.dto;
 
 import kr.ac.univ.common.domain.enums.ActiveStatus;
@@ -207,11 +199,9 @@ public class NoticeBoardDto extends CommonDto {
 - NoticeBoard DTO <-> Entity간 객체 mapping 소스 코드가 Mapstruct에 의해 생성되도록 메소드를 선언 및 정의하는 클래스다.
 - default 메소드는 사용자가 정의한 메소드로, NoticeBoardAttachedFile 파일 리스트를 NoticeBoardDto의 파일 리스트로 매핑한다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/mapper/NoticeBoardMapper.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/dto/mapper/NoticeBoardMapper.java>
+
 package kr.ac.univ.noticeBoard.dto.mapper;
 
 import kr.ac.univ.common.dto.mapper.EntityMapper;
@@ -244,11 +234,9 @@ public interface NoticeBoardMapper extends EntityMapper<NoticeBoardDto, NoticeBo
 - findAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 검색한다.
 - deleteAttachedFileByNoticeBoardIdx: 매개변수의 게시글 idx와 같은 파일을 모두 삭제한다
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/repository/NoticeBoardAttachedFileRepositoryImpl.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/repository/NoticeBoardAttachedFileRepositoryImpl.java>
+
 package kr.ac.univ.noticeBoard.repository;
 
 import java.util.List;
@@ -315,11 +303,9 @@ public class NoticeBoardAttachedFileRepositoryImpl extends QuerydslRepositorySup
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=rain483&logNo=220636709530&proxyReferer=https:%2F%2Fwww.google.com%2F><br>
 <http://eincs.com/2009/08/java-nio-bytebuffer-performance/>
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardAttachedFileService.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardAttachedFileService.java>
+
 package kr.ac.univ.noticeBoard.service;
 
 import kr.ac.univ.noticeBoard.domain.NoticeBoardAttachedFile;
@@ -337,7 +323,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
-
 
 @Service
 public class NoticeBoardAttachedFileService {
@@ -446,11 +431,9 @@ public class NoticeBoardAttachedFileService {
 - NoticeBoard attachedfile 관련 클라이언트의 요청을 view로 매핑한다.
 - noticeBoardForm, noticeBoardRead: noticeBoard와 연관된 noticeBoard attachedfile을 데이터를 조회 후 noticeBoard 데이터와 함께 view에 전달한다.
 
-```
-module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController.java
-```
-
 ```java
+<module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController.java>
+
 package kr.ac.univ.controller;
 
 import kr.ac.univ.noticeBoard.dto.NoticeBoardDto;
@@ -517,11 +500,9 @@ public class NoticeBoardController {
 ## RestController
 - NoticeBoard attachedfile 관련 클라이언트의 요청을 처리 후 json 타입으로 응답한다.
 
-```
-module-app-api/src/main/java/kr/ac/univ/controller/NoticeBoardRestController.java
-```
-
 ```java
+<module-app-api/src/main/java/kr/ac/univ/controller/NoticeBoardRestController.java>
+
 package kr.ac.univ.controller;
 
 import kr.ac.univ.noticeBoard.dto.NoticeBoardDto;
@@ -591,11 +572,9 @@ public class NoticeBoardRestController {
 - downloadAttachedFile: 모든 파일 다운로드는 요청은 하나의 URL에서 담당하며, 파일 이름을 같이 전달한다.
 - 헤더, MimeType(웹을 통해 전달되는 다양한 형태의 파일 정보), 다운로드 파일의 bytes 총 3개의 정보로 구성되어 파일 다운로드 요청에 응답한다.
 
-```
-module-app-api/src/main/java/kr/ac/univ/controller/AttachedFileRestController.java
-```
-
 ```java
+<module-app-api/src/main/java/kr/ac/univ/controller/AttachedFileRestController.java>
+
 package kr.ac.univ.controller;
 
 import org.springframework.core.io.ByteArrayResource;
@@ -661,13 +640,12 @@ for (var value of formData.values()) {
 }
 ```
 
-출처 :<https://programmerpsk.tistory.com/177>
+출처: <https://programmerpsk.tistory.com/177>
 
-```
-module-app-web/src/main/resources/templates/noticeBoard/form.html
-```
 
 ```html
+<module-app-web/src/main/resources/templates/noticeBoard/form.html>
+
 <tr>
    <th>Attached File</th>
    <td>
@@ -941,11 +919,9 @@ module-app-web/src/main/resources/templates/noticeBoard/form.html
 <br>
 - 업로드된 파일 데이터를 클릭하면 api 서버가 요청에 응답하여, 파일을 다운로드 한다.
 
-```
-module-app-web/src/main/resources/templates/noticeBoard/read.html
-```
-
 ```html
+<module-app-web/src/main/resources/templates/noticeBoard/read.html>
+
 <tr>
    <th>Uploaded Attached File</th>
    <td>
@@ -962,11 +938,9 @@ module-app-web/src/main/resources/templates/noticeBoard/read.html
 ## Util
 - Java: 파일 업로드할 때 저장되는 파일의 크기 단위를 변경한다.
 
-```
-module-system-common/src/main/java/kr/ac/univ/util/FileUtil.java
-```
-
 ```java
+<module-system-common/src/main/java/kr/ac/univ/util/FileUtil.java>
+
 package kr.ac.univ.util;
 
 import java.text.DecimalFormat;
@@ -998,11 +972,9 @@ public class FileUtil {
 <br>
 - Javascript: 업로드 하는 파일의 크기 단위를 변경한다.(Byte 단위를 KB, MB 단위로 변경한다.)
 
-```
-module-app-web/src/main/resources/static/js/fileUtil.js
-```
-
 ```javascript
+<module-app-web/src/main/resources/static/js/fileUtil.js>
+
 /* 파일 크기 변환 */
 function convertFileSize(fileSize) {
    var retFormat = "0";
@@ -1022,11 +994,9 @@ function convertFileSize(fileSize) {
 <br>
 - Javascript: fileUtil.js 파일을 다른 파일에서 사용할 수 있도록 포함시킨다.
 
-```
-module-app-web/src/main/resources/templates/layout/script.html
-```
-
 ```html
+<module-app-web/src/main/resources/templates/layout/script.html>
+
 ...
 <script th:src="@{/js/fileUtil.js}"></script>
 ...

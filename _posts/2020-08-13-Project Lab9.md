@@ -37,11 +37,9 @@ layout: post
 ## DTO 설계
 - 검색 유형과 검색어를 저장하는 공통 DTO다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/common/dto/SearchDto.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/common/dto/SearchDto.java>
+
 package kr.ac.univ.common.dto;
 
 import lombok.Getter;
@@ -67,11 +65,9 @@ public class SearchDto {
 - findAllByContentContaining: 내용에 키워드가 포함된 게시글을 모두 검색한다.
 - findAllByCreatedByContaining: 작성자에 키워드가 포함된 게시글을 모두 검색한다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/repository/NoticeBoardRepository.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/repository/NoticeBoardRepository.java>>
+
 package kr.ac.univ.noticeBoard.repository;
 
 import kr.ac.univ.noticeBoard.domain.NoticeBoard;
@@ -95,11 +91,9 @@ public interface NoticeBoardRepository extends JpaRepository<NoticeBoard, Long> 
 - searchDto의 searchType에 따라서 수행되는 메소드가 변경된다.
 - searchType이 "TITLE"(제목)이면 제목에 키워드가 포함된 게시글을 모두 검색한다.
 
-```
-module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService.java
-```
-
 ```java
+<module-domain-core/src/main/java/kr/ac/univ/noticeBoard/service/NoticeBoardService.java>
+
 ...
 public Page<NoticeBoardDto> findNoticeBoardList(Pageable pageable, SearchDto searchDto) {
    Page<NoticeBoard> noticeBoardList = null;
@@ -138,11 +132,9 @@ public Page<NoticeBoardDto> findNoticeBoardList(Pageable pageable, SearchDto sea
 <br>
 - View에서 전달한 SearchDto(검색 관련 데이터)를 Service 계층으로 전달한다.
 
-```
-module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController.java
-```
-
 ```java
+<module-app-web/src/main/java/kr/ac/univ/controller/NoticeBoardController.java>
+
 ...
 
 // List
@@ -166,12 +158,9 @@ public String noticeBoardList(@PageableDefault Pageable pageable, SearchDto sear
 
 ![image](/assets/img/2020-08-13-Project Lab9/image1.png)
 
-```
-module-app-web/src/main/resources/templates/noticeBoard/list.html
-```
-
 ```html
-...
+<module-app-web/src/main/resources/templates/noticeBoard/list.html>
+
 ...
    <form name="form" id="form" th:object="${searchDto}" action="#">
        <div class="pull-right">

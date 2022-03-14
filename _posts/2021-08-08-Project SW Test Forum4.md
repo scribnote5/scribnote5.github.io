@@ -115,11 +115,9 @@ layout: post
 <https://seob.dev/posts/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%BF%A0%ED%82%A4%EC%99%80-SameSite-%EC%86%8D%EC%84%B1/><br>
 <https://www.hahwul.com/2020/01/18/samesite-lax/>
 
-```
-module-app-api\src\main\java\com\suresoft\sw_test_forum\controller\common\AuthorityController.java
-```
-
 ```java
+<module-app-api\src\main\java\com\suresoft\sw_test_forum\controller\common\AuthorityController.java>
+
     @PostMapping("/authenticate")
     public ResponseEntity authenticate(@Valid @RequestBody LoginDto loginDto, HttpServletResponse response) {
         // authenticationToken 생성, username + moduleName
@@ -148,11 +146,9 @@ module-app-api\src\main\java\com\suresoft\sw_test_forum\controller\common\Author
 
 - 인증된 JWT는 쿠키에 저장되어 클라이언트에 전송된다. 이후 클라이언트에서는 서버로 JWT를 전달해야 하는데,  axios에서는 하단 설정을 추가하면 JWT를 쿠키에 저장하여 전송 한다. 서버는 클라이언트 쿠키에 저장된 JWT를 사용하여 인증을 수행한다.
 
-```
-module-app-web\front\src\main.js
-```
-
 ```javascript
+<module-app-web\front\src\main.js>
+
 // axios 설정
 // ...
 axios.defaults.withCredentials = true; // 다른 origin에 JWT를 전달하기 위한 설정
@@ -172,11 +168,9 @@ CSRF 시나리오 출처: <https://codevang.tistory.com/282>
 - 가장 간단한 해결책으로는 CSRF 토큰을 헤더 정보에 포함하여 서버에 요청하는 것이다.
 - 클라이언트에서 axios를 사용하는 경우 CSRF 토큰을 전송 설정은 기본 값으로 되어 있다.
 
-```
-module-app-web\front\src\main.js
-```
-
 ```javascript
+<module-app-web\front\src\main.js>
+
 // axios 설정
 axios.defaults.xsrfCookieName = 'XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
 axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
@@ -188,11 +182,9 @@ axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN' // csrf 기본 설정을 명시�
 - 서버에서는 클라이언트에서 송신한 CSRF Token이 유효한지 검사해야 한다.
 - Spring boot에서 CSRF 설정을 방법은 하단 출처를 참고하였다.
 
-```
-module-app-api\src\main\java\com\suresoft\sw_test_forum\config\SecurityConfig.java
-```
-
 ```java
+<module-app-api\src\main\java\com\suresoft\sw_test_forum\config\SecurityConfig.java>
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -217,11 +209,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 - 클라이언트(요청하는 쪽)이 서버(요청 받는 쪽)과 본격적인 통신을 수행하기 전에 OPTIONS 메소드로 preflight를 전송한다. 실제 요청과 응답을 주고 받기 전 클라이언트에 CORS 권한이 있는지 '사전검사'를 한 후에 클라이언트에서 실제 요청을 보낸다.
 - 하지만 preflight를 보내는 경우에도 JWT가 있는지 검사하여 에러가 발생한다. 따라서 preflight(request method가 OPTIONS)를 전송할 때를 JWT 유효성 검사에서 제외하였다.
 
-```
-module-app-api\java\com\suresoft\sw_test_forum\jwt\JwtFilter.java
-```
-
 ```java
+<module-app-api\java\com\suresoft\sw_test_forum\jwt\JwtFilter.java>
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;

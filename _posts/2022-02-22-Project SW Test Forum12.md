@@ -46,11 +46,9 @@ layout: post
 - pdf 파일 출력 html2canvas(html 코드를 이미지 파일로 생성)와 jspdf(이미지 파일을 pdf 파일로 생성)라이브러리를 사용하여 기능을 개발하였다
 - 하단 출처를 참고하여 개발하였다. 이외 pdf 파일 내 상단, 좌우 여백은 html2canvas와 jspdf 높이 및 넓이 설정을 알아본 다음 수정하였다.
 
-```
-module-app-web\front\src\components\common\Breadcrumb.vue
-```
-
 ```javascript
+<module-app-web\front\src\components\common\Breadcrumb.vue>
+
 <script>
 import {jsPDF} from "jspdf";
 import html2canvas from "html2canvas";

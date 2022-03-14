@@ -26,20 +26,16 @@ layout: post
 - 각 환경에 따른 .env 파일을 생성한다.
 
 ```
-module-app-web\front\.env.local
-```
+<module-app-web\front\.env.local>
 
-```
 NODE_ENV=local
 BASE_URL=/login
 VUE_APP_MODULE_APP_API_URL=http://localhost:8082
 ```
 
 ```
-module-app-web\front\.env.prod
-```
+<module-app-web\front\.env.prod>
 
-```
 NODE_ENV=prod
 BASE_URL=/login
 VUE_APP_MODULE_APP_API_URL=http://서버주소:8082
@@ -47,18 +43,16 @@ VUE_APP_MODULE_APP_API_URL=http://서버주소:8082
 
 - 터미널에서 프론트엔드 서버를 환경에 맞게 실행한다.
 
-```console
+```bash
 # local 환경에서 수행
 $ npm run local
 ```
 
 - ‘process.env.환경변수 이름’으로 환경 변수에 접근할 수 있다.
 
-```
-module-app-web\front\src\components\cwe\cwe\CweList.vue
-```
-
 ```javascript
+<module-app-web\front\src\components\cwe\cwe\CweList.vue>
+
 // ...
 
 // onBeforeMount, init
@@ -104,11 +98,9 @@ $ npm install sass-loader sass webpack --save-dev
 
 - 본 프로젝트에서는 sass-loader가 8버전을 사용하므로, prependData proeprty를 사용하여 전역에서 scss 파일을 include 하였다.
 
-```
-module-app-web\front\vue.config.js
-```
-
 ```javascript
+<module-app-web\front\vue.config.js>
+
 module.exports = {
    css: {
        loaderOptions: {
@@ -133,11 +125,9 @@ module.exports = {
 - main.js에서는 다음과 같이 전역으로 axios csrf 전달 옵션, JWT 토큰 전달 옵션, 로딩 바를  설정하였다.
 - 로딩 바는 각 컴포넌트 상단에 위치한다. axios 인터셉터를 사용하여 요청이 시작할 때 로딩 바가 생성되며  종료될 때 로딩 바가 사라진다.
 
-```
-module-app-web\front\src\main.js
-```
-
 ```javascript
+<module-app-web\front\src\main.js>
+
 // axios 설정
 axios.defaults.xsrfCookieName = 'XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
 axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN' // csrf 기본 설정을 명시적으로 선언
@@ -172,11 +162,9 @@ axios.interceptors.response.use(
    });
 ```
 
-```
-module-app-web\front\src\components\common\Loading.vue
-```
-
 ```html
+<module-app-web\front\src\components\common\Loading.vue>
+
 <template>
  <div class="container-fluid">
    <div id="loading-wrapper">
@@ -219,11 +207,9 @@ export default {
 
 - 하단 출처를 참고하여, 동적으로 img 태그가 생성되는 경우, public 폴더에 위치시킨 다음 img 파일을 호출하였다.
 
-```
-module-app-web\front\src\components\common\FileUpload.vue
-```
-
 ```javascript
+<module-app-web\front\src\components\common\FileUpload.vue>
+
 const tag = '<div id="uploadFileId' + tempUploadFileId + '" + class="d-flex">'
    + '<span class="d-flex align-items-center">'
    + file.name + ",&nbsp; 파일 크기: " + convertFileSize(file.size)
@@ -281,11 +267,9 @@ const tag = '<div id="uploadFileId' + tempUploadFileId + '" + class="d-flex">'
 - 백엔드 서버에서 수신 받은 JSON key와 자바스크립트 객체 property가 매핑되지 않거나 객체 property가 선언되지 않으면, vue에서  브라우저로 렌더링 할 때 발생하는 오류다.
 - 따라서 자바스크립트 객체 property를 JSON key와 매핑되도록 선언해야 한다.
 
-```
-module-app-web\front\src\components\admin_page\notice\NoticeRead.vue
-```
-
 ```html
+<module-app-web\front\src\components\admin_page\notice\NoticeRead.vue>
+
 <tr>
  <td colspan="2">
    <div class="float-end">
@@ -330,11 +314,9 @@ setup() {
 ### 레이아웃 구성
 - 로그인 페이지는 Header, Sidebar, Footer을 사용하여 템플릿을 구성하지 않는다. 라우트에서 meta 필드의 layoutView 속성 값을 사용하여 Header, Sidebar, Footer 레이아웃 적용 여부를 구분하였다.
 
-```
-module-app-web\front\src\router\index.js
-```
-
 ```javascript
+<module-app-web\front\src\router\index.js>
+
 const routes = [
    {
        path: '/login',
@@ -400,11 +382,9 @@ router.beforeEach(async function (to, from, next) {
 export default router
 ```
 
-```
-module-app-web\front\src\App.vue
-```
-
 ```html
+<module-app-web\front\src\App.vue>
+
 <template>
  <body v-if="this.$route.meta.layoutView === true">
  <Header/>
@@ -430,11 +410,9 @@ module-app-web\front\src\App.vue
 - 브라우저에서 뒤로가기 버튼을 클릭하면 브라우저의 scroll 위치가 최상단으로 변경된다.
 - 브라우저 scroll 위치가 현재 위치로 고정하도록 변경하였다.
 
-```
-module-app-web\front\src\router\index.js
-```
-
 ```javascript
+<module-app-web\front\src\router\index.js>
+
 const router = createRouter({
    history: createWebHistory(process.env.BASE_URL),
    routes,
@@ -461,11 +439,9 @@ const router = createRouter({
 
 ![image](/assets/img/2022-02-02-Project SW Test Forum6/image4.png)
 
-```
-module-app-web\front\src\utils\validation-util.js
-```
-
 ```javascript
+<module-app-web\front\src\utils\validation-util.js>
+
 // ...
 
 /* 길이 및 공백 validation */
@@ -492,11 +468,9 @@ const validateLengthAndIsEmpty = (name, value) => {
 // ...
 ```
 
-```
-module-app-web\front\src\components\cwe\cwe\CweWrite.vue
-```
-
 ```html
+<module-app-web\front\src\components\cwe\cwe\CweWrite.vue>
+
 <tr>
  <th>제목<span class="required-field">*</span><span class="auto-completed-field">*</span></th>
  <td style="overflow: visible">
