@@ -26,6 +26,7 @@ order: 4
 ## 토이 프로젝트: Project Lab. 연구실 홈페이지 개발
 - 목표: 기존 PHP로 개발된 노후화된 연구실 홈페이지를 Spring Boot를 사용하여 새로 개발한다.
 - 진행 기간: 2020-04-14 ~ 2021.04.01
+- 유지보수 기간: 2020-04-01 ~ 현재 진행 중...
 
 - 프로젝트 게시글 리스트: <https://scribnote5.github.io/categories/project-lab/>
 - 개발 프로젝트 소개: <https://scribnote5.github.io/posts/Project-Lab0/>
@@ -37,7 +38,8 @@ order: 4
 
 ## 토이 프로젝트: Project SW Test Forum. 소프트웨어 테스트 포럼 개발
 - 목표: 회사 업무 중 업무관리 시스템의 부재로 인한 불편함을 해결하기 위해서 전산 관리 시스템을 새로 개발한다.
-- 진행 기간: 2021.06.16 ~ 2021.02.22
+- 진행 기간: 2021.06.16 ~ 2022.02.22
+- 유지보수 기간: 2022.02.22 ~ 현재 진행 중...
 
 - 프로젝트 게시글 리스트: <https://scribnote5.github.io/categories/project-sw-test-forum/>
 - 개발 프로젝트 소개: <https://scribnote5.github.io/posts/Project-SW-Test-Forum0/>
