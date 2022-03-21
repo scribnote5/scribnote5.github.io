@@ -47,6 +47,8 @@ layout: post
 ## chore: Spring boot XSS filter(HTML escape) 제거
 - Vue에서는 XSS 공격 대비를 위한 HTML escape가 이미 구현되어 있으므로, Spring boot HTML escape 코드 주석 처리
 
+출처: <https://kr.vuejs.org/v2/guide/security.html>
+
 
 
 ## fix: 데이터 기록 검색 기능 오류 수정
@@ -57,6 +59,8 @@ layout: post
 
 ## fix: get 방식 검색 오류 수정
 - 특수 문자 입력 후 검색하면, 특수 문자가 누락되는 오류 encodeURIComponet 함수 사용하여 해결
+
+출처: <https://steady-snail.tistory.com/111>
 
 
 

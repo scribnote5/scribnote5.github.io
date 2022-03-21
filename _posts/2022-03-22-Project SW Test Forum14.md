@@ -37,9 +37,11 @@ layout: post
 
 
 
-## fix: 백엔드 HTML escape 적용 해제
-- Vue에서는 XSS 공격을 대비하기 위한 HTML escape를 이미 적용하고 있음
-- 백엔드 HTML escape 적용 해제
+## fix: 백엔드 HTML escape 적용 해제에 따른 댓글 코드 수정
+- Vue에서는 XSS 공격을 대비하기 위한 HTML escape를 이미 적용하고 있으므로, 백엔드 HTML escape 적용 해제
+- 이에 따라, 댓글 등록시 XSS 취약점이 발생하지 않도록 코드 수정
+
+출처: <https://stackoverflow.com/questions/54979287/replace-n-to-new-line-on-vuejs>
 
 
 
