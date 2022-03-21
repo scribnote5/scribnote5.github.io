@@ -5,11 +5,12 @@ excerpt: "유지보수 현황을 소개한다."
 categories:
   - Web
   - Project SW Test Forum
-last_modified_at: 2022-02-08
+last_modified_at: 2022-03-18
 layout: post
 ---
 - 유지보수 현황을 소개한다.
 - 프로젝트에 MISRA C++ 규칙을 입력하는 도중 다양한 이슈를 발견하고 유지보수 하였다. 테스트에 많은 시간을 투자하지 못하였기에, 사용 도중에 예기치 못한 이슈가 많이 발견되었다. 역시 테스트에 많은 시간을 투자하여 이슈를 찾는 것이 중요하다.(QA팀이 있는 이유)
+- github: <https://github.com/scribnote5/sw_test_forum>
 
 
 
