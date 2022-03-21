@@ -44,13 +44,6 @@ layout: post
 
 
 
-## chore: Spring boot XSS filter(HTML escape) 제거
-- Vue에서는 XSS 공격 대비를 위한 HTML escape가 이미 구현되어 있으므로, Spring boot HTML escape 코드 주석 처리
-
-출처: <https://kr.vuejs.org/v2/guide/security.html>
-
-
-
 ## fix: 데이터 기록 검색 기능 오류 수정
 - 게시글 수정할 때 auditType 잘못 입력되는 것 수정
 - 데이터 기록 검색 기능이 로그인 기록 검색 기능으로 구현된 오류 수정
@@ -66,3 +59,39 @@ layout: post
 
 ## feat: 검색 편의성 기능 구현
 - 검색어 입력 후 엔터키를 입력하면 검색되는 기능 구현
+
+
+
+## feat: 좋아요 기능 구현
+- 규칙 가이드라인 페이지에서 좋아요 기능 구현, 가이드라인을 ‘좋아요‘ 내림차순으로 정렬
+- 규칙 가리드라인 리스트 페이지에서 ‘좋아요(하트)’ 갯수를 확인할 수 있다.
+
+![image](/assets/img/2022-03-18-Project SW Test Forum13/image1.png)
+
+- 규칙 가리드라인 읽기 페이지에서 ‘좋아요(하트)’ 갯수를 확인할 수 있고, ‘좋아요’와 ‘좋아요 취소’를 할 수 있다.
+
+![image](/assets/img/2022-03-18-Project SW Test Forum13/image2.png)
+
+
+
+## fix: 예제 및 가이드라인 목록 버튼 선택 시 잘못된 경로 이동 수정
+- 규칙 읽기 페이지 -> 예제 및 가이드라인 게시글 선택 -> 목록 버튼 선택 시 전체 목록 페이지 이동을 해당 규칙 예제 및 가이드라인으로 이동
+
+
+
+## style: 비어있는 해시태그 스타일 적용
+- 해시태그에도 스타일 적용
+
+
+
+## fix: Spring boot XSS filter(HTML escape) 제거
+- Vue에서는 XSS 공격 대비를 위한 HTML escape가 이미 구현되어 있으므로, Spring boot HTML escape 코드 주석 처리
+- 이에 따라 댓글 등록시 XSS 취약점이 발생하지 않도록 코드 수정
+
+출처: <https://kr.vuejs.org/v2/guide/security.html><br>
+<https://stackoverflow.com/questions/54979287/replace-n-to-new-line-on-vuejs>
+
+
+
+## chore: 잘못된 코드 수정
+- 규칙 리스트 페이지 잘못된 출력, 리스트 정렬 중복 수정, 잘못된 변수 사용, 태그 및 스타일 중복 사용
