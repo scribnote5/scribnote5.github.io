@@ -1,5 +1,5 @@
 ---
-title: "Project SW Test Forum 14. 유지보수 - 1"
+title: "Project SW Test Forum 14. 유지보수 - 2"
 excerpt: "유지보수 현황을 소개한다."
 
 categories:
