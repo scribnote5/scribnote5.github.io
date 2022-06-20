@@ -31,16 +31,16 @@ layout: post
 ### 코딩 규칙 검증
 - 소프트웨어 구현에 적용하는 소스 코드 작성 규칙을 점검한다.
 - 적용 대상 언어는 C, C++, C#, JAVA 이며. 대상 언어별 적용되는 표준은 다음과 같다.<br>
-C: MISRA C: 2012<br>
+C: MISRA C 2012<br>
 C++: MISRA C++: 2008, JSF++(Koint Strike Figher Air Vehicle C++) <br>
 => 일반적으로 MISRA C++: 2008 규칙으로 검증한다.<br>
 Java: Code conventions for the Java Programming Language(Oracle)<br>
 C#: C# Coding conventions 또는 .NET Framework Design Guideline<br>(Microsoft)
 
-- 전력형 무기 즉, 방위력 개선사업으로 개발되는 소프트웨어는 MISRA C: 2012, MISRA C++: 2008 가이드라인을 를 통해 검증하며, 국산화 소프트웨어는 DAPA 가이드라인을 통해 검증한다.<br>
+- 전력형 무기 즉, 방위력 개선사업으로 개발되는 소프트웨어는 MISRA C 2012, MISRA C++: 2008 가이드라인을 를 통해 검증하며, 국산화 소프트웨어는 DAPA 가이드라인을 통해 검증한다.<br>
 ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA 규칙으로 검증한다.
 
-- MISRA C: 2012에 대한 자세한 내용은 다음 글에서 확인할 수 있다.
+- MISRA C 2012에 대한 자세한 내용은 다음 글에서 확인할 수 있다.
 
 참고: <https://scribnote5.github.io/categories/#misra-c>
 
