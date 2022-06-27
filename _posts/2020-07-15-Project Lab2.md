@@ -4,16 +4,14 @@ excerpt: "Windows Subsytem for Linux(WSL)에 mariaDB 설치 과정을 소개한�
 categories:
   - Web
   - Project Lab
-last_modified_at: 2020-07-15
+last_modified_at: 2022-06-27
 layout: post
 ---
 - Windows Subsytem for Linux(WSL)에 mariaDB 설치 과정을 소개한다.
-
-
-
 - 본 프로젝트에서는 추후 우분투 서버 환경에서 배포할 예정이다. 따라서 mariaDB의 명령어를 공부하고 익숙해지기 위해서, Windows Subsytem for Linux(WSL)에 mariaDB를 설치하였다.
 - Windows Subsytem for Linux(WSL)란 리눅스에서 제공되는 프로그램들을 윈도우 환경에서 사용할 수 있도록 bash 쉘을 지원한다. 이를 통해서 별도의 가상머신 없이 리눅스를 사용할 수 있다.
 - 만약 해당 과정이 번거로운 경우, mariaDB를 윈도우 설치해서 사용해도 상관 없다. 사용자 편의에 따라서 선택하여 설치하면 된다.
+- 22.06.27 기준 WSL과 mariaDB는 서로 호환이 안되는지 mariaDB 서비스가 실행되지 않으며, 여러 해결 방법을 찾아보고 적용하였으나 해결하지 못하였다. 
 
 
 

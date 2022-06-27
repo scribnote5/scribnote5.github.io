@@ -7,9 +7,6 @@ last_modified_at: 2020-07-20
 layout: post
 ---
 - 본 글은 무기체계 소프트웨어의 신뢰성 시험을 소개하는 글이며, '방위사업청 매뉴얼 제2020-8호'에 참고하여 작성하였다.
-
-
-
 - 고 신뢰성이 요구되는 무기체계 소프트웨어는 '방위사업청 메뉴얼'을 준수하여 개발된다.
 - '방위사업청 메뉴얼'은 요구 사항 분석에서의 오류 등에 대한 테스트를 포함한다는 내용을 체계화한 'V-모델' 소프트웨어 개발 프로세스에 기반한다.
 - '방위사업청 메뉴얼'은 'V-모델' 소프트웨어 개발 프로세스에 기반하여 '신뢰성 시험' 방법이 작성되어 있다. 
@@ -30,12 +27,11 @@ layout: post
 
 ### 코딩 규칙 검증
 - 소프트웨어 구현에 적용하는 소스 코드 작성 규칙을 점검한다.
-- 적용 대상 언어는 C, C++, C#, JAVA 이며. 대상 언어별 적용되는 표준은 다음과 같다.<br>
-C: MISRA C 2012<br>
-C++: MISRA C++: 2008, JSF++(Koint Strike Figher Air Vehicle C++) <br>
-=> 일반적으로 MISRA C++: 2008 규칙으로 검증한다.<br>
-Java: Code conventions for the Java Programming Language(Oracle)<br>
-C#: C# Coding conventions 또는 .NET Framework Design Guideline<br>(Microsoft)
+- 적용 대상 언어는 C, C++, C#, JAVA 이며. 대상 언어별 적용되는 표준은 다음과 같다.
+- C: MISRA C 2012
+- C++: MISRA C++: 2008, JSF++(Koint Strike Figher Air Vehicle C++) => 일반적으로 MISRA C++: 2008 규칙으로 검증한다.
+- Java: Code conventions for the Java Programming Language(Oracle)
+- C#: C# Coding conventions(StyleCop) 또는 .NET Framework Design Guideline(Microsoft, FxCop) => C# Coding conventions은 단순 코드 스타일을 수정하는 규칙으로 .NET Framework Design Guideline 보다 정적시험 수정이 쉽다.
 
 - 전력형 무기 즉, 방위력 개선사업으로 개발되는 소프트웨어는 MISRA C 2012, MISRA C++: 2008 가이드라인을 를 통해 검증하며, 국산화 소프트웨어는 DAPA 가이드라인을 통해 검증한다.<br>
 ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA 규칙으로 검증한다.
@@ -49,13 +45,14 @@ ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA
 
 출처: <https://m.blog.naver.com/PostView.nhn?blogId=mds_datasecurity&logNo=221422521951&proxyReferer=https%3A%2F%2Fwww.google.com%2F>
 
+- Java 정적 시험 규칙인 Oracle Code Convention의 경우 현재 상용 중인 정적 시험 도구에서 모든 규칙을 다 지원하지 않으므로 여러 도구를 같이 사용하여, 정적 시험 규칙을 최대한 준수한다.
+- 어느 도구에서 어떤 규칙을 지원하는지 매핑 테이블을 통하여 관리해야 한다.(실사 대응)
+ex) 정적시험 도구 STATIC과 Sparrow를 동시에 사용
 
 
 ### 소스코드 메트릭 점검
 - 소프트웨어의 복잡도 감소, 유지보수 용이성 증대 등 소프트웨어 품질향상을 위한 소스 코드의 품질 측정지표다.
-- 소스코드 메트릭에 대한 자세한 내용은 다음 글에서 확인할 수 있다. 
-
-참고: <https://scribnote5.github.io/code%20metrics/static%20test/Code-Metrics1/>
+- 소스코드 메트릭에 대한 자세한 내용은 '소스코드 메트릭(Code Metrics) 개요' 게시글에서 확인할 수 있다. 
 
 
 
@@ -63,15 +60,14 @@ ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA
 - 소프트웨어 소스 코드가 CWE(Common Weakness Enumeration) 목록에 정의된 취약점을 포함하고 있는지 점검한다. 
 - CWE는 언어에 따라 CWE-658: C, CWE-659: C++, CWE-660: Java로 분류된다.
 - MISRA C/C++ 가이드라인을 준수 한다면, CWE에서 선정한 취약점도 보완할 수 있다. 
-- CWE에 대한 자세한 내용은 다음 글에서 확인할 수 있다.
+- CWE에 대한 자세한 내용은 'CWE(Common Weakness Enumeration) 개요' 게시글에서 확인할 수 있다.
 
-참고: <https://scribnote5.github.io/cwe/static%20test/CWE658-1/>
+- Java 취약점 점검 규칙인 CWE-660의 경우, 현재 상용 중인 정적 시험 도구에서 모든 규칙을 다 지원하지 않으므로 여러 도구를 같이 사용하여, 정적 시험 규칙을 최대한 준수한다.
+- 어느 도구에서 어떤 규칙을 지원하는지 매핑 테이블을 통하여 관리해야 한다.(실사 대응)
+ex) STATIC, Sparrow, PMD, FindBugs를 사용
 
 
 
 ## 동적시험
 - 소프트웨어를 실제 하드웨어(Target)에 탑재한 상태에서 소프트웨어통합시험절차서에 기술된 시험절차에 따라 요구사항기반으로 소프트웨어 코드 실행률(Coverage)을 점검하는 것을 말한다.
-
-- 동적시험에 대한 자세한 내용은 다음 글에서 확인할 수 있다. 
-
-참고: <https://scribnote5.github.io/dynamic%20test/Dynamic-Test1/>
+- 동적시험에 대한 자세한 내용은 '무기체계 소프트웨어의 동적시험 개요' 게시글에서 확인할 수 있다. 
