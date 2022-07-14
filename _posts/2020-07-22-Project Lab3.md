@@ -15,10 +15,9 @@ layout: post
 
 
 ### REST & RESTful
-- REST란, '웹에 존재하는 모든 자원(이미지, 동영상, DB 자원)에 고유한 URI를 부여해 활용'하는 것으로, 자원을 정의하고 자원에 대한 주소를 지정하는 방법론을 의미한다.
-이런 REST의 형식을 따른 시스템을 RESTful 이라고 부른다.
+- REST란, '웹에 존재하는 모든 자원(이미지, 동영상, DB 자원)에 고유한 URI를 부여해 활용'하는 것으로, 자원을 정의하고 자원에 대한 주소를 지정하는 방법론을 의미한다. 이런 REST의 형식을 따른 시스템을 RESTful 이라고 부른다.
 - 서버-클라이언트의 역할이 명확하게 분리되면서 하나의 큰 애플리케이션이 여러 개의 작은 애플리케이션으로 분리된다.
-- 이러한 RESTful 시스템을 개발할 때 가장 큰 문제점은 소스 코드의 중복 처리 및 동일성을  보장하는 방법이다. 여러 개의 작은 애플리케이션이 공통으로 가지는 Domain 구조를 동일하게 보장하는 메커니즘이 없다면, 개발자는 공통 Domain을 애플리케이션 마다 소스 코드를 복붙하여 개발하게 된다. 만약 Domain 소스 코드가 계속 변경되는 경우 각 애플리케이션의 Domain의 형상관리에 큰 문제점이 발생한다.
+- 이러한 RESTful 시스템을 개발할 때 가장 큰 문제점은 소스 코드의 중복 처리 및 동일성을  보장하는 방법이다. 여러 개의 작은 애플리케이션이 공통으로 가지는 Domain 구조를 동일하게 보장하는 메커니즘이 없다면, 개발자는 공통 Domain을 애플리케이션 마다 소스 코드를 복붙하여 개발하게 된다. 만약 Domain 소스 코드가 계속 변경되는 경우 각 애플리케이션의 Domain 형상관리에 큰 문제점이 발생한다.
 
 출처: <https://medium.com/@hckcksrl/rest%EB%9E%80-c602c3324196><br>
 REST 개념: <https://gmlwjd9405.github.io/2018/09/21/rest-and-restful.html><br>
@@ -82,7 +81,7 @@ implementaion: 의존성 라이브러리 수정시 본 모듈까지만 재빌드
 A(implementation) <- B <- C 일 때, C에서 A 접근 불가<br>
 A 수정시 B 까지 재빌드
 
-출처: <https://jongmin92.github.io/2019/05/09/Gradle/gradle-api-vs-implementation/>
+출처: <https://jongmin92.github.io/2019/05/09/Gradle/gradle-api-vs-implementation/><br>
 <https://sikeeoh.github.io/2017/08/28/implementation-vs-api-android-gradle-plugin-3/>
 
 
