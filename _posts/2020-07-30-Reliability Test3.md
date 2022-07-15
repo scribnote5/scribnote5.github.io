@@ -50,7 +50,7 @@ ex) C/C++에서 포인터 간 형변환
 
 
 
-### 코딩 규칙 검증
+## 1. 코딩 규칙 검증
 - 소프트웨어 구현에 적용하는 소스 코드 작성 규칙을 점검한다.
 - 적용 대상 언어는 C, C++, C#, JAVA 이며. 대상 언어별 적용되는 표준은 다음과 같다.
 - C: MISRA C 2012
@@ -76,27 +76,23 @@ ex) STATIC과 Sparrow를 사용
 
 
 
-### 소스코드 메트릭 점검
+## 2. 소스코드 메트릭 점검
 - 소프트웨어의 복잡도 감소, 유지보수 용이성 증대 등 소프트웨어 품질향상을 위한 소스 코드의 품질 측정지표다.
 - 소스코드 메트릭에 대한 자세한 내용은 '소스코드 메트릭(Code Metrics) 개요' 게시글에서 확인할 수 있다. 
 
 
 
-### 취약점 점검
+## 3. 취약점 점검
 - 소프트웨어 소스 코드가 CWE(Common Weakness Enumeration) 목록에 정의된 취약점을 포함하고 있는지 점검한다. 
 - CWE는 언어에 따라 CWE-658: C, CWE-659: C++, CWE-660: Java로 분류된다.
 - MISRA C/C++ 가이드라인을 준수 한다면, CWE에서 선정한 취약점도 보완할 수 있다. 
 - CWE에 대한 자세한 내용은 'CWE(Common Weakness Enumeration) 개요' 게시글에서 확인할 수 있다.
 
- - 22.07 기준 Java 취약점 점검 규칙인 CWE-660의 경우, 현재 상용 중인 정적시험 도구에서는 모든 규칙을 다 지원하지 않으므로 여러 도구를 같이 사용하여, 정적시험 규칙을 최대한 준수하는 방향으로 진행한다.
+ - <span style="color:red; font-weight: bold">22.07 기준 Java 취약점 점검 규칙인 CWE-660의 경우, 현재 상용 중인 정적시험 도구에서는 모든 규칙을 다 지원하지 않으므로 여러 도구를 같이 사용하여, 정적시험 규칙을 최대한 준수하는 방향으로 진행한다.</span>
 - 실사 대응을 위해 어느 도구에서 어떤 규칙을 지원하는지 매핑 테이블을 통하여 관리해야 한다.<br>
 ex) STATIC, Sparrow, PMD, FindBugs를 사용
 
 
-
-## 블랙박스 및 화이트박스 테스팅
+### 대표적인 소프트웨어 실행시간 관련 오류 예시(C/C++)
 
 ![image](/assets/img/2020-07-30-Reliability Test2/image1.png)
-
-
-출처: <https://m.blog.naver.com/PostView.nhn?blogId=suresofttech&logNo=220965464819&proxyReferer=https%3A%2F%2Fwww.google.com%2F>
