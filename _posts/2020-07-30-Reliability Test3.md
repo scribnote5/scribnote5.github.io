@@ -95,4 +95,4 @@ ex) STATIC, Sparrow, PMD, FindBugs를 사용
 
 ### 대표적인 소프트웨어 실행시간 관련 오류 예시(C/C++)
 
-![image](/assets/img/2020-07-30-Reliability Test2/image1.png)
+![image](/assets/img/2020-07-30-Reliability Test3/image1.png)
