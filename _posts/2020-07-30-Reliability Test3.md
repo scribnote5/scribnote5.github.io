@@ -72,7 +72,7 @@ ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA
 
 - Java 정적 시험 규칙인 Oracle Code Convention의 경우 현재 상용 중인 정적 시험 도구에서 모든 규칙을 다 지원하지 않으므로 여러 도구를 같이 사용하여, 정적 시험 규칙을 최대한 준수한다.
 - 어느 도구에서 어떤 규칙을 지원하는지 매핑 테이블을 통하여 관리해야 한다.(실사 대응)<br>
-ex) STATIC과 Sparrow를 사용
+ex) STATIC, Sparrow, PMD, FindBugs를 사용
 
 
 
