@@ -56,7 +56,7 @@ ex) C/C++에서 포인터 간 형변환
 - C: MISRA C 2012
 - C++: MISRA C++: 2008, JSF++(Koint Strike Figher Air Vehicle C++) => 일반적으로 MISRA C++: 2008 규칙으로 검증한다.
 - Java: Code conventions for the Java Programming Language(Oracle)
-- C#: C# Coding conventions(StyleCop) 또는 .NET Framework Design Guideline(Microsoft, FxCop) => C# Coding conventions은 단순 코드 스타일을 수정하는 규칙으로 .NET Framework Design Guideline 보다 정적시험 수정이 쉽다.
+- C#: C# Coding conventions(StyleCop) 또는 .NET Framework Design Guideline(Microsoft, FxCop) => <span style="color:red; font-weight: bold">C# Coding conventions은 단순 코드 스타일을 수정하는 규칙으로 .NET Framework Design Guideline 보다 정적시험 수정이 쉽다.</span>
 
 - 전력형 무기 즉, 방위력 개선사업으로 개발되는 소프트웨어는 MISRA C 2012, MISRA C++: 2008 가이드라인을 를 통해 검증하며, 국산화 소프트웨어는 DAPA 가이드라인을 통해 검증한다.<br>
 ex) KF-X에 탑재되는 소프트웨어는 국산화 소프트웨이므로 DAPA 규칙으로 검증한다.
