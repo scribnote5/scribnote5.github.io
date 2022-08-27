@@ -238,13 +238,13 @@ footer {
 
   .post-content {
     font-size: 0.9rem;
-
-    // modifiyed by scribnote5
-    p {
-      margin-bottom: .75rem;
-    }
   }
 
+}
+
+// modifiyed by scribnote5
+p {
+  margin-bottom: .75rem !important;
 }
 
 #access-tags {
