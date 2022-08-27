@@ -134,6 +134,8 @@ h5 {
   @extend %anchor;
 
   font-size: 1.1rem;
+  // modified by scribnote5
+  font-weight: 700;
 }
 
 ol,
@@ -236,6 +238,11 @@ footer {
 
   .post-content {
     font-size: 0.9rem;
+
+    // modifiyed by scribnote5
+    p {
+      margin-bottom: .75rem;
+    }
   }
 
 }
