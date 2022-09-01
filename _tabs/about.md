@@ -44,4 +44,4 @@ order: 4
 - 프로젝트 게시글 리스트: <https://scribnote5.github.io/categories/project-sw-test-forum/>
 - 개발 프로젝트 소개: <https://scribnote5.github.io/posts/Project-SW-Test-Forum0/>
 - Github: <https://github.com/scribnote5/sw_test_forum>
-- 개발한 소프트웨어 테스트 포럼 홈페이지(임시): <http://203.234.19.85:8080/login>
+- 개발한 소프트웨어 테스트 포럼 홈페이지: <http://110.10.41.70:8080/login>
