@@ -5,7 +5,7 @@ excerpt: "유지보수 현황을 소개한다."
 categories:
   - Web
   - Project SW Test Forum
-last_modified_at: 2022-09-026
+last_modified_at: 2022-09-26
 layout: post
 ---
 - 유지보수 현황을 소개한다.
