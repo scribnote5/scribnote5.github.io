@@ -35,6 +35,6 @@ layout: post
 
 
 ## chore: application.yml 파일을 여러 파일로 분류
-- application.yml 파일을 배포 환경에 따라 여러 개의 파일(common.yml, local_master.yml, prod_master.yml 등)우로 분류
+- application.yml 파일을 배포 환경에 따라 여러 개의 파일(common.yml, local_master.yml, prod_master.yml 등)으로 분류
 
 출처: <https://honeymon.io/tech/2021/01/16/spring-boot-config-data-migration.html>
